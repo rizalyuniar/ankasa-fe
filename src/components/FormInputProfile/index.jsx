@@ -5,9 +5,9 @@ const FormInputProfile = (props) => {
   return (
     <div className="my-3">
       <label htmlFor={props.label} className={`form-label ${style.formLabel}`}>
-        Email
+        {props.children}
       </label>
-      <input type={props.type} className={`form-control ${style.formInput}`} id={props.label} name={props.name} placeholder={props.placeholder} />
+      <input type={props.type} className={`form-control mb-4 ${style.formInput}`} id={props.label} name={props.name} placeholder={props.placeholder} value={props.value} onChange={props.change} />
     </div>
   );
 };

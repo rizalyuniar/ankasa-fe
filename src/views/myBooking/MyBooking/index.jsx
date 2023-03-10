@@ -1,9 +1,9 @@
 import React from 'react';
 import style from './style.module.css';
-import Navbar from '../../components/navbar';
-import FormInputProfile from '../../components/FormInputProfile';
+import Navbar from '../../../components/navbar';
+import FormInputProfile from '../../../components/FormInputProfile';
 
-import image from '../../assets/profile.png';
+import image from '../../../assets/profile.png';
 
 const myBooking = () => {
   return (
@@ -43,7 +43,7 @@ const myBooking = () => {
                 </li>
 
                 <li className={style.listMenu}>
-                  <a href="" className={style.listLink}>
+                  <a href="/myBooking/profile" className={style.listLink}>
                     <i className="bi bi-sliders me-5 fs-4" />
                     <span className={style.titleMenu}>Settings</span>
                   </a>
@@ -63,13 +63,30 @@ const myBooking = () => {
             <div className={style.wrapperMain}>
               <span className={style.subHeader}>Profile</span>
               <p className={style.titleHeader}>Profile</p>
-              <div className="col-lg-6">
-                <span className={style.subHeading}>Contact</span>
-                <form>
-                  <FormInputProfile label="email" type="email" placeholder="example@gmail.com" />
-                </form>
-              </div>
-              <div className="col-lg-6"></div>
+
+              <form>
+                <div className="container p-0">
+                  <div className="row">
+                    <div className="col-lg-6">
+                      <span className={style.subHeading}>Contact</span>
+
+                      <FormInputProfile label="email" type="email" placeholder="example@gmail.com" children="Phone Number" value="" change={''} />
+
+                      <FormInputProfile label="no_telp" type="text" placeholder="Your phone number" children="Phone Number" value="" change={''} />
+                    </div>
+
+                    <div className="col-lg-6">
+                      <span className={style.subHeading}>Biodata</span>
+
+                      <FormInputProfile label="fullname" type="text" placeholder="Your Fullname" children="Fullname" value="" change={''} />
+
+                      <FormInputProfile label="address" type="text" placeholder="Ex: Jakarta, Indonesia" children="Address" value="" change={''} />
+
+                      <FormInputProfile label="postCode" type="text" placeholder="Ex: 13730" children="Post Code" value="" change={''} />
+                    </div>
+                  </div>
+                </div>
+              </form>
             </div>
           </div>
         </div>

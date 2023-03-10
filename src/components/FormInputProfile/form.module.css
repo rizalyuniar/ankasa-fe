@@ -15,23 +15,24 @@
 .formLabel {
   font-size: 14px;
   font-weight: 500;
+  margin-left: 10px;
   color: var(--fontSecondary);
 }
 
 .formInput {
-  border: none;
-  padding: 8px 10px;
-  font-size: 14px;
-  color: var(--fontColor);
-  margin-top: 2px;
-  border-bottom: 1px solid #d2c2ffad;
+  border: none !important;
+  padding: 8px 10px !important;
+  font-size: 14px !important;
+  color: var(--fontColor) !important;
+  margin-top: 2px !important;
+  border-bottom: 1px solid #d2c2ffad !important;
 }
 
 .formInput:focus {
-  border: none;
-  padding: 8px 10px;
-  font-size: 14px;
-  color: var(--fontColor);
-  margin-top: 2px;
-  border-bottom: 1px solid #d2c2ffad;
+  border: none !important;
+  padding: 8px 10px !important;
+  font-size: 14px !important;
+  color: var(--fontColor) !important;
+  margin-top: 2px !important;
+  border-bottom: 1px solid #d2c2ffad !important;
 }
