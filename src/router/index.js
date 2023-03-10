@@ -38,7 +38,6 @@ const Router = () => {
           <Route path="/mybooking" element={<MyBooking />} />
           <Route path="/updateProfile" element={<UpdateProfile />} />
           <Route path="/mybooking/profile" element={<SettingBooking />} />
-          <Route path="/updateProfile/user/:id" element={<UpdateProfile />} />
         </Routes>
       </ScrollToTop>
     </BrowserRouter>
