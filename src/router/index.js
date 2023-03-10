@@ -27,18 +27,16 @@ const Router = () => {
     <BrowserRouter>
       <ScrollToTop>
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
-
           <Route path="/register" element={<Register />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
-
-          <Route path="/" element={<Home />} />
           <Route path="/search" element={<Search />} />
           <Route path="/booking" element={<BookingDetail />} />
           <Route path="/flight" element={<FlightDetail />} />
-
           <Route path="/profile" element={<Profile />} />
           <Route path="/mybooking" element={<MyBooking />} />
+          <Route path="/updateProfile" element={<UpdateProfile />} />
           <Route path="/mybooking/profile" element={<SettingBooking />} />
           <Route path="/updateProfile/user/:id" element={<UpdateProfile />} />
         </Routes>
