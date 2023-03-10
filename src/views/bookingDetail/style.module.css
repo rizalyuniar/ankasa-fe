@@ -1,0 +1,136 @@
+.ticket {
+  background-color: #2395ff;
+  height: 650px;
+}
+
+.bookingPass {
+  background-color: white;
+  border-radius: 20px;
+  height: 550px;
+  margin-top: 50px;
+  margin-left: 25%;
+  padding-top: 50px;
+  padding-left: 50px;
+}
+
+.title {
+  margin-bottom: 50px;
+}
+.title img {
+  height: 25px;
+}
+
+.settitle {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.ticketleft {
+  border: 1px solid #e5e5e5;
+  height: 350px;
+  /* border-right: 2px dashed #E5E5E5; */
+  padding: 30px;
+  border-radius: 15px;
+}
+
+.ticketleft:before,
+.ticketleft:after {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  border: 1px solid #e5e5e5;
+  position: absolute;
+  left: 725px;
+  top: 280px;
+
+  z-index: 1;
+  border-radius: 50%;
+  /* border-top-left-radius: 100px;
+  border-top-right-radius: 100px; */
+  border-bottom: 1px solid #e5e5e5;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+.ticketleft:after {
+  top: auto;
+  bottom: 240px;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+}
+
+.iconAirline img {
+  height: 50px;
+}
+
+.ticketright {
+  border: 1px solid #e5e5e5;
+  height: 350px;
+  border-left: 2px dashed #e5e5e5;
+  border-radius: 15px;
+}
+
+.code {
+  color: #a5a5a5;
+  font-size: 12px;
+  margin-bottom: 0;
+}
+
+.setcode {
+  color: #595959;
+  font-size: 14px;
+}
+
+.class {
+  color: #a5a5a5;
+  font-size: 12px;
+  margin-bottom: 0;
+}
+
+.setclass {
+  color: #595959;
+  font-size: 14px;
+}
+
+.terminal {
+  color: #a5a5a5;
+  font-size: 12px;
+  margin-bottom: 0;
+}
+
+.setterminal {
+  color: #595959;
+  font-size: 14px;
+}
+
+.gate {
+  color: #a5a5a5;
+  font-size: 12px;
+  margin-bottom: 0;
+}
+
+.setgate {
+  color: #595959;
+  font-size: 14px;
+}
+
+.depature {
+  color: #a5a5a5;
+  font-size: 12px;
+  margin-bottom: 0;
+}
+
+.setdepature {
+  color: #595959;
+  font-size: 14px;
+}
+
+.ticketright img {
+  margin-left: 25px;
+  margin-top: 70px;
+}
