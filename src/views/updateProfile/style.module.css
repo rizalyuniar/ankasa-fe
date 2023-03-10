@@ -1,0 +1,76 @@
+.rightsideProfile {
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  height: 660px;
+  border-radius: 15px;
+  padding: 28px;
+}
+
+.title {
+  color: #2395ff;
+  font-size: 14px;
+}
+
+.subtitle {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.detailProfile {
+  margin-top: 40px;
+}
+
+.contact {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.iconArrow {
+  height: 20px;
+  margin-top: 20px;
+  margin-left: 25px;
+}
+
+.biodata {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.labelForm {
+  font-size: 14px;
+  color: #9b96ab;
+}
+
+.inputProfile {
+  background-color: transparent;
+  padding: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  width: 310px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-color: #d2c2ffad;
+}
+
+.inputProfile:focus {
+  outline: none;
+}
+
+.accountSettings {
+  color: #2395ff;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 720px) {
+  .rightsideProfile {
+    margin-top: 30px;
+    height: 990px;
+  }
+
+  .accountSettings {
+    margin-bottom: 50px;
+    margin-left: 120px;
+  }
+}
