@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import style from './navbar.module.css';
 import navBrand from '../../assets/vector 02.png';
 import iconChange from '../../assets/Vector.png';
@@ -9,8 +8,6 @@ import CardNotif from '../cardNotif';
 const Navbar = () => {
   const [login, setLogin] = useState(true);
   const [toggle, setToggle] = useState(false);
-
-  console.log(login);
 
   return (
     <>
@@ -57,7 +54,7 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                <a href="" className={`nav-item mx-lg-2 mx-md-0 mx-sm-0 me-sm-4 ${style.navLinkIcon}`}>
+                <a href="" className={`nav-item mx-lg-2 mx-md-0 mx-sm-0 me-sm-4 me-md-4 ${style.navLinkIcon}`}>
                   <i className={`bi bi-chat-dots-fill ${style.iconMessage}`} />
                 </a>
 
@@ -69,7 +66,7 @@ const Navbar = () => {
                   <button className={`${style.buttonProfile} btn btn-secondary`} type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <img src={image} alt="img" className={style.imageProfile} />
                   </button>
-                  <ul className="dropdown-menu dropdown-menu-end lh-1 mt-2">
+                  <ul className="dropdown-menu dropdown-menu-start dropdown-menu-lg-end lh-1 mt-2">
                     <li className="mb-2">
                       <button type="button" className="dropdown-item" onClick={() => window.location.replace('/profile')}>
                         Profile

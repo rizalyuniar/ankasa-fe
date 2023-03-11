@@ -10,6 +10,10 @@ import FlightDetail from "../views/flightDetail";
 import MyBooking from "../views/myBooking";
 import Profile from "../views/profile";
 import UpdateProfile from "../views/updateProfile";
+import Admin from "../views/admin/dashboard";
+import Airlines from "../views/admin/adminAirlines";
+import AdminFlight from "../views/admin/adminFlight";
+import AdminPayment from "../views/admin/adminPayment";
 
 
 const ScrollToTop = ({ children }) => {
@@ -37,6 +41,10 @@ const Router = () => {
           <Route path="/profile" element={<Profile />} />
           <Route path="/mybooking" element={<MyBooking />} />
           <Route path="/updateProfile" element={<UpdateProfile />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/admin/airlines" element={<Airlines />} />
+          <Route path="/admin/flight" element={<AdminFlight />} />
+          <Route path="/admin/payment" element={<AdminPayment />} />
 
         </Routes>
       </ScrollToTop>
