@@ -1,81 +1,92 @@
 import React from "react";
-import styles from "./style.module.css";
-import AirlineGaruda from "../../assets/airline.png";
+import "./booking-detail.css";
 import Navbar from "../../components/navbar/index";
-import Footer from "../../components/footer/index";
-import Option from "../../assets/iconOption.svg";
-import Qrcode from "../../assets/QRCode1.svg";
-import iconflight from "../../assets/flight.svg";
+import qr from "../../assets/QRCode1.svg";
 
 const BookingDetail = () => {
   return (
-    <>
+    <section>
       <Navbar />
-      <main className="bodycontent">
-        <div className={`container-fluid ${styles.ticket}`}>
-          <div className="row">
-            <div className="col-md-10">
-              <div className={styles.bookingPass}>
-                <div className={`d-flex flex-row ${styles.title}`}>
-                  <p className={`col-md-11 ${styles.settitle}`}>Booking Pass</p>
-                  <img src={Option} />
-                </div>
-                <div className="d-flex flex-row">
-                  <div className={`col-md-7 ${styles.ticketleft}`}>
-                    <div className="d-flex flex-row">
-                      <div className={`col-md-4 ${styles.iconAirline}`}>
-                        <img src={AirlineGaruda} />
+      <div className="container-fluid container-fluid-booking-detail">
+        <div className="container container-booking-detail">
+          <div className="ticket-flight">
+            <div className="row">
+              <div className="col-auto">
+                <h4>Booking Pass</h4>
+              </div>
+              <div className="col-auto titik-tiga">
+                <img src={require("../../assets/Ellipse 5.png")} />
+                <img src={require("../../assets/Ellipse 5.png")} />
+                <img src={require("../../assets/Ellipse 5.png")} />
+              </div>
+            </div>
+            <div className="mt-3 container ticket-flight-main">
+              <div className="row">
+                <div className="col-md-9 ticket-flight-main-left-border">
+                  <div className="ticket-flight-main-left">
+                    <div className="row">
+                      <div className="col-auto">
+                        <img
+                          src={require("../../assets/airline.png")}
+                          width={100}
+                          height={50}
+                        />
                       </div>
-                      <div className="col-md-2 mt-3">
-                        <h4>IDN</h4>
+                      <div className="pt-3 col-auto">
+                        <h3>
+                          <b>IDN</b>
+                        </h3>
                       </div>
-                      <div className="col-md-2 mt-3">
-                        <img src={iconflight} className="ms-3" />
+                      <div className="pt-3 col-auto">
+                        <img src={require("../../assets/Vector2.png")} />
                       </div>
-                      <div className="col-md-2 mt-3">
-                        <h4>JPN</h4>
-                      </div>
-                    </div>
-                    <div className="d-flex flex-row">
-                      <div className="col-md-6 mt-5">
-                        <p className={styles.code}>Code</p>
-                        <p className={styles.setcode}>AB-221</p>
-                      </div>
-                      <div className="col-md-6 mt-5">
-                        <p className={styles.class}>class</p>
-                        <p className={styles.setclass}>Economy</p>
-                      </div>
-                    </div>
-                    <div className="d-flex flex-row">
-                      <div className="col-md-6 mt-2">
-                        <p className={styles.terminal}>Terminal</p>
-                        <p className={styles.setterminal}>A</p>
-                      </div>
-                      <div className="col-md-6 mt-2">
-                        <p className={styles.gate}>Gate</p>
-                        <p className={styles.setgate}>221</p>
+                      <div className="pt-3 col-auto">
+                        <h3>
+                          <b>JPN</b>
+                        </h3>
                       </div>
                     </div>
-                    <div className="d-flex flex-row">
-                      <div className="col-md-8 mt-2">
-                        <p className={styles.depature}>Depature</p>
-                        <p className={styles.setdepature}>
+                    <div className="mt-3 row">
+                      <div className="col-auto">
+                        <span className="text-secondary">Code</span>
+                        <h6 className="text-secondary">AB-221</h6>
+                      </div>
+                      <div className="col-auto">
+                        <span className="text-secondary">Class</span>
+                        <h6 className="text-secondary">Premium</h6>
+                      </div>
+                    </div>
+                    <div className="mt-3 row">
+                      <div className="col-auto">
+                        <span className="text-secondary">Terminal</span>
+                        <h6 className="text-secondary">A</h6>
+                      </div>
+                      <div className="col-auto">
+                        <span className="text-secondary">Gate</span>
+                        <h6 className="text-secondary">2B</h6>
+                      </div>
+                    </div>
+                    <div className="mt-3 row">
+                      <div className="col-auto">
+                        <span className="text-secondary">Departure</span>
+                        <h6 className="text-secondary">
                           Monday, 20 July ‘20 - 12:33
-                        </p>
+                        </h6>
                       </div>
                     </div>
                   </div>
-                  <div className={`col-md-4 ${styles.ticketright}`}>
-                    <img src={Qrcode} />
+                </div>
+                <div className="col-md-3 ticket-flight-main-right-border">
+                  <div className="ticket-flight-main-right text-center">
+                    <img src={qr} />
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </main>
-      <Footer />
-    </>
+      </div>
+    </section>
   );
 };
 
