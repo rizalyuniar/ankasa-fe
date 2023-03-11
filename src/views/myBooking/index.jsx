@@ -1,18 +1,21 @@
 import React from 'react';
 import style from './style.module.css';
-import Navbar from '../../../components/navbar';
-import FormInputProfile from '../../../components/FormInputProfile';
+import Navbar from '../../components/navbar';
+// import FormInputProfile from '../../components/FormInputProfile';
+import ProfileCard from '../../components/profileCard';
 
-import image from '../../../assets/profile.png';
+import CardBooking from '../../components/cardBooking';
 
 const myBooking = () => {
+  const approved = true;
   return (
     <body className={style.body}>
       <Navbar />
       <div className="container my-5">
         <div className="row">
           <div className="col-lg-4 col-md-5">
-            <div className={style.wrapper}>
+            <ProfileCard />
+            {/* <div className={style.wrapper}>
               <div className={style.wrapperImg}>
                 <img src={image} className={style.imageProfile} alt="imgProfile" />
               </div>
@@ -56,15 +59,19 @@ const myBooking = () => {
                   </a>
                 </li>
               </ul>
-            </div>
+            </div> */}
           </div>
 
-          <div className="col-lg-8 col-md-7">
+          <div className={`${style.col} col-lg-8 col-md-7`}>
             <div className={style.wrapperMain}>
-              <span className={style.subHeader}>Profile</span>
-              <p className={style.titleHeader}>Profile</p>
+              <span className={style.subHeader}>my booking</span>
 
-              <form>
+              <div className={style.wrapperMyBooking}>
+                <p className={style.titleHeader}>My Booking</p>
+                <button className={style.orderHistory}>Order History</button>
+              </div>
+
+              {/* <form>
                 <div className="container p-0">
                   <div className="row">
                     <div className="col-lg-6">
@@ -86,8 +93,12 @@ const myBooking = () => {
                     </div>
                   </div>
                 </div>
-              </form>
+              </form> */}
             </div>
+
+            <CardBooking approved={false} date="Monday, 20 July 2020 - 12:33" from="IDN" destination="JPN" airlines="Garuda Indonesia, AB-22" />
+
+            <CardBooking approved={true} date="Monday, 20 July 2020 - 12:33" from="Jakarta" destination="Medan" airlines="Citilink, AB-22" />
           </div>
         </div>
       </div>

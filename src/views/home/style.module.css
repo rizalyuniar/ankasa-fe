@@ -1,0 +1,235 @@
+:root {
+  --primaryColor: #2395ff;
+  --fontColor: #414141;
+  --fontSecondary: #6b6b6b;
+  --backgroundColor: #fff;
+  --backgroundSecondary: #f5f5f5;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.body {
+  background-color: var(--backgroundColor);
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+}
+
+.accsent1 {
+  width: 400px;
+  height: 500px;
+  position: absolute;
+  border-radius: 50px 0 0 50px;
+  top: 0;
+  right: 0;
+  object-fit: cover;
+}
+
+.accsent2 {
+  width: 60%;
+  height: 400px;
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  border-radius: 0 50px 50px 0;
+  object-fit: cover;
+}
+
+.row {
+  padding: 120px 0;
+}
+
+.title {
+  font-size: 45px;
+  font-weight: 600;
+  color: var(--fontColor);
+}
+
+.span {
+  color: var(--primaryColor);
+}
+
+/* ============= trending ================  */
+.subtitle {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: 0.3em;
+
+  color: var(--primaryColor);
+  text-transform: uppercase;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px !important;
+}
+
+.titleHeader {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.viewMore {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--primaryColor);
+  border: none;
+  background-color: transparent;
+}
+
+.rowTop {
+  position: relative;
+  background-color: var(--primaryColor);
+  padding: 50px;
+  border-radius: 20px;
+  margin: 70px 0;
+}
+
+.subtitleTop {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--backgroundColor);
+}
+
+.titelHeadTop {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 36px;
+  color: var(--backgroundColor);
+  margin-top: 10px;
+}
+
+.wrapperButton {
+  margin-top: 40px !important;
+}
+
+.arrowLeft {
+  border: none;
+  color: var(--backgroundColor);
+
+  padding: 8px 20px;
+  border-radius: 8px;
+  background-color: transparent;
+  margin: 0 20px;
+  border: 1px solid var(--backgroundColor);
+}
+
+.arrowLeft:hover {
+  border: none;
+  color: var(--primaryColor);
+
+  padding: 8px 20px;
+  border-radius: 8px;
+  background-color: var(--backgroundColor);
+  margin: 0 20px;
+  border: 1px solid var(--backgroundColor);
+}
+
+/* .accsentFlight {
+  position: absolute;
+  width: 400px;
+} */
+
+@media screen and (max-width: 768px) {
+  .accsent1 {
+    display: none;
+    width: 400px;
+    height: 500px;
+    position: absolute;
+    border-radius: 50px 0 0 50px;
+    top: 0;
+    right: 0;
+    object-fit: cover;
+  }
+
+  .accsent2 {
+    display: none;
+    width: 60%;
+    height: 400px;
+    position: absolute;
+    bottom: -400px;
+    left: 0;
+    border-radius: 0 50px 50px 0;
+    object-fit: cover;
+  }
+
+  .containerFluid {
+    background-image: linear-gradient(to bottom, rgba(17, 17, 17, 0.51), rgba(53, 53, 53, 0.51)), url('../../assets/agra.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    background-position: center;
+    margin-bottom: 80px;
+  }
+
+  .row {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+
+    padding: 0;
+  }
+  .title {
+    font-size: 40px;
+    font-weight: 600;
+    color: var(--backgroundColor);
+  }
+
+  .span {
+    color: #57aeff;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--backgroundColor);
+  }
+
+  /* =========== trending === */
+  .rowTrending {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    background-color: transparent !important;
+  }
+
+  /* ==== row Carousell ==== */
+  .rowCarousel {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .accsent1 {
+    width: 300px;
+    height: 400px;
+    position: absolute;
+    border-radius: 50px 0 0 50px;
+    top: 0;
+    right: 0;
+    object-fit: cover;
+  }
+
+  .accsent2 {
+    width: 60%;
+    height: 300px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-radius: 0 50px 50px 0;
+    object-fit: cover;
+  }
+}
