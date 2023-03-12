@@ -54,9 +54,9 @@
 }
 
 .navLink:hover {
-  font-weight: 600;
+  font-weight: 500;
+  line-height: 30px;
   color: var(--fontColor);
-  border-bottom: 4px solid #2395ff;
 }
 
 .navLink:focus {
@@ -64,6 +64,7 @@
   border: none;
   color: var(--fontColor);
 }
+
 .navLinkIcon {
   border: none;
   background-color: transparent;
@@ -305,6 +306,15 @@
   color: var(--primaryColor);
 }
 
+@media screen and (max-width: 768px) {
+  .navLinkIcon {
+    border: none;
+    margin-right: 20px !important;
+    background-color: transparent;
+    color: var(--fontColor);
+    font-size: 1.3em;
+  }
+}
 @media screen and (max-width: 991px) {
   .formControl {
     font-size: 14px;
@@ -325,5 +335,13 @@
     background-color: var(--backgroundColor);
     border-radius: 10px;
     height: 45px;
+  }
+
+  .navLinkIcon {
+    border: none;
+    margin-right: 20px !important;
+    background-color: transparent;
+    color: var(--fontColor);
+    font-size: 1.3em;
   }
 }
