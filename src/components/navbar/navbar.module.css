@@ -190,9 +190,22 @@
   border-radius: 10px;
   box-shadow: 0px 8px 27px 0px #0e3f6c30;
 }
+
 .fromDestination {
+  width: 45%;
   font-size: 22px;
   font-weight: 700;
+  padding: 10px;
+  background-color: #ecf6ff;
+  border: none;
+  border-radius: 4px;
+}
+
+.fromDestination:focus {
+  width: 45%;
+  font-size: 22px;
+  font-weight: 700;
+  border: none;
 }
 
 .Medan .wrapperCard {
@@ -307,6 +320,9 @@
 }
 
 @media screen and (max-width: 768px) {
+  .modalDialog {
+    width: 100% !important;
+  }
   .navLinkIcon {
     border: none;
     margin-right: 20px !important;

@@ -46,8 +46,10 @@
 }
 .wrapperFooter {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  gap: 40px;
 }
 
 .wrapperStatus {
@@ -89,6 +91,33 @@
   color: var(--primaryColor);
 }
 
+.cancel {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 30px;
+  margin-bottom: 0;
+  border-radius: 5px;
+  border: none;
+  background-color: #c80e0e;
+  color: white;
+}
+
+.refund {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 30px;
+  margin-bottom: 0;
+  border-radius: 5px;
+  border: none;
+  background-color: #0e7ac8;
+  color: white;
+}
+
+.wrapperButton {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
 @media screen and (max-width: 768px) {
   .wrapperMain {
     width: 100%;

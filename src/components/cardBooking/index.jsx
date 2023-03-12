@@ -24,10 +24,15 @@ const CardBooking = (props) => {
           <span className={style.titleStatus}>Status</span>
           {approve ? <p className={style.statusApprove}>E-Ticket Issued</p> : <p className={style.statusPending}>Waiting for Payment</p>}
         </div>
-        <button className={style.detailFlight}>
-          View Details
-          <i className="bi bi-caret-down-fill ms-3"></i>
-        </button>
+
+        <div className={style.wrapperButton}>
+          <button type="button" className={style.refund}>
+            Refund
+          </button>
+          <button type="button" className={style.cancel}>
+            Cancel
+          </button>
+        </div>
       </div>
     </div>
   );
