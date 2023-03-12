@@ -1,13 +1,60 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Footer from '../../../components/Admin/Footer';
 import PageHeading from '../../../components/Admin/PageHeading';
 import Sidebar from '../../../components/Admin/Sidebar';
 import Topbar from '../../../components/Admin/Topbar';
 import imgAirline from '../../../assets/airline.png';
 import style from './airlines.module.css';
-import FormInputProfile from '../../../components/FormInputProfile';
 
 const Airlines = () => {
+  const [hide, setHide] = useState(false);
+  const [getAirLines, setGetAirLines] = useState([]);
+  const [airlines, setAirlines] = useState({
+    name: '',
+    website: '',
+    email: '',
+    phone_number: '',
+    image: '',
+  });
+
+  const { id, name, website, email, phone_number, image } = getAirLines;
+
+  const [airlineUpdate, setAirlineUpdate] = useState({
+    name: name,
+    website: website,
+    email: email,
+    phone_number: phone_number,
+    image: image,
+  });
+
+  // creaate
+  const handleUpload = (e) => {
+    setAirlines((prev) => {
+      return { ...prev, image: e.target.files[0] };
+    });
+  };
+
+  const handleChange = (e) => {
+    setAirlines({
+      ...airlines,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  // update
+  const handleUploadUpdate = (e) => {
+    setAirlineUpdate((prev) => {
+      return { ...prev, image: e.target.files[0] };
+    });
+  };
+
+  const handleChangeUpdate = (e) => {
+    setAirlineUpdate({
+      ...airlineUpdate,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   return (
     <body id="page-top">
       <div id="wrapper">
@@ -21,7 +68,7 @@ const Airlines = () => {
             <div className="container-fluid px-4">
               <PageHeading title="Airlines" />
 
-              <button type="button" className="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#create">
+              <button type="button" className="btn btn-outline-primary mb-4" data-bs-toggle="modal" data-bs-target="#create">
                 Add Airlines
               </button>
               <table className="table table-hover">
@@ -33,6 +80,11 @@ const Airlines = () => {
                     <th scope="col" className="align-middle text-center">
                       Airlines Name
                     </th>
+
+                    <th scope="col" className="align-middle text-center">
+                      Website
+                    </th>
+
                     <th scope="col" className="align-middle text-center">
                       Email
                     </th>
@@ -50,10 +102,22 @@ const Airlines = () => {
                       <img src={imgAirline} style={{ width: '70px', height: '50px', objectFit: 'cover' }} alt="airline" />
                     </td>
                     <td className="align-middle text-center">Garuda Indonesia</td>
+                    <td className="align-middle text-center">www.garudaindonesia.com</td>
+
                     <td className="align-middle text-center">cs@garudaindonesia.com</td>
                     <td className="align-middle text-center">021-8445521</td>
                     <td className="align-middle text-center">
-                      <button type="button" className="btn btn-warning btn-sm me-2" data-bs-toggle="modal" data-bs-target="#update">
+                      {hide ? (
+                        <button type="button" className="btn btn-warning btn-sm me-2" onClick={() => setHide(false)}>
+                          <i className="bi bi-eye-fill" />
+                        </button>
+                      ) : (
+                        <button type="button" className="btn btn-warning btn-sm me-2" onClick={() => setHide(true)}>
+                          <i className="bi bi-eye-slash" />
+                        </button>
+                      )}
+
+                      <button type="button" className="btn btn-success btn-sm me-2" data-bs-toggle="modal" data-bs-target="#update">
                         <i className="bi bi-pencil-square" />
                       </button>
 
@@ -85,16 +149,19 @@ const Airlines = () => {
               </h1>
               <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
             </div>
+
             <form action="">
               <div className="modal-body">
-                <input type="text" name="name" placeholder="Name" value={''} className={style.input} />
+                <input type="text" name="name" placeholder="Name" value={airlines.name} className={style.input} onChange={handleChange} />
 
-                <input type="text" name="email" placeholder="Email" value={''} className={style.input} />
+                <input type="text" name="website" placeholder="Website" value={airlines.website} className={style.input} onChange={handleChange} />
 
-                <input type="text" name="phone_number" placeholder="Phone Number" value={''} className={style.input} />
+                <input type="email" name="email" placeholder="Email" value={airlines.email} className={style.input} onChange={handleChange} />
+
+                <input type="text" name="phone_number" placeholder="Phone Number" value={airlines.phone_number} className={style.input} onChange={handleChange} />
 
                 <div className="mb-3">
-                  <input className="mt-2" type="file" id="formFile" value={''} />
+                  <input className="mt-2" type="file" id="formFile" value={airlines.image} onChange={handleUpload} />
                 </div>
               </div>
               <div className="modal-footer">
@@ -122,14 +189,16 @@ const Airlines = () => {
             </div>
             <form action="">
               <div className="modal-body">
-                <input type="text" name="name" placeholder="Name" value={''} className={style.input} />
+                <input type="text" name="name" placeholder="Name" value={airlineUpdate.name} className={style.input} onChange={handleChangeUpdate} />
 
-                <input type="text" name="email" placeholder="Email" value={''} className={style.input} />
+                <input type="text" name="website" placeholder="Website" value={airlineUpdate.website} className={style.input} onChange={handleChangeUpdate} />
 
-                <input type="text" name="phone_number" placeholder="Phone Number" value={''} className={style.input} />
+                <input type="text" name="email" placeholder="Email" value={airlineUpdate.email} className={style.input} onChange={handleChangeUpdate} />
+
+                <input type="text" name="phone_number" placeholder="Phone Number" value={airlineUpdate.phone_number} className={style.input} onChange={handleChangeUpdate} />
 
                 <div className="mb-3">
-                  <input className="mt-2" type="file" id="formFile" value={''} />
+                  <input className="mt-2" type="file" id="formFile" value={airlineUpdate.image} onChange={handleUploadUpdate} />
                 </div>
               </div>
               <div className="modal-footer">

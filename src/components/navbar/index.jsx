@@ -104,32 +104,34 @@ const Navbar = () => {
                   {!toggle ? (
                     <>
                       <div className={`${style.wrapperDestination}`}>
-                        <span className={style.fromDestination}>Medan</span>
+                        <input type="text" className={style.fromDestination} placeholder="" value="Jakarta" />
 
-                        <button type="toggle" className={style.buttonChange} onClick={(e) => setToggle(true)}>
+                        <button type="button" className={style.buttonChange} onClick={(e) => setToggle(true)}>
                           <img src={iconChange} alt="" />
                         </button>
 
-                        <span className={style.fromDestination}>Tokyo</span>
+                        <input type="text" className={style.fromDestination} placeholder="" value="Medan" />
                       </div>
 
                       <div className="wrapperCountry d-flex justify-content-between">
                         <span className={style.from}>Indonesia</span>
-                        <span className={style.from}>Japan</span>
+                        <span className={style.from}>Indonesia</span>
                       </div>
                     </>
                   ) : (
                     <>
                       <div className={`${style.wrapperDestination}`}>
-                        <span className={style.fromDestination}>Tokyo</span>
-                        <button type="toggle" className={style.buttonChange} onClick={(e) => setToggle(false)}>
+                        <input type="text" className={style.fromDestination} placeholder="" value="Medan" />
+
+                        <button type="button" className={style.buttonChange} onClick={(e) => setToggle(false)}>
                           <img src={iconChange} alt="" />
                         </button>
-                        <span className={style.fromDestination}>Medan</span>
+
+                        <input type="text" className={style.fromDestination} placeholder="" value="Jakarta" />
                       </div>
 
                       <div className="wrapperCountry d-flex justify-content-between">
-                        <span className={style.from}>Japan</span>
+                        <span className={style.from}>Indonesia</span>
                         <span className={style.from}>Indonesia</span>
                       </div>
                     </>
