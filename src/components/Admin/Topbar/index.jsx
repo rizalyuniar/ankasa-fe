@@ -1,7 +1,9 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import image from '../../../assets/profile.png';
 
 const Topbar = () => {
+  const navigate = useNavigate();
   return (
     <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
       {/* Sidebar Toggle (Topbar) */}
@@ -109,7 +111,13 @@ const Topbar = () => {
             </a>
 
             <div className="dropdown-divider" />
-            <a className="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+            <a
+              className="dropdown-item"
+              onClick={() => {
+                localStorage.clear();
+                navigate('/login/admin');
+              }}
+            >
               <i className="bi bi-box-arrow-right mr-2 text-gray-400" />
               Logout
             </a>
