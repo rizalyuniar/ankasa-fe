@@ -1,42 +1,58 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import style from "../../auth/auth.module.css";
 import { useNavigate } from "react-router-dom";
 import imageRegister1 from "../../../assets/Group 29.png";
+import axios from "axios";
+import Swal from "sweetalert2";
 
-const Register = () => {
-  // const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const [form, setForm] = useState({
-    username: "",
+export default function Register() {
+  const router = useNavigate();
+
+  const [register, setRegister] = useState({
+    fullname: "",
     email: "",
     password: "",
-    password2: "",
   });
 
-  const onSubmit = (e) => {
+  const handleChange = (e) => {
+    setRegister({
+      ...register,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    if (form.username === "" || form.email === "" || form.password === "") {
-      alert("Semua input wajib diisi");
-    } else {
-      if (form.password !== form.password2) {
-        alert("Password harus sama");
-        return navigate("/register");
-      }
-      // const body = {
-      //   username: form.username,
-      //   password: form.password,
-      //   email: form.email,
-      // };
-      // const handleSuccess = (data) => {
-      //   if (data.data.code !== 200) {
-      //     alert("error:" + data.data.message);
-      //   } else {
-      //     alert("Register success");
-      //     return navigate("/login");
-      //   }
-      // };
-      // dispatch(userRegister(form, handleSuccess));
-    }
+
+    axios
+      .post(
+        "https://ankasa-backend-production.up.railway.app/user/register",
+        register
+      )
+      .then((res) => {
+        console.log(res);
+        if (res.data.message !== "Register has been success") {
+          Swal.fire({
+            icon: "error",
+            title: `${res.data.message}`,
+            text: "Something went wrong!",
+          });
+        } else {
+          Swal.fire(
+            `${res.data.message}`,
+            "You clicked the button!",
+            "success"
+          );
+          router("/login");
+        }
+      })
+      .catch((err) =>
+        Swal.fire({
+          icon: "error",
+          title: `${err.response.message}`,
+          text: "Something went wrong!",
+        })
+      );
   };
 
   return (
@@ -56,16 +72,16 @@ const Register = () => {
               <div className="heading">
                 <h1 className="fw-bold mt-4 mb-4">Register</h1>
               </div>
-              <form onSubmit={(e) => onSubmit(e)}>
+              <form onSubmit={handleSubmit}>
                 <div className={style.formInput}>
                   <input
                     type="text"
-                    name="username"
+                    name="fullname"
                     onChange={(e) =>
-                      setForm({ ...form, username: e.target.value })
+                      setRegister({ ...register, fullname: e.target.value })
                     }
-                    id="username"
-                    placeholder="Username"
+                    id="fullname"
+                    placeholder="fullname"
                     required
                   />
                 </div>
@@ -74,7 +90,7 @@ const Register = () => {
                     type="email"
                     name="email"
                     onChange={(e) =>
-                      setForm({ ...form, email: e.target.value })
+                      setRegister({ ...register, email: e.target.value })
                     }
                     id="email"
                     placeholder="Email"
@@ -86,22 +102,10 @@ const Register = () => {
                     type="password"
                     name="password"
                     onChange={(e) =>
-                      setForm({ ...form, password: e.target.value })
+                      setRegister({ ...register, password: e.target.value })
                     }
                     id="password"
                     placeholder="Password"
-                    required
-                  />
-                </div>
-                <div className={style.formInput}>
-                  <input
-                    type="password"
-                    name="password2"
-                    onChange={(e) =>
-                      setForm({ ...form, password2: e.target.value })
-                    }
-                    id="password2"
-                    placeholder="Confirm Password"
                     required
                   />
                 </div>
@@ -131,6 +135,4 @@ const Register = () => {
       </div>
     </section>
   );
-};
-
-export default Register;
+}
