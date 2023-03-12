@@ -60,7 +60,7 @@ const Login = () => {
                 <img src={imageLogin1} width="150px" />
               </div>
               <div className="heading">
-                <h1 className="fw-bold">Login</h1>
+                <h1 className="fw-bold mt-4 mb-4">Login</h1>
               </div>
               <form onSubmit={(e) => onSubmit(e)}>
                 <div className={style.formInput}>

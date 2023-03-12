@@ -54,7 +54,7 @@ const Register = () => {
                 <img src={imageRegister1} width="150px" />
               </div>
               <div className="heading">
-                <h1 className="fw-bold">Register</h1>
+                <h1 className="fw-bold mt-4 mb-4">Register</h1>
               </div>
               <form onSubmit={(e) => onSubmit(e)}>
                 <div className={style.formInput}>
