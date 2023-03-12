@@ -9,7 +9,7 @@ import Footer from '../../components/footer';
 
 const myBooking = () => {
   // const { id } = useParams();
-  console.log(id);
+
   const approved = true;
   return (
     <body className={style.body}>
