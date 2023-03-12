@@ -1,19 +1,22 @@
-import React from 'react';
-import Navbar from '../../components/navbar';
-import style from './style.module.css';
-import accsent1 from '../../assets/bali.jpg';
-import accsent2 from '../../assets/agra.jpg';
-import imgTrend from '../../assets/bali.jpg';
-import { Link } from 'react-router-dom';
-import CardTrending from '../../components/cardTrending';
-import CardCarousel from '../../components/cardCarousel';
-import accsentFlight from '../../assets/rp.png';
+import React from "react";
+import Navbar from "../../components/navbar";
+import style from "./style.module.css";
+import accsent1 from "../../assets/bali.jpg";
+import accsent2 from "../../assets/agra.jpg";
+import imgTrend from "../../assets/bali.jpg";
+import { Link } from "react-router-dom";
+import CardTrending from "../../components/cardTrending";
+import CardCarousel from "../../components/cardCarousel";
+import accsentFlight from "../../assets/rp.png";
+import Footer from "../../components/footer";
 
 const index = () => {
   return (
     <body className={style.body}>
       <Navbar />
-      <div className={`container-fluid position-relative vh-100 ${style.containerFluid}`}>
+      <div
+        className={`container-fluid position-relative vh-100 ${style.containerFluid}`}
+      >
         <img src={accsent1} alt="" className={style.accsent1} />
         <img src={accsent2} alt="" className={style.accsent2} />
         <div className="container">
@@ -22,7 +25,9 @@ const index = () => {
               <h1 className={style.title}>
                 Find your <span className={style.spanHero}>Flight</span>
               </h1>
-              <span className={style.subtitle}>and explore the world with us </span>
+              <span className={style.subtitle}>
+                and explore the world with us{" "}
+              </span>
             </div>
           </div>
         </div>
@@ -39,16 +44,36 @@ const index = () => {
 
         <div className={`row ${style.rowTrending}`}>
           <div className="col-md-3 col-sm-6">
-            <CardTrending count="22" city="Bali" nation="Indonesia" image={imgTrend} />
+            <CardTrending
+              count="22"
+              city="Bali"
+              nation="Indonesia"
+              image={imgTrend}
+            />
           </div>
           <div className="col-md-3 col-sm-6">
-            <CardTrending count="22" city="Tokyo" nation="Japan" image={accsent2} />
+            <CardTrending
+              count="22"
+              city="Tokyo"
+              nation="Japan"
+              image={accsent2}
+            />
           </div>
           <div className="col-md-3 col-sm-6">
-            <CardTrending count="22" city="Tokyo" nation="Japan" image={imgTrend} />
+            <CardTrending
+              count="22"
+              city="Tokyo"
+              nation="Japan"
+              image={imgTrend}
+            />
           </div>
           <div className="col-md-3 col-sm-6">
-            <CardTrending count="22" city="Tokyo" nation="Japan" image={imgTrend} />
+            <CardTrending
+              count="22"
+              city="Tokyo"
+              nation="Japan"
+              image={imgTrend}
+            />
           </div>
         </div>
       </div>
@@ -96,6 +121,7 @@ const index = () => {
         </div>
         {/* <img src={accsentFlight} alt="" className={style.accsentFlight} /> */}
       </div>
+      <Footer />
     </body>
   );
 };

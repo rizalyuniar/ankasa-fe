@@ -11,7 +11,6 @@ import MyBooking from "../views/myBooking";
 import Profile from "../views/profile";
 import UpdateProfile from "../views/updateProfile";
 
-
 const ScrollToTop = ({ children }) => {
   const { pathname } = useLocation();
 
@@ -37,7 +36,6 @@ const Router = () => {
           <Route path="/profile" element={<Profile />} />
           <Route path="/mybooking" element={<MyBooking />} />
           <Route path="/updateProfile" element={<UpdateProfile />} />
-
         </Routes>
       </ScrollToTop>
     </BrowserRouter>
