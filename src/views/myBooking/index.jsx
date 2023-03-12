@@ -1,10 +1,11 @@
-import React from 'react';
-import style from './style.module.css';
-import Navbar from '../../components/navbar';
+import React from "react";
+import style from "./style.module.css";
+import Navbar from "../../components/navbar";
 // import FormInputProfile from '../../components/FormInputProfile';
-import ProfileCard from '../../components/profileCard';
+import ProfileCard from "../../components/profileCard";
 
-import CardBooking from '../../components/cardBooking';
+import CardBooking from "../../components/cardBooking";
+import Footer from "../../components/footer";
 
 const myBooking = () => {
   const approved = true;
@@ -96,12 +97,25 @@ const myBooking = () => {
               </form> */}
             </div>
 
-            <CardBooking approved={false} date="Monday, 20 July 2020 - 12:33" from="IDN" destination="JPN" airlines="Garuda Indonesia, AB-22" />
+            <CardBooking
+              approved={false}
+              date="Monday, 20 July 2020 - 12:33"
+              from="IDN"
+              destination="JPN"
+              airlines="Garuda Indonesia, AB-22"
+            />
 
-            <CardBooking approved={true} date="Monday, 20 July 2020 - 12:33" from="Jakarta" destination="Medan" airlines="Citilink, AB-22" />
+            <CardBooking
+              approved={true}
+              date="Monday, 20 July 2020 - 12:33"
+              from="Jakarta"
+              destination="Medan"
+              airlines="Citilink, AB-22"
+            />
           </div>
         </div>
       </div>
+      <Footer />
     </body>
   );
 };
