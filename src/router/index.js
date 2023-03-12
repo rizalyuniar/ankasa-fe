@@ -16,6 +16,7 @@ import AdminFlight from "../views/admin/adminFlight";
 import AdminPayment from "../views/admin/adminPayment";
 import VerifEmail from "../views/emailVerification";
 import Page404 from "../views/Page404";
+import AdminLogin from "../views/authAdmin/login";
 
 const ScrollToTop = ({ children }) => {
   const { pathname } = useLocation();
@@ -40,7 +41,7 @@ const Router = () => {
           <Route path="/booking" element={<BookingDetail />} />
           <Route path="/flight" element={<FlightDetail />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/mybooking" element={<MyBooking />} />
+          <Route path="/mybooking/:id" element={<MyBooking />} />
           <Route path="/updateProfile" element={<UpdateProfile />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/admin/airlines" element={<Airlines />} />
@@ -48,6 +49,7 @@ const Router = () => {
           <Route path="/admin/payment" element={<AdminPayment />} />
           <Route path="/verifEmail" element={<VerifEmail />} />
           <Route path="/notfound" element={<Page404 />} />
+          <Route path="/login/admin" element={<AdminLogin />} />
         </Routes>
       </ScrollToTop>
     </BrowserRouter>
