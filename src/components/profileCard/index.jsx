@@ -1,11 +1,11 @@
-import React from 'react';
-import styles from './style.module.css';
-import avatar from '../../assets/avatar.png';
-import iconprofile from '../../assets/user.png';
-import iconstar from '../../assets/myreview.svg';
-import iconsettings from '../../assets/setting.svg';
-import iconlogout from '../../assets/logout.svg';
-import { Link } from 'react-router-dom';
+import React from "react";
+import styles from "./style.module.css";
+import avatar from "../../assets/avatar.png";
+import iconprofile from "../../assets/user.png";
+import iconstar from "../../assets/myreview.svg";
+import iconsettings from "../../assets/setting.svg";
+import iconlogout from "../../assets/logout.svg";
+import { Link } from "react-router-dom";
 
 const ProfileCard = () => {
   return (
@@ -14,7 +14,9 @@ const ProfileCard = () => {
         <div className="container">
           <div className="row">
             <div className={styles.cardProfile}>
-              <div className={`d-flex flex-row justify-content-center my-3 px-5 ${styles.picProfile}`}>
+              <div
+                className={`d-flex flex-row justify-content-center my-3 px-5 ${styles.picProfile}`}
+              >
                 <img src={avatar} />
               </div>
               <div className="d-flex flex-row justify-content-center my-4">
@@ -41,7 +43,7 @@ const ProfileCard = () => {
               </div>
               <div className={`d-flex flex-row mx-3 ${styles.setProfile}`}>
                 <img src={iconprofile} className={styles.iconprofile} />
-                <Link to={`/profile`} style={{ textDecoration: 'none' }}>
+                <Link to={`/profile`} style={{ textDecoration: "none" }}>
                   <p className={`mx-5 ${styles.textProfile}`}> Profile </p>
                 </Link>
               </div>
@@ -51,7 +53,7 @@ const ProfileCard = () => {
               </div>
               <div className={`d-flex flex-row mx-3 ${styles.setSettings}`}>
                 <img src={iconsettings} className={styles.iconsettings} />
-                <Link to={`/updateProfile/user/`} style={{ textDecoration: 'none' }}>
+                <Link to={`/updateProfile`} style={{ textDecoration: "none" }}>
                   <p className={`mx-5 ${styles.textSettings}`}> Settings </p>
                 </Link>
               </div>

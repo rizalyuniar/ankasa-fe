@@ -105,15 +105,12 @@ const Profile = () => {
                           id="Postcode"
                         />
                       </div>
-                      <div className=" d-grid gap-2 d-md-flex justify-content-md-end me-5">
-                        <button type="submit" className="btn btn-primary mt-3 ">
-                          Save
-                        </button>
-                      </div>
                     </div>
                   </div>
                 </form>
-
+                <button type="submit" className="btn btn-primary mt-3 ">
+                  Save
+                </button>
                 <button className="btn btn-primary mt-3 btn-danger">
                   Delete
                 </button>

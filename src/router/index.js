@@ -15,7 +15,6 @@ import Airlines from "../views/admin/adminAirlines";
 import AdminFlight from "../views/admin/adminFlight";
 import AdminPayment from "../views/admin/adminPayment";
 
-
 const ScrollToTop = ({ children }) => {
   const { pathname } = useLocation();
 
@@ -45,7 +44,6 @@ const Router = () => {
           <Route path="/admin/airlines" element={<Airlines />} />
           <Route path="/admin/flight" element={<AdminFlight />} />
           <Route path="/admin/payment" element={<AdminPayment />} />
-
         </Routes>
       </ScrollToTop>
     </BrowserRouter>
