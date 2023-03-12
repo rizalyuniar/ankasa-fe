@@ -48,7 +48,6 @@ const Router = () => {
           <Route path="/admin/payment" element={<AdminPayment />} />
           <Route path="/verifEmail" element={<VerifEmail />} />
           <Route path="/notfound" element={<Page404 />} />
-
         </Routes>
       </ScrollToTop>
     </BrowserRouter>

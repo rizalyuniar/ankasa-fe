@@ -13,7 +13,7 @@ const Footer = () => {
           className={`container-fluid bg-white p-4 ${style.mobileOuterFooter}`}
         >
           <div className={`row p-5 ${style.mobileInnerFooter}`}>
-            <div className="col-md-3">
+            <div className="col-md-4">
               <h4 className="">
                 <img src={imgVector1} width="30" alt="" />
                 Ankasa
@@ -51,29 +51,29 @@ const Footer = () => {
                 </a>
               </ul>
             </div>
-            <div className="col-md-3">
-              <h5 className="ms-4">Follow Us</h5>
-              <ul className={`${style.imgFooter} d-flex flex-row`}>
-                <li className="pe-2">
+            <div className="col-md-2">
+              <h5 className={`ms-4 ${style.iconFooter}`}>Follow Us</h5>
+              <ul className={`${style.iconFooter} d-flex flex-row`}>
+                <ul className="px-2">
                   <a href={"/#"}>
                     <i className="fa fa-facebook"></i>
                   </a>
-                </li>
-                <li className="px-2">
+                </ul>
+                <ul className="px-2">
                   <a href={"/#"}>
                     <i className="fa fa-twitter"></i>
                   </a>
-                </li>
-                <li className="px-2">
+                </ul>
+                <ul className="px-2">
                   <a href={"/#"}>
                     <i className="fa fa-instagram"></i>
                   </a>
-                </li>
-                <li className="px-2">
+                </ul>
+                <ul className="px-2">
                   <a href={"/#"}>
                     <i className="fa fa-youtube"></i>
                   </a>
-                </li>
+                </ul>
               </ul>
             </div>
           </div>

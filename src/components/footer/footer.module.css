@@ -4,16 +4,19 @@
 /* .body {
   font-family: "Poppins";
 } */
+.setPos {
+  align-content: justify;
+}
 
 .listStyle {
   list-style: none;
 }
 
-/* .listStyle a {
+.listStyle a {
   text-decoration: none;
   color: #6c757d;
   display: flex;
-} */
+}
 
 .footerDown {
   padding-top: 25px;
@@ -23,12 +26,16 @@
   margin-left: -20px;
 }
 
+.iconFooter {
+  margin-left: -15px;
+}
+
 /* media query footer */
 @media (max-width: 767px) {
   .mobileOuterFooter {
     padding: 30px 0 0 0 !important;
   }
   .mobileInnerFooter {
-    padding: 0 !important;
+    padding: justify !important;
   }
 }
