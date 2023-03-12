@@ -40,14 +40,11 @@ const Router = () => {
           <Route path="/profile" element={<Profile />} />
           <Route path="/mybooking" element={<MyBooking />} />
           <Route path="/updateProfile" element={<UpdateProfile />} />
-<<<<<<< HEAD
-=======
           <Route path="/admin" element={<Admin />} />
           <Route path="/admin/airlines" element={<Airlines />} />
           <Route path="/admin/flight" element={<AdminFlight />} />
           <Route path="/admin/payment" element={<AdminPayment />} />
 
->>>>>>> 5ef4aeda714847d7d527d0104ce7a82c973ab68c
         </Routes>
       </ScrollToTop>
     </BrowserRouter>
