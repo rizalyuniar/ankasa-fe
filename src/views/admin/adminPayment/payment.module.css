@@ -1,0 +1,49 @@
+.statusApprove {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 30px;
+  margin-bottom: 0;
+  border-radius: 5px;
+  background-color: #4fcf4d;
+  color: white;
+}
+
+.statusPending {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 30px;
+  margin-bottom: 0;
+  border-radius: 5px;
+  background-color: #dc3f27;
+  color: white;
+}
+
+.statusWaiting {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 30px;
+  margin-bottom: 0;
+  border-radius: 5px;
+  background-color: #ff7f23;
+  color: white;
+}
+
+.statusCancel {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 30px;
+  margin-bottom: 0;
+  border-radius: 5px;
+  background-color: #818181;
+  color: white;
+}
+
+.statusRefund {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 30px;
+  margin-bottom: 0;
+  border-radius: 5px;
+  background-color: #0080c9;
+  color: white;
+}

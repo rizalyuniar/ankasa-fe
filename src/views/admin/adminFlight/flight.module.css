@@ -1,0 +1,33 @@
+.input {
+  width: 100%;
+  font-size: 14px;
+  padding: 10px;
+  border: none;
+  border-bottom: 2px solid rgba(210, 194, 255, 0.68);
+  margin-bottom: 20px;
+}
+
+.input:focus {
+  width: 100%;
+  padding: 10px;
+  border: none !important;
+  border-bottom: 2px solid rgba(210, 194, 255, 0.68);
+}
+
+.time {
+  font-size: 14px;
+  padding-left: 10px;
+  color: rgb(124, 124, 124);
+}
+
+.wrapperFacility {
+  border-bottom: 2px solid rgba(210, 194, 255, 0.68);
+  padding: 0 0 10px 0;
+  margin-bottom: 20px;
+}
+
+.formCheck {
+  padding-left: 31px;
+  font-size: 14px;
+  color: rgb(124, 124, 124);
+}
