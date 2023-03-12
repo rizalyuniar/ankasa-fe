@@ -10,7 +10,6 @@ import Footer from '../../components/footer';
 const myBooking = () => {
   // const { id } = useParams();
 
-  const approved = true;
   return (
     <body className={style.body}>
       <Navbar />

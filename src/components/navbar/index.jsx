@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import style from './navbar.module.css';
 import navBrand from '../../assets/vector 02.png';
 import iconChange from '../../assets/Vector.png';
@@ -6,8 +6,16 @@ import image from '../../assets/profile.png';
 import CardNotif from '../cardNotif';
 
 const Navbar = () => {
-  const [login, setLogin] = useState(true);
+  const [login, setLogin] = useState('');
+  const [idUser, setIdUser] = useState('');
   const [toggle, setToggle] = useState(false);
+
+  console.log(login);
+
+  useEffect(() => {
+    setLogin(localStorage.getItem('token'));
+    setIdUser(localStorage.getItem('id'));
+  });
 
   return (
     <>
@@ -36,7 +44,7 @@ const Navbar = () => {
               </li>
 
               <li className={`nav-item mx-lg-4 mx-md-0 mx-sm-0 my-lg-3 mx-md-0 my-sm-0`}>
-                <a className={`nav-link active ${style.navLink}`} href="/mybooking">
+                <a className={`nav-link active ${style.navLink}`} href={`/mybooking/${idUser}`}>
                   My Booking
                 </a>
               </li>
@@ -68,12 +76,19 @@ const Navbar = () => {
                   </button>
                   <ul className="dropdown-menu dropdown-menu-start dropdown-menu-lg-end lh-1 mt-2">
                     <li className="mb-2">
-                      <button type="button" className="dropdown-item" onClick={() => window.location.replace('/profile')}>
+                      <button type="button" className="dropdown-item" onClick={() => window.location.replace(`/profile/${idUser}`)}>
                         Profile
                       </button>
                     </li>
                     <li>
-                      <button type="button" className="dropdown-item" onClick={() => setLogin(false)}>
+                      <button
+                        type="button"
+                        className="dropdown-item"
+                        onClick={() => {
+                          localStorage.clear();
+                          window.location.reload();
+                        }}
+                      >
                         Logout
                       </button>
                     </li>
