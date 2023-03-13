@@ -19,6 +19,7 @@ import Page404 from "../views/Page404";
 import AdminLogin from "../views/authAdmin/login";
 import Destination from "../views/destination";
 import DetailDestination from "../views/detailDestination";
+import AdminCity from "../views/admin/adminCity";
 
 const ScrollToTop = ({ children }) => {
   const { pathname } = useLocation();
@@ -54,6 +55,7 @@ const Router = () => {
           <Route path="/login/admin" element={<AdminLogin />} />
           <Route path="/destination" element={<Destination />} />
           <Route path="/destination/:id" element={<DetailDestination />} />
+          <Route path="/admin/city" element={<AdminCity />} />
         </Routes>
       </ScrollToTop>
     </BrowserRouter>

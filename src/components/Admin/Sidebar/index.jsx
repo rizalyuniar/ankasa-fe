@@ -48,6 +48,14 @@ const Sidebar = () => {
         </Link>
       </li>
 
+      <hr className="sidebar-divider my-0" />
+      <li className="nav-item">
+        <Link className="nav-link" to="/admin/city">
+          <i className="bi bi-credit-card-2-back-fill" />
+          <span>City</span>
+        </Link>
+      </li>
+
       <hr className="sidebar-divider" />
     </ul>
   );

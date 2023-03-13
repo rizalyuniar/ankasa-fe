@@ -14,6 +14,7 @@ const Admin = () => {
   const [fullname, setFullname] = useState('');
   const [airlines, setAirlines] = useState([]);
   const [flight, setFlight] = useState([]);
+  const [city, setCity] = useState([]);
 
   useEffect(() => {
     setFullname(localStorage.getItem('fullname'));
@@ -31,6 +32,13 @@ const Admin = () => {
       .get(`${process.env.REACT_APP_API}/flight`)
       .then((res) => {
         setFlight(res.data.data);
+      })
+      .catch((err) => console.log(err));
+
+    axios
+      .get(`${process.env.REACT_APP_API}/city`)
+      .then((res) => {
+        setCity(res.data.data);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -54,6 +62,10 @@ const Admin = () => {
 
                 <div className="col-xl-3 col-md-6 mb-4">
                   <DashboardDetail title="Flight Schedule" count={flight.length} icon="bi bi-calendar-day-fill" accsent="border-left-primary" />
+                </div>
+
+                <div className="col-xl-3 col-md-6 mb-4">
+                  <DashboardDetail title="City" count={city.length} icon="bi bi-map" accsent="border-left-primary" />
                 </div>
               </div>
             </div>
