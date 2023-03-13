@@ -14,9 +14,9 @@ const myBooking = () => {
       <Navbar />
       <div className="container my-5">
         <div className="row">
-          {/* <div className="col-lg-4 col-md-5">
+          <div className="col-lg-4 col-md-5">
             <ProfileCard />
-          </div> */}
+          </div>
 
           <div className={`${style.col} col-lg-8 col-md-7`}>
             <div className={style.wrapperMain}>

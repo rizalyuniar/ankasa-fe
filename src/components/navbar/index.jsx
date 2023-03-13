@@ -79,7 +79,7 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                <Link to="/chat" className={`nav-item mx-lg-2 mx-md-0 mx-sm-0 me-sm-4 me-md-4 ${style.navLinkIcon}`}>
+                <Link to={`/chat/${idUser}`} className={`nav-item mx-lg-2 mx-md-0 mx-sm-0 me-sm-4 me-md-4 ${style.navLinkIcon}`}>
                   <i className={`bi bi-chat-dots-fill ${style.iconMessage}`} />
                 </Link>
 
