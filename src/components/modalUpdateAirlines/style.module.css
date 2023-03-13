@@ -13,12 +13,3 @@
   border: none !important;
   border-bottom: 2px solid rgba(210, 194, 255, 0.68);
 }
-
-.tableColumn {
-  font-size: 14px;
-}
-
-.tableColumnWebsite {
-  font-size: 14px;
-  width: 40px;
-}

@@ -25,6 +25,8 @@ import AdminPayment from "../views/admin/adminPayment";
 import VerifEmail from "../views/emailVerification";
 import Page404 from "../views/Page404";
 import AdminLogin from "../views/authAdmin/login";
+import Destination from "../views/destination";
+import DetailDestination from "../views/detailDestination";
 import Chat from "../views/chat/index";
 
 const ScrollToTop = ({ children }) => {
@@ -150,6 +152,22 @@ const Router = () => {
           />
 
           <Route path="/login/admin" element={<AdminLogin />} />
+          <Route
+            path="/destination"
+            element={
+              <Auth>
+                <Destination />
+              </Auth>
+            }
+          />
+          <Route
+            path="/destination/:id"
+            element={
+              <Auth>
+                <DetailDestination />
+              </Auth>
+            }
+          />
           <Route
             path="/chat"
             element={

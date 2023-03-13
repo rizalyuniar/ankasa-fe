@@ -1,5 +1,5 @@
 // import style from './admin.module.css';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Sidebar from '../../../components/Admin/Sidebar';
 import '../../../assets/css/sb-admin-2.min.css';
 import '../../../assets/vendor/fontawesome-free/css/all.min.css';
@@ -8,8 +8,32 @@ import Topbar from '../../../components/Admin/Topbar';
 import PageHeading from '../../../components/Admin/PageHeading';
 import DashboardDetail from '../../../components/DashboardDetail';
 import Footer from '../../../components/Admin/Footer';
+import axios from 'axios';
 
 const Admin = () => {
+  const [fullname, setFullname] = useState('');
+  const [airlines, setAirlines] = useState([]);
+  const [flight, setFlight] = useState([]);
+
+  useEffect(() => {
+    setFullname(localStorage.getItem('fullname'));
+
+    // get Airline
+    axios
+      .get(`${process.env.REACT_APP_API}/airline`)
+      .then((res) => {
+        setAirlines(res.data.data);
+      })
+      .catch((err) => console.log(err));
+
+    // get Flight
+    axios
+      .get(`${process.env.REACT_APP_API}/flight`)
+      .then((res) => {
+        setFlight(res.data.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
   return (
     <body id="page-top">
       <div id="wrapper">
@@ -21,15 +45,15 @@ const Admin = () => {
           <div id="content">
             <Topbar />
             <div className="container-fluid px-4">
-              <PageHeading title="Dashboard" />
+              <PageHeading title={`Welcome, ${fullname}`} />
 
               <div className="row">
                 <div className="col-xl-3 col-md-6 mb-4">
-                  <DashboardDetail title="Airlines" count="35" icon="bi bi-airplane" accsent="border-left-success" />
+                  <DashboardDetail title="Airlines" count={airlines.length} icon="bi bi-airplane" accsent="border-left-success" />
                 </div>
 
                 <div className="col-xl-3 col-md-6 mb-4">
-                  <DashboardDetail title="Flight Schedule" count="70" icon="bi bi-calendar-day-fill" accsent="border-left-primary" />
+                  <DashboardDetail title="Flight Schedule" count={flight.length} icon="bi bi-calendar-day-fill" accsent="border-left-primary" />
                 </div>
               </div>
             </div>
