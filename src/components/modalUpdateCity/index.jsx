@@ -31,7 +31,7 @@ const ModalUpdateCity = ({ city }) => {
       formData.append(attr, updateCity[attr]);
     }
     axios
-      .put(`${process.env.REACT_APP_API}/city/${city.id}`, formData, {
+      .put(`${process.env.REACT_APP_BACKEND_URL}/city/${city.id}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

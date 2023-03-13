@@ -31,7 +31,7 @@ const ModelUpdate = ({ getFlight }) => {
     e.preventDefault();
 
     axios
-      .put(`${process.env.REACT_APP_API}/flight/${getFlight.id}`, flightUpdate)
+      .put(`${process.env.REACT_APP_BACKEND_URL}/flight/${getFlight.id}`, flightUpdate)
       .then((response) => {
         console.log(response);
         Swal.fire({

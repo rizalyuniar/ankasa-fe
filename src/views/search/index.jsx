@@ -20,7 +20,7 @@ const SeacrhResult = () => {
   console.log(url);
 
   const handleSearch = () => {
-    window.location.replace(`/search?cityDept=${search.city_departure}&&cityDest=${search.city_destination}`);
+    window.location.replace(`/search?cityDept=${search.city_departure}&cityDest=${search.city_destination}`);
   };
 
   const handleChange = (e) => {

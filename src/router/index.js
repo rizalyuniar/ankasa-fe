@@ -177,6 +177,14 @@ const Router = () => {
               </Auth>
             }
           />
+          <Route
+            path="/admin/city"
+            element={
+              <Auth>
+                <AdminCity />
+              </Auth>
+            }
+          />
         </Routes>
       </ScrollToTop>
     </BrowserRouter>
