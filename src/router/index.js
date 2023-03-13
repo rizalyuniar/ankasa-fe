@@ -16,6 +16,7 @@ import AdminFlight from "../views/admin/adminFlight";
 import AdminPayment from "../views/admin/adminPayment";
 import VerifEmail from "../views/emailVerification";
 import Page404 from "../views/Page404";
+import Chat from "../views/chat/index";
 
 const ScrollToTop = ({ children }) => {
   const { pathname } = useLocation();
@@ -48,6 +49,7 @@ const Router = () => {
           <Route path="/admin/payment" element={<AdminPayment />} />
           <Route path="/verifEmail" element={<VerifEmail />} />
           <Route path="/notfound" element={<Page404 />} />
+          <Route path="/chat" element={<Chat />} />
         </Routes>
       </ScrollToTop>
     </BrowserRouter>
