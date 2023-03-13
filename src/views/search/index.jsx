@@ -5,8 +5,22 @@ import Navbar from "../../components/navbar/index";
 import Footer from "../../components/footer/index";
 import bnr from "../../assets/pesawat.svg";
 import wifi from "../../assets/wifi.svg";
+import axios from "axios";
 
 const SeacrhResult = () => {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_BACKEND_URL}/flight`)
+      .then((response) => {
+        console.log(response.data.data);
+        setData(response.data.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
   return (
     <section>
       <Navbar />
@@ -319,115 +333,125 @@ const SeacrhResult = () => {
 
               <div className="mt-3 form-select-ticket-search-result">
                 <div className="select-ticket-search-result">
-                  <div className="row">
-                    <div className="col-auto logo-airline">
-                      <img src={require("../../assets/airline.png")} />
-                    </div>
-                    <div className="col-auto name-airplane-select-ticket">
-                      <span className="text-secondary">Garuda Indonesia</span>
-                    </div>
-                  </div>
-                  <div className="mt-4 row">
-                    <div className="col-auto">
-                      <h4>
-                        <b>IDN</b>
-                      </h4>
-                      <span className="text-secondary">4.00</span>
-                    </div>
-                    <div className="col-auto">
-                      <img src={require("../../assets/Vector.png")} />
-                    </div>
-                    <div className="col-auto">
-                      <h4>
-                        <b>JPN</b>
-                      </h4>
-                      <span className="text-secondary">3.00</span>
-                    </div>
-                    <div className="col-auto">
+                  {data.map((row) => (
+                    <>
                       <div className="row">
+                        <div className="col-auto logo-airline">
+                          <img src={row.image} />
+                        </div>
+                        <div className="col-auto name-airplane-select-ticket">
+                          <span className="text-secondary">{row.airline}</span>
+                        </div>
+                      </div>
+                      <div className="mt-4 row">
                         <div className="col-auto">
+                          <h4>
+                            <b>{row.city_departure_code}</b>
+                          </h4>
                           <span className="text-secondary">
-                            2 jam - 3 hours
+                            {row.time_departure}
                           </span>
                         </div>
-                        <div>
-                          <span className="text-secondary">1 Transit</span>
+                        <div className="col-auto">
+                          <img src={require("../../assets/Vector.png")} />
                         </div>
-                      </div>
-                    </div>
-                    <div className="col-auto facility-select-ticket">
-                      <div className="row">
-                        <div className="col-auto facility-select-ticket-bag">
-                          <img src={require("../../assets/Vector2.png")} />
+                        <div className="col-auto">
+                          <h4>
+                            <b>{row.city_destination_code}</b>
+                          </h4>
+                          <span className="text-secondary">
+                            {row.time_arrival}
+                          </span>
                         </div>
-                        <div className="col-auto facility-select-ticket-food">
-                          <img src={require("../../assets/Vector2.png")} />
-                        </div>
-                        <div className="col-auto facility-select-ticket-wifi">
-                          <img src={wifi} />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-auto">
-                      <div className="row">
-                        <div className="col-auto count-select-ticket">
-                          <h6>$.3.00</h6>
-                        </div>
-                        <div className="col-auto pax-select-ticket">
-                          <span className="text-secondary">/pax</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="mt-4 button-select-ticket">
-                      <Link to="">
-                        <button>Select</button>
-                      </Link>
-                    </div>
-                  </div>
-                  <div className="btn-view-detail">
-                    <button
-                      type="button"
-                      className="mt-3 btn btn-info"
-                      data-bs-toggle="collapse"
-                      data-bs-target={`#demo`}
-                    >
-                      View Details <i className="fa fa-sort-down" />
-                    </button>
-                    <div className="collapse">
-                      <div className="mt-3 view-detail-ticket">
-                        <div className="row">
-                          <div className="col-md-6 view-detail-ticket-left">
-                            <div className="text-secondary">
-                              <h6>Ticket Detail</h6>
+                        <div className="col-auto">
+                          <div className="row">
+                            <div className="col-auto">
+                              <span className="text-secondary">
+                                2 jam - 1 hours
+                              </span>
                             </div>
-                            <p className="text-secondary">Airline : Garuda</p>
-                            <p className="text-secondary">
-                              City Departure : jambi - Indonesia
-                            </p>
-                            <p className="text-secondary">
-                              City Destination : xx - xx
-                            </p>
-                            <p className="text-secondary">
-                              Time estimation : 2
-                            </p>
-                            <p className="text-secondary">
-                              Transit : 1 transit
-                            </p>
-                          </div>
-                          <div className="col-md-6 view-detail-ticket-right">
-                            <div className="text-secondary">
-                              <h6>Facilities</h6>
+                            <div>
+                              <span className="text-secondary">
+                                {row.transit_count} Transit
+                              </span>
                             </div>
-                            <p className="text-secondary">Refundable : yes</p>
-                            <p className="text-secondary">Luggage : yes</p>
-                            <p className="text-secondary">Meal : yes</p>
-                            <p className="text-secondary">Wifi : yes</p>
-                            <p className="text-secondary">Insurance : yes</p>
                           </div>
                         </div>
+                        <div className="col-auto facility-select-ticket">
+                          <div className="row">
+                            <div className="col-auto facility-select-ticket-wifi">
+                              <img src={wifi} />
+                            </div>
+                          </div>
+                        </div>
+                        <div className="col-auto">
+                          <div className="row">
+                            <div className="col-auto count-select-ticket">
+                              <h6>$. {row.price}</h6>
+                            </div>
+                            <div className="col-auto pax-select-ticket">
+                              <span className="text-secondary">/pax</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="mt-4 button-select-ticket">
+                          <Link to="">
+                            <button>Select</button>
+                          </Link>
+                        </div>
                       </div>
-                    </div>
-                  </div>
+                      <div className="btn-view-detail">
+                        <button
+                          type="button"
+                          className="mt-3 btn btn-info"
+                          data-bs-toggle="collapse"
+                          data-bs-target={`#demo`}
+                        >
+                          View Details <i className="fa fa-sort-down" />
+                        </button>
+                        {/* <div className="collapse">
+                          <div className="mt-3 view-detail-ticket">
+                            <div className="row">
+                              <div className="col-md-6 view-detail-ticket-left">
+                                <div className="text-secondary">
+                                  <h6>Ticket Detail</h6>
+                                </div>
+                                <p className="text-secondary">
+                                  Airline : Garuda
+                                </p>
+                                <p className="text-secondary">
+                                  City Departure : jambi - Indonesia
+                                </p>
+                                <p className="text-secondary">
+                                  City Destination : xx - xx
+                                </p>
+                                <p className="text-secondary">
+                                  Time estimation : 2
+                                </p>
+                                <p className="text-secondary">
+                                  Transit : 1 transit
+                                </p>
+                              </div>
+                              <div className="col-md-6 view-detail-ticket-right">
+                                <div className="text-secondary">
+                                  <h6>Facilities</h6>
+                                </div>
+                                <p className="text-secondary">
+                                  Refundable : yes
+                                </p>
+                                <p className="text-secondary">Luggage : yes</p>
+                                <p className="text-secondary">Meal : yes</p>
+                                <p className="text-secondary">Wifi : yes</p>
+                                <p className="text-secondary">
+                                  Insurance : yes
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div> */}
+                      </div>
+                    </>
+                  ))}
                 </div>
               </div>
 

@@ -38,11 +38,11 @@ const Router = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route path="/search" element={<Search />} />
-          <Route path="/booking" element={<BookingDetail />} />
-          <Route path="/flight" element={<FlightDetail />} />
+          <Route path="/booking/:id" element={<BookingDetail />} />
+          <Route path="/flight/:id" element={<FlightDetail />} />
           <Route path="/profile/:id" element={<Profile />} />
           <Route path="/mybooking/:id" element={<MyBooking />} />
-          <Route path="/updateProfile" element={<UpdateProfile />} />
+          <Route path="/updateProfile/:id" element={<UpdateProfile />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/admin/airlines" element={<Airlines />} />
           <Route path="/admin/flight" element={<AdminFlight />} />
