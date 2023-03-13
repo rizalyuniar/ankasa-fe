@@ -245,6 +245,7 @@ const SeacrhResult = () => {
                     </div>
                   </div>
                   <hr />
+
                   {/* FACILITIES */}
                   <div className="facilities text-left">
                     <button
@@ -336,10 +337,10 @@ const SeacrhResult = () => {
                   {data.map((row) => (
                     <>
                       <div className="row">
-                        <div className="col-auto logo-airline">
+                        <div className="col-auto logo-airline mt-3">
                           <img src={row.image} />
                         </div>
-                        <div className="col-auto name-airplane-select-ticket">
+                        <div className="col-auto name-airplane-select-ticket mt-3">
                           <span className="text-secondary">{row.airline}</span>
                         </div>
                       </div>
@@ -387,69 +388,19 @@ const SeacrhResult = () => {
                         <div className="col-auto">
                           <div className="row">
                             <div className="col-auto count-select-ticket">
-                              <h6>$. {row.price}</h6>
+                              <h6>Rp. {row.price}</h6>
                             </div>
-                            <div className="col-auto pax-select-ticket">
+                            <div className="col-auto pax-select-ticket button-select-ticket">
                               <span className="text-secondary">/pax</span>
+
+                              <Link to="">
+                                <button className="ms-3">Select</button>
+                              </Link>
                             </div>
                           </div>
                         </div>
-                        <div className="mt-4 button-select-ticket">
-                          <Link to="">
-                            <button>Select</button>
-                          </Link>
-                        </div>
                       </div>
-                      <div className="btn-view-detail">
-                        <button
-                          type="button"
-                          className="mt-3 btn btn-info"
-                          data-bs-toggle="collapse"
-                          data-bs-target={`#demo`}
-                        >
-                          View Details <i className="fa fa-sort-down" />
-                        </button>
-                        {/* <div className="collapse">
-                          <div className="mt-3 view-detail-ticket">
-                            <div className="row">
-                              <div className="col-md-6 view-detail-ticket-left">
-                                <div className="text-secondary">
-                                  <h6>Ticket Detail</h6>
-                                </div>
-                                <p className="text-secondary">
-                                  Airline : Garuda
-                                </p>
-                                <p className="text-secondary">
-                                  City Departure : jambi - Indonesia
-                                </p>
-                                <p className="text-secondary">
-                                  City Destination : xx - xx
-                                </p>
-                                <p className="text-secondary">
-                                  Time estimation : 2
-                                </p>
-                                <p className="text-secondary">
-                                  Transit : 1 transit
-                                </p>
-                              </div>
-                              <div className="col-md-6 view-detail-ticket-right">
-                                <div className="text-secondary">
-                                  <h6>Facilities</h6>
-                                </div>
-                                <p className="text-secondary">
-                                  Refundable : yes
-                                </p>
-                                <p className="text-secondary">Luggage : yes</p>
-                                <p className="text-secondary">Meal : yes</p>
-                                <p className="text-secondary">Wifi : yes</p>
-                                <p className="text-secondary">
-                                  Insurance : yes
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                        </div> */}
-                      </div>
+                      <hr />
                     </>
                   ))}
                 </div>
