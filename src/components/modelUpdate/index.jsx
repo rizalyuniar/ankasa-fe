@@ -20,7 +20,6 @@ const ModelUpdate = ({ getFlight }) => {
   });
 
   // update
-
   const handleChangeUpdate = (e) => {
     setFlightUpdate({
       ...flightUpdate,
