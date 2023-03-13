@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Footer from '../../../components/Admin/Footer';
 import PageHeading from '../../../components/Admin/PageHeading';
 import Sidebar from '../../../components/Admin/Sidebar';
 import Topbar from '../../../components/Admin/Topbar';
 import imgAirline from '../../../assets/airline.png';
 import style from './airlines.module.css';
+import axios from 'axios';
+import Swal from 'sweetalert2';
+import ModalUpdateAirlines from '../../../components/modalUpdateAirlines';
 
 const Airlines = () => {
   const [hide, setHide] = useState(false);
@@ -17,15 +20,15 @@ const Airlines = () => {
     image: '',
   });
 
-  const { id, name, website, email, phone_number, image } = getAirLines;
-
-  const [airlineUpdate, setAirlineUpdate] = useState({
-    name: name,
-    website: website,
-    email: email,
-    phone_number: phone_number,
-    image: image,
-  });
+  useEffect(() => {
+    // get data
+    axios
+      .get(`${process.env.REACT_APP_API}/airline`)
+      .then((res) => {
+        setGetAirLines(res.data.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   // creaate
   const handleUpload = (e) => {
@@ -41,18 +44,67 @@ const Airlines = () => {
     });
   };
 
-  // update
-  const handleUploadUpdate = (e) => {
-    setAirlineUpdate((prev) => {
-      return { ...prev, image: e.target.files[0] };
-    });
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+
+    for (let attr in airlines) {
+      formData.append(attr, airlines[attr]);
+    }
+
+    axios
+      .post(`${process.env.REACT_APP_API}/airline`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      })
+      .then((response) => {
+        console.log(response);
+        Swal.fire({
+          title: `${response.data.message}`,
+          text: `New Airlines Added`,
+          icon: 'success',
+        });
+        window.location.reload();
+      })
+      .catch((err) => alert(`${err.response}`));
   };
 
-  const handleChangeUpdate = (e) => {
-    setAirlineUpdate({
-      ...airlineUpdate,
-      [e.target.name]: e.target.value,
+  // update
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .delete(`${process.env.REACT_APP_API}/airline/${id}`)
+          .then((response) => {
+            Swal.fire(`${response.data.message}`, 'Your file has been deleted.', 'success');
+          })
+          .catch((err) => alert(`${err.response}`));
+      }
     });
+    window.location.reload();
+  };
+
+  // visibility
+  let availability = false;
+
+  const handleVisibility = (id) => {
+    axios
+      .post(`${process.env.REACT_APP_API}/airline/${id}/availability`, availability)
+      .then((res) => {
+        console.log(res.data);
+        // window.location.reload();
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -97,35 +149,60 @@ const Airlines = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td className="align-middle text-center py-3">
-                      <img src={imgAirline} style={{ height: '50px', objectFit: 'cover' }} alt="airline" />
-                    </td>
-                    <td className="align-middle text-center">Garuda Indonesia</td>
-                    <td className="align-middle text-center">www.garudaindonesia.com</td>
+                  {getAirLines.map((data) => (
+                    <>
+                      <ModalUpdateAirlines airline={data} />
+                      <tr>
+                        <td className="align-middle py-3">
+                          <img src={data.image} style={{ height: '25px', objectFit: 'cover' }} alt="airline" />
+                        </td>
+                        <td className={`align-middle ${style.tableColumn}`}>{data.name}</td>
+                        <td className={`align-middle ${style.tableColumnWebsite}`}>{data.website}</td>
 
-                    <td className="align-middle text-center">cs@garudaindonesia.com</td>
-                    <td className="align-middle text-center">021-8445521</td>
-                    <td className="align-middle text-center">
-                      {hide ? (
-                        <button type="button" className="btn btn-warning btn-sm me-2" onClick={() => setHide(false)}>
-                          <i className="bi bi-eye-fill" />
-                        </button>
-                      ) : (
-                        <button type="button" className="btn btn-warning btn-sm me-2" onClick={() => setHide(true)}>
-                          <i className="bi bi-eye-slash" />
-                        </button>
-                      )}
+                        <td className={`align-middle ${style.tableColumnWebsite}`}>{data.email}</td>
+                        <td className={`align-middle ${style.tableColumn}`}>{data.phone_number}</td>
+                        <td className="align-middle text-center">
+                          {data.availability == true ? (
+                            <button
+                              type="button"
+                              className="btn btn-warning btn-sm me-2"
+                              onClick={() => {
+                                availability = false;
+                                // setVisibility((prev) => {
+                                //   return { ...prev, availability: false };
+                                // });
+                                handleVisibility(data.id);
+                              }}
+                            >
+                              <i className="bi bi-eye-slash" />
+                            </button>
+                          ) : (
+                            <button
+                              type="button"
+                              className="btn btn-warning btn-sm me-2"
+                              onClick={() => {
+                                availability = true;
+                                // setVisibility((prev) => {
+                                //   return { ...prev, availability: true };
+                                // });
+                                handleVisibility(data.id);
+                              }}
+                            >
+                              <i className="bi bi-eye-fill" />
+                            </button>
+                          )}
 
-                      <button type="button" className="btn btn-success btn-sm me-2" data-bs-toggle="modal" data-bs-target="#update">
-                        <i className="bi bi-pencil-square" />
-                      </button>
+                          <button type="button" className="btn btn-success btn-sm me-2" data-bs-toggle="modal" data-bs-target={`#update${data.id}`}>
+                            <i className="bi bi-pencil-square" />
+                          </button>
 
-                      <button className="btn btn-danger btn-sm">
-                        <i className="bi bi-trash-fill" />
-                      </button>
-                    </td>
-                  </tr>
+                          <button className="btn btn-danger btn-sm" onClick={() => handleDelete(data.id)}>
+                            <i className="bi bi-trash-fill" />
+                          </button>
+                        </td>
+                      </tr>
+                    </>
+                  ))}
                 </tbody>
               </table>
             </div>
@@ -150,7 +227,7 @@ const Airlines = () => {
               <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
             </div>
 
-            <form action="">
+            <form onSubmit={handleSubmit}>
               <div className="modal-body">
                 <input type="text" name="name" placeholder="Name" value={airlines.name} className={style.input} onChange={handleChange} />
 
@@ -161,52 +238,16 @@ const Airlines = () => {
                 <input type="text" name="phone_number" placeholder="Phone Number" value={airlines.phone_number} className={style.input} onChange={handleChange} />
 
                 <div className="mb-3">
-                  <input className="mt-2" type="file" id="formFile" value={airlines.image} onChange={handleUpload} />
+                  <input className="mt-2" type="file" id="formFile" onChange={handleUpload} />
                 </div>
               </div>
               <div className="modal-footer">
                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">
                   Close
                 </button>
-                <button type="button" className="btn btn-primary">
+
+                <button type="submit" className="btn btn-primary">
                   Create
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-
-      {/* Moodal Update*/}
-      <div className="modal fade" id="update" tabIndex={-1} aria-labelledby="updateLabel" aria-hidden="true">
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h1 className="modal-title fs-5" id="updateLabel">
-                Update Airlines
-              </h1>
-              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
-            </div>
-            <form action="">
-              <div className="modal-body">
-                <input type="text" name="name" placeholder="Name" value={airlineUpdate.name} className={style.input} onChange={handleChangeUpdate} />
-
-                <input type="text" name="website" placeholder="Website" value={airlineUpdate.website} className={style.input} onChange={handleChangeUpdate} />
-
-                <input type="text" name="email" placeholder="Email" value={airlineUpdate.email} className={style.input} onChange={handleChangeUpdate} />
-
-                <input type="text" name="phone_number" placeholder="Phone Number" value={airlineUpdate.phone_number} className={style.input} onChange={handleChangeUpdate} />
-
-                <div className="mb-3">
-                  <input className="mt-2" type="file" id="formFile" value={airlineUpdate.image} onChange={handleUploadUpdate} />
-                </div>
-              </div>
-              <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">
-                  Close
-                </button>
-                <button type="button" className="btn btn-primary">
-                  Save changes
                 </button>
               </div>
             </form>

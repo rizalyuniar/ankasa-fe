@@ -7,6 +7,7 @@ import imageLogin1 from '../../../assets/Group 29.png';
 import imageLogin2 from '../../../assets/google.png';
 import imageLogin3 from '../../../assets/Facebook.png';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const AdminLogin = () => {
   // const dispatch = useDispatch();
@@ -20,11 +21,38 @@ const AdminLogin = () => {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    localStorage.setItem('token', 'token');
-    navigate('/admin');
-    axios.post(`${process.env.REACT_APP_API}v1/admin/login`, form).then((response) => {
-      // navigate('/admin');
-    });
+    axios
+      .post(`${process.env.REACT_APP_API}/user/login`, form)
+      .then((res) => {
+        console.log(res.data.data);
+        if (res.data.message !== 'login is successful') {
+          Swal.fire({
+            icon: 'error',
+            title: `${res.data.message}`,
+            text: 'Something went wrong!',
+          });
+        } else {
+          Swal.fire(`${res.data.message}`, 'You clicked the button!', 'success');
+
+          const token = res.data.data.token;
+          const id = res.data.data.id;
+          const fullname = res.data.data.fullname;
+          const image = res.data.data.image;
+          const phoneNumber = res.data.data.phone_number;
+          const city = res.data.data.city;
+          const address = res.data.data.address;
+          const admin = res.data.data;
+
+          localStorage.setItem('token', token);
+          localStorage.setItem('id', id);
+          localStorage.setItem('fullname', fullname);
+          localStorage.setItem('image', image);
+          localStorage.setItem('admin', JSON.stringify(admin));
+
+          navigate('/admin');
+        }
+      })
+      .catch((err) => console.log(err));
   };
 
   useEffect(() => {

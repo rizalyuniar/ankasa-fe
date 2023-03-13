@@ -1,0 +1,15 @@
+.titleHeader {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 30px 0;
+}
+
+@media screen and (max-width: 768px) {
+  .row {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: auto;
+    height: 100%;
+    padding: 30px 0;
+  }
+}
