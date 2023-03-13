@@ -24,7 +24,7 @@ const AdminLogin = () => {
     axios
       .post(`${process.env.REACT_APP_API}/user/login`, form)
       .then((res) => {
-        console.log(res);
+        console.log(res.data.data);
         if (res.data.message !== 'login is successful') {
           Swal.fire({
             icon: 'error',
@@ -41,14 +41,13 @@ const AdminLogin = () => {
           const phoneNumber = res.data.data.phone_number;
           const city = res.data.data.city;
           const address = res.data.data.address;
+          const admin = res.data.data;
 
           localStorage.setItem('token', token);
           localStorage.setItem('id', id);
           localStorage.setItem('fullname', fullname);
           localStorage.setItem('image', image);
-          localStorage.setItem('phone_number', phoneNumber);
-          localStorage.setItem('city', city);
-          localStorage.setItem('address', address);
+          localStorage.setItem('admin', JSON.stringify(admin));
 
           navigate('/admin');
         }
