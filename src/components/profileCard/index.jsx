@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./style.module.css";
 import avatar from "../../assets/avatar.png";
 import iconprofile from "../../assets/user.png";
@@ -6,8 +6,56 @@ import iconstar from "../../assets/myreview.svg";
 import iconsettings from "../../assets/setting.svg";
 import iconlogout from "../../assets/logout.svg";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const ProfileCard = () => {
+  const [idUser, setIdUser] = useState("");
+  useEffect(() => {
+    setIdUser(localStorage.getItem("id"));
+  });
+
+  const navigate = useNavigate();
+  const data = JSON.parse(localStorage.getItem("users"));
+  const id = data.id;
+  // get user
+  const [profile, setProfile] = useState({
+    id: "",
+    email: "",
+    fullname: "",
+    phone_number: "",
+    city: "",
+    address: "",
+    zipcode: "",
+    image: "",
+  });
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_BACKEND_URL}/user/profile`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((res) => {
+        console.log(res.data.data);
+        setProfile(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  const onLogout = (e) => {
+    // e.prevenDefault();
+    localStorage.clear();
+    Swal.fire({
+      title: "Logout Success",
+      text: `Logout Success!`,
+      icon: "success",
+    });
+    return navigate("/login");
+  };
   return (
     <>
       <section className={styles.profilecard}>
@@ -17,16 +65,12 @@ const ProfileCard = () => {
               <div
                 className={`d-flex flex-row justify-content-center my-3 px-5 ${styles.picProfile}`}
               >
-                <img src={avatar} />
+                <img width={120} height={120} src={profile.image} />
               </div>
-              <div className="d-flex flex-row justify-content-center my-4">
-                <button type="file" class="btn btn-outline-primary">
-                  Select Photo
-                </button>
-              </div>
+
               <div className="d-flex flex-column align-items-center my-3">
-                <h2>Iqbal Apredo</h2>
-                <p>Jambi - Indonesia</p>
+                <h2>{profile.fullname}</h2>
+                <p>{profile.city}</p>
               </div>
               <div>
                 <h5>Cards</h5>
@@ -43,7 +87,10 @@ const ProfileCard = () => {
               </div>
               <div className={`d-flex flex-row mx-3 ${styles.setProfile}`}>
                 <img src={iconprofile} className={styles.iconprofile} />
-                <Link to={`/profile`} style={{ textDecoration: "none" }}>
+                <Link
+                  to={`/profile/${idUser}`}
+                  style={{ textDecoration: "none" }}
+                >
                   <p className={`mx-5 ${styles.textProfile}`}> Profile </p>
                 </Link>
               </div>
@@ -53,13 +100,27 @@ const ProfileCard = () => {
               </div>
               <div className={`d-flex flex-row mx-3 ${styles.setSettings}`}>
                 <img src={iconsettings} className={styles.iconsettings} />
-                <Link to={`/updateProfile`} style={{ textDecoration: "none" }}>
-                  <p className={`mx-5 ${styles.textSettings}`}> Settings </p>
-                </Link>
+
+                <p
+                  onClick={() =>
+                    window.location.replace(`/updateProfile/${idUser}`)
+                  }
+                  className={`mx-5 ${styles.textSettings}`}
+                  style={{ cursor: "pointer" }}
+                >
+                  Settings
+                </p>
               </div>
               <button className={`d-flex flex-row mx-3  ${styles.setLogout}`}>
                 <img src={iconlogout} className={styles.iconlogout} />
-                <p className={`mx-5 ${styles.textLogout}`}> Logout </p>
+                <p
+                  style={{ cursor: "pointer" }}
+                  onClick={onLogout}
+                  className={`mx-5 ${styles.textLogout}`}
+                >
+                  {" "}
+                  Logout{" "}
+                </p>
               </button>
             </div>
           </div>
