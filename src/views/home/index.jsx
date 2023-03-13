@@ -34,22 +34,24 @@ const index = () => {
           <span className={style.subtitle}>Trending</span>
           <div className={style.wrapper}>
             <h3 className={style.titleHeader}>Trending Destinations</h3>
-            <button className={style.viewMore}>View All</button>
+            <button className={style.viewMore} onClick={() => window.location.replace('/destination')}>
+              View All
+            </button>
           </div>
         </div>
 
         <div className={`row mt-3 ${style.rowTrending}`}>
           <div className="col-md-3 col-sm-6">
-            <CardTrending count="22" city="Bali" nation="Indonesia" image={imgTrend} />
+            <CardTrending count="22" city="Bali" nation="Indonesia" image={imgTrend} id="1" />
           </div>
           <div className="col-md-3 col-sm-6">
-            <CardTrending count="22" city="Tokyo" nation="Japan" image={accsent2} />
+            <CardTrending count="22" city="Tokyo" nation="Japan" image={accsent2} id="2" />
           </div>
           <div className="col-md-3 col-sm-6">
-            <CardTrending count="22" city="Tokyo" nation="Japan" image={imgTrend} />
+            <CardTrending count="22" city="Tokyo" nation="Japan" image={imgTrend} id="3" />
           </div>
           <div className="col-md-3 col-sm-6">
-            <CardTrending count="22" city="Tokyo" nation="Japan" image={imgTrend} />
+            <CardTrending count="22" city="Tokyo" nation="Japan" image={imgTrend} id="4" />
           </div>
         </div>
       </div>

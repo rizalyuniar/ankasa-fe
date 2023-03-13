@@ -17,6 +17,8 @@ import AdminPayment from "../views/admin/adminPayment";
 import VerifEmail from "../views/emailVerification";
 import Page404 from "../views/Page404";
 import AdminLogin from "../views/authAdmin/login";
+import Destination from "../views/destination";
+import DetailDestination from "../views/detailDestination";
 
 const ScrollToTop = ({ children }) => {
   const { pathname } = useLocation();
@@ -50,6 +52,8 @@ const Router = () => {
           <Route path="/verifEmail" element={<VerifEmail />} />
           <Route path="/notfound" element={<Page404 />} />
           <Route path="/login/admin" element={<AdminLogin />} />
+          <Route path="/destination" element={<Destination />} />
+          <Route path="/destination/:id" element={<DetailDestination />} />
         </Routes>
       </ScrollToTop>
     </BrowserRouter>
