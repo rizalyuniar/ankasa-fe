@@ -99,7 +99,7 @@ const Airlines = () => {
                 <tbody>
                   <tr>
                     <td className="align-middle text-center py-3">
-                      <img src={imgAirline} style={{ width: '70px', height: '50px', objectFit: 'cover' }} alt="airline" />
+                      <img src={imgAirline} style={{ height: '50px', objectFit: 'cover' }} alt="airline" />
                     </td>
                     <td className="align-middle text-center">Garuda Indonesia</td>
                     <td className="align-middle text-center">www.garudaindonesia.com</td>

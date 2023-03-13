@@ -147,7 +147,7 @@ const AdminFlight = () => {
                 <tbody>
                   <tr>
                     <td className="align-middle text-center py-3">
-                      <img src={imgAirline} style={{ width: '70px', height: '50px', objectFit: 'cover' }} alt="airline" />
+                      <img src={imgAirline} style={{ height: '50px', objectFit: 'cover' }} alt="airline" />
                     </td>
 
                     <td className="align-middle text-center">Garuda Indonesia</td>
@@ -223,7 +223,7 @@ const AdminFlight = () => {
                   </div>
                 </div>
 
-                <input type="text" name="transit_count" placeholder="transit_count" value={flight.transit_count} className={style.input} onChange={handleChange} />
+                <input type="text" name="transit_count" placeholder="Transit" value={flight.transit_count} className={style.input} onChange={handleChange} />
 
                 <input type="text" name="terminal" placeholder="Terminal" value={flight.terminal} className={style.input} onChange={handleChange} />
 
@@ -305,7 +305,7 @@ const AdminFlight = () => {
                   </div>
                 </div>
 
-                <input type="text" name="transit_count" placeholder="transit_count" value={flightUpdate.transit_count} className={style.input} onChange={handleChangeUpdate} />
+                <input type="text" name="transit_count" placeholder="Transit" value={flightUpdate.transit_count} className={style.input} onChange={handleChangeUpdate} />
 
                 <input type="text" name="terminal" placeholder="Terminal" value={flightUpdate.terminal} className={style.input} onChange={handleChangeUpdate} />
 

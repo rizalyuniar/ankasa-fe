@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
 import style from "./navbar.module.css";
 import navBrand from "../../assets/vector 02.png";
@@ -5,10 +6,26 @@ import iconChange from "../../assets/Vector.png";
 import image from "../../assets/profile.png";
 import CardNotif from "../cardNotif";
 import { Link } from "react-router-dom";
+=======
+import React, { useEffect, useState } from 'react';
+import style from './navbar.module.css';
+import navBrand from '../../assets/vector 02.png';
+import iconChange from '../../assets/Vector.png';
+import image from '../../assets/profile.png';
+import CardNotif from '../cardNotif';
+>>>>>>> 7ea14f19ab94e252015f6b81bccc246a2b906b62
 
 const Navbar = () => {
-  const [login, setLogin] = useState(true);
+  const [login, setLogin] = useState('');
+  const [idUser, setIdUser] = useState('');
   const [toggle, setToggle] = useState(false);
+
+  console.log(login);
+
+  useEffect(() => {
+    setLogin(localStorage.getItem('token'));
+    setIdUser(localStorage.getItem('id'));
+  });
 
   return (
     <>
@@ -65,6 +82,7 @@ const Navbar = () => {
                 </button>
               </li>
 
+<<<<<<< HEAD
               <li
                 className={`nav-item mx-lg-4 mx-md-0 mx-sm-0 my-lg-3 mx-md-0 my-sm-0`}
               >
@@ -72,6 +90,10 @@ const Navbar = () => {
                   className={`nav-link active ${style.navLink}`}
                   href="/mybooking"
                 >
+=======
+              <li className={`nav-item mx-lg-4 mx-md-0 mx-sm-0 my-lg-3 mx-md-0 my-sm-0`}>
+                <a className={`nav-link active ${style.navLink}`} href={`/mybooking/${idUser}`}>
+>>>>>>> 7ea14f19ab94e252015f6b81bccc246a2b906b62
                   My Booking
                 </a>
               </li>
@@ -122,11 +144,15 @@ const Navbar = () => {
                   </button>
                   <ul className="dropdown-menu dropdown-menu-start dropdown-menu-lg-end lh-1 mt-2">
                     <li className="mb-2">
+<<<<<<< HEAD
                       <button
                         type="button"
                         className="dropdown-item"
                         onClick={() => window.location.replace("/profile")}
                       >
+=======
+                      <button type="button" className="dropdown-item" onClick={() => window.location.replace(`/profile/${idUser}`)}>
+>>>>>>> 7ea14f19ab94e252015f6b81bccc246a2b906b62
                         Profile
                       </button>
                     </li>
@@ -134,7 +160,14 @@ const Navbar = () => {
                       <button
                         type="button"
                         className="dropdown-item"
+<<<<<<< HEAD
                         onClick={() => setLogin(false)}
+=======
+                        onClick={() => {
+                          localStorage.clear();
+                          window.location.reload();
+                        }}
+>>>>>>> 7ea14f19ab94e252015f6b81bccc246a2b906b62
                       >
                         Logout
                       </button>
