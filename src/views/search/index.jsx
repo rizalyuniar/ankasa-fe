@@ -1,26 +1,28 @@
-import React, { useState, useEffect } from 'react';
-import './search-result.css';
-import { Link, useSearchParams } from 'react-router-dom';
-import Navbar from '../../components/navbar/index';
-import Footer from '../../components/footer/index';
-import bnr from '../../assets/pesawat.svg';
-import wifi from '../../assets/wifi.svg';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import "./search-result.css";
+import { Link, useSearchParams } from "react-router-dom";
+import Navbar from "../../components/navbar/index";
+import Footer from "../../components/footer/index";
+import bnr from "../../assets/pesawat.svg";
+import wifi from "../../assets/wifi.svg";
+import axios from "axios";
 
 const SeacrhResult = () => {
   const [data, setData] = useState([]);
   const [search, setSearch] = useState({
-    city_departure: '',
-    city_destination: '',
+    city_departure: "",
+    city_destination: "",
   });
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const url = searchParams.get('');
+  const url = searchParams.get("");
 
   console.log(url);
 
   const handleSearch = () => {
-    window.location.replace(`/search?cityDept=${search.city_departure}&&cityDest=${search.city_destination}`);
+    window.location.replace(
+      `/search?cityDept=${search.city_departure}&&cityDest=${search.city_destination}`
+    );
   };
 
   const handleChange = (e) => {
@@ -55,26 +57,39 @@ const SeacrhResult = () => {
               <form>
                 <div className="row">
                   <div className="col-auto icon-airplane">
-                    <img className="" src={require('../../assets/aa.png')} />
+                    <img className="" src={require("../../assets/aa.png")} />
                   </div>
                   <div className="col-auto input-from">
                     <div>
                       <span>From</span>
                     </div>
                     <div>
-                      <input placeholder="Medan (IDN)" name="city_departure" value={search.city_departure} onChange={handleChange} />
+                      <input
+                        placeholder="Medan (IDN)"
+                        name="city_departure"
+                        value={search.city_departure}
+                        onChange={handleChange}
+                      />
                     </div>
                     <div></div>
                   </div>
                   <div className="col-auto icon-switch">
-                    <img className="" src={require('../../assets/vektorw.png')} />
+                    <img
+                      className=""
+                      src={require("../../assets/vektorw.png")}
+                    />
                   </div>
                   <div className="col-auto input-to">
                     <div>
                       <span>To</span>
                     </div>
                     <div>
-                      <input placeholder="Tokyo (JPN)" name="city_destination" value={search.city_destination} onChange={handleChange} />
+                      <input
+                        placeholder="Tokyo (JPN)"
+                        name="city_destination"
+                        value={search.city_destination}
+                        onChange={handleChange}
+                      />
                     </div>
                   </div>
                   <div className="mt-1 result-search">
@@ -83,13 +98,13 @@ const SeacrhResult = () => {
                         <p className="date">Monday, 20 July 20</p>
                       </div>
                       <div className="col-auto icon-hole">
-                        <img src={require('../../assets/centang.png')} />
+                        <img src={require("../../assets/centang.png")} />
                       </div>
                       <div className="col-auto">
                         <p className="passenger">6 Passenger</p>
                       </div>
                       <div className="col-auto icon-hole">
-                        <img src={require('../../assets/centang.png')} />
+                        <img src={require("../../assets/centang.png")} />
                       </div>
                       <div className="col-auto">
                         <p className="class">First Economy</p>
@@ -117,7 +132,11 @@ const SeacrhResult = () => {
                     </h5>
                   </div>
                   <div className="col-auto">
-                    <button className="button-title-filter-search-result" type="reset" form="filter-form">
+                    <button
+                      className="button-title-filter-search-result"
+                      type="reset"
+                      form="filter-form"
+                    >
                       Reset
                     </button>
                   </div>
@@ -127,7 +146,12 @@ const SeacrhResult = () => {
                 <form id="filter-form">
                   {/* FILTER AIRLINE */}
                   <div className="airline text-left">
-                    <button type="button" className="mt-3 btn btn-info" data-bs-toggle="collapse" data-bs-target="#select-airline">
+                    <button
+                      type="button"
+                      className="mt-3 btn btn-info"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#select-airline"
+                    >
                       <div className="row">
                         <div className="col-auto">
                           <b>Airline</b>
@@ -163,7 +187,12 @@ const SeacrhResult = () => {
                   <hr />
                   {/* FILTER TYPE */}
                   <div className="type text-left">
-                    <button type="button" className="btn btn-info" data-bs-toggle="collapse" data-bs-target="#filter-type">
+                    <button
+                      type="button"
+                      className="btn btn-info"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#filter-type"
+                    >
                       <div className="row">
                         <div className="col-auto">
                           <b>Type</b>
@@ -179,19 +208,32 @@ const SeacrhResult = () => {
                           <span>Economy</span>
                         </div>
                         <div className="mt-2 col-md-2">
-                          <input className="form-check-input" type="checkbox" id="filter-checkbox" name="" />
+                          <input
+                            className="form-check-input"
+                            type="checkbox"
+                            id="filter-checkbox"
+                            name=""
+                          />
                         </div>
                         <div className="mt-2 col-md-10">
                           <span>Business</span>
                         </div>
                         <div className="mt-2 col-md-2">
-                          <input className="form-check-input" type="checkbox" name="filter-checkbox" />
+                          <input
+                            className="form-check-input"
+                            type="checkbox"
+                            name="filter-checkbox"
+                          />
                         </div>
                         <div className="mt-2 col-md-10">
                           <span>First Class</span>
                         </div>
                         <div className="mt-2 col-md-2">
-                          <input className="form-check-input" type="checkbox" name="filter-checkbox" />
+                          <input
+                            className="form-check-input"
+                            type="checkbox"
+                            name="filter-checkbox"
+                          />
                         </div>
                       </div>
                     </div>
@@ -199,7 +241,12 @@ const SeacrhResult = () => {
                   <hr />
                   {/* TRANSIT */}
                   <div className="transit text-left">
-                    <button type="button" className="btn btn-info" data-bs-toggle="collapse" data-bs-target="#filter-transit">
+                    <button
+                      type="button"
+                      className="btn btn-info"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#filter-transit"
+                    >
                       <div className="row">
                         <div className="col-auto">
                           <b>Transit</b>
@@ -236,7 +283,12 @@ const SeacrhResult = () => {
 
                   {/* FACILITIES */}
                   <div className="facilities text-left">
-                    <button type="button" className="btn btn-info" data-bs-toggle="collapse" data-bs-target="#filter-facilities">
+                    <button
+                      type="button"
+                      className="btn btn-info"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#filter-facilities"
+                    >
                       <div className="row">
                         <div className="col-auto">
                           <b>Facilities</b>
@@ -246,7 +298,10 @@ const SeacrhResult = () => {
                         </div>
                       </div>
                     </button>
-                    <div id="filter-facilities" className="collapse-facilities show">
+                    <div
+                      id="filter-facilities"
+                      className="collapse-facilities show"
+                    >
                       <div className="row">
                         <div className="mt-2 col-md-10">
                           <span>Luggage</span>
@@ -287,10 +342,19 @@ const SeacrhResult = () => {
                   <div className="col-auto sorting-title-select-ticket-search-result">
                     <div className="row">
                       <div className="dropdown dropdown-sorting">
-                        <button className="btn dropdown-toggle" type="button" id="sorting" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button
+                          className="btn dropdown-toggle"
+                          type="button"
+                          id="sorting"
+                          data-bs-toggle="dropdown"
+                          aria-expanded="false"
+                        >
                           <b>Sort order</b>
                         </button>
-                        <ul className="dropdown-menu dropdown-menu" aria-labelledby="sorting">
+                        <ul
+                          className="dropdown-menu dropdown-menu"
+                          aria-labelledby="sorting"
+                        >
                           <li>
                             <a className="dropdown-item">asc</a>
                           </li>
@@ -320,24 +384,32 @@ const SeacrhResult = () => {
                           <h4>
                             <b>{row.city_departure_code}</b>
                           </h4>
-                          <span className="text-secondary">{row.time_departure}</span>
+                          <span className="text-secondary">
+                            {row.time_departure}
+                          </span>
                         </div>
                         <div className="col-auto">
-                          <img src={require('../../assets/Vector.png')} />
+                          <img src={require("../../assets/Vector.png")} />
                         </div>
                         <div className="col-auto">
                           <h4>
                             <b>{row.city_destination_code}</b>
                           </h4>
-                          <span className="text-secondary">{row.time_arrival}</span>
+                          <span className="text-secondary">
+                            {row.time_arrival}
+                          </span>
                         </div>
                         <div className="col-auto">
                           <div className="row">
                             <div className="col-auto">
-                              <span className="text-secondary">2 jam - 1 hours</span>
+                              <span className="text-secondary">
+                                2 jam - 1 hours
+                              </span>
                             </div>
                             <div>
-                              <span className="text-secondary">{row.transit_count} Transit</span>
+                              <span className="text-secondary">
+                                {row.transit_count} Transit
+                              </span>
                             </div>
                           </div>
                         </div>
@@ -373,13 +445,19 @@ const SeacrhResult = () => {
               <div className="d-flex justify-content-center">
                 <ul className="pagination">
                   <li className="page-item">
-                    <button className="btn btn-warning-custom page-link">Previous</button>
+                    <button className="btn btn-warning-custom page-link">
+                      Previous
+                    </button>
                   </li>
                   <li style={{ marginLeft: 3 }}>
-                    <button className="btn btn-warning-custom page-link">1</button>
+                    <button className="btn btn-warning-custom page-link">
+                      1
+                    </button>
                   </li>
                   <li style={{ marginLeft: 3 }} className="page-item">
-                    <button className="btn btn-warning-custom page-link">Next</button>
+                    <button className="btn btn-warning-custom page-link">
+                      Next
+                    </button>
                   </li>
                 </ul>
               </div>

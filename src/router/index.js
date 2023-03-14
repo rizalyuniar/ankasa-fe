@@ -59,7 +59,7 @@ const Router = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!socket && token) {
-      const res = io(`http://localhost:4000`, {
+      const res = io(`https://ankasa-backend-production.up.railway.app`, {
         query: {
           token: token,
         },

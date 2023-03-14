@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./booking-detail.css";
 import Navbar from "../../components/navbar/index";
 import qr from "../../assets/QRCode1.svg";
 import Footer from "../../components/footer";
 
 const BookingDetail = () => {
+  // get user
+
   return (
     <section>
       <Navbar />
