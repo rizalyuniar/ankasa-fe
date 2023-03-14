@@ -1,0 +1,199 @@
+.benner {
+  background-color: #2395ff;
+  height: 176px;
+  border-radius: 0px 0px 30px 30px;
+  justify-content: space-around;
+  display: flex;
+}
+
+.bnr {
+  margin-left: -70rem;
+  height: 11rem;
+  color: white;
+}
+
+.textPerson {
+  color: white;
+  font-size: 24px;
+  position: absolute;
+  margin-top: 50px;
+  margin-left: -61rem;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.fd {
+  color: white;
+  position: absolute;
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 50px;
+  margin-left: 500px;
+  font-style: normal;
+}
+
+.vd {
+  position: absolute;
+  color: white;
+  font-weight: 600;
+  margin-top: 57px;
+  margin-left: 1050px;
+  font-size: 16px;
+}
+
+.main {
+  background-color: #f5f6fa;
+  padding-bottom: 100px;
+}
+
+.rightside {
+  background-color: white;
+  margin-top: -80px !important;
+  border-radius: 15px;
+  height: max-content;
+}
+
+.textLabelCP {
+  color: #9b96ab;
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 0;
+}
+.inputStyle {
+  border-radius: 0px !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-bottom: 2px solid;
+  border-color: #d2c2ffad !important;
+}
+
+/* .inputStyle:focus{
+    outline: none !important;
+    border: none !important;
+  } */
+
+.reminder {
+  background-color: #f245451a;
+  border-radius: 10px;
+}
+
+/* .leftside{
+    background-color: white;
+    margin-top: -80px !important;
+    border-radius: 15px;
+  } */
+
+.CPdetail {
+  background-color: white;
+  border-radius: 15px;
+  margin-top: -100px !important;
+}
+
+.textGaruda {
+  color: #595959;
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+.textCity {
+  color: #000000;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.textTime {
+  font-size: 12px;
+  font-weight: 400;
+  color: #6b6b6b;
+}
+
+.textOptional {
+  color: #2395ff;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.textTotal {
+  color: #000000;
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 5px;
+}
+
+.textPrice {
+  color: #2395ff;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.textTitle {
+  color: #000000;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.passengerDetail {
+  border-radius: 15px;
+  background-color: white;
+}
+
+.reminderPassenger {
+  background-color: #2395ff1a;
+  border-radius: 10px;
+}
+
+.textPassenger {
+  color: #595959;
+  font-size: 14px;
+}
+
+.textInsurance {
+  color: #000000;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.textPriceinsurance {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2395ff;
+}
+
+.textPax {
+  font-size: 14px;
+  font-weight: 600;
+  color: #979797;
+}
+
+.textCompensation {
+  color: #000000;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.cstmButton {
+  background-color: #2395ff !important;
+  color: white !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+}
+
+.cstmButton:hover {
+  background-color: #2395ff !important;
+  color: white !important;
+}
+@media only screen and (max-width: 720px) {
+  .rightside {
+    margin-top: 50px !important;
+  }
+  .fd {
+    display: none;
+  }
+  .vd {
+    display: none;
+  }
+  .textPerson {
+    display: none;
+  }
+}

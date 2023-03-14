@@ -1,0 +1,191 @@
+:root {
+  --primaryColor: #2395ff;
+  --fontColor: #414141;
+  --fontSecondary: #6b6b6b;
+  --backgroundColor: #fff;
+  --backgroundSecondary: #f5f5f5;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+.wrapperMain {
+  width: 100%;
+  padding: 30px 30px;
+  border-radius: 10px;
+  background-color: var(--backgroundColor);
+  margin-bottom: 20px;
+}
+
+.date {
+  font-size: 14px;
+  color: var(--fontColor);
+}
+
+.wrapperDestination {
+  display: flex;
+  align-items: center;
+  margin: 6px 0;
+}
+
+.titleDesination {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--fontColor);
+  margin-bottom: 0;
+}
+
+.iconAirlines {
+  margin: 0 30px;
+}
+
+.airlines {
+  font-size: 14px;
+  color: var(--fontSecondary);
+}
+.wrapperFooter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+
+.wrapperStatus {
+  display: flex;
+  align-items: center;
+}
+
+.titleStatus {
+  font-size: 14px;
+  font-weight: 500;
+  margin-right: 50px;
+}
+.statusApprove {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 30px;
+  margin-bottom: 0;
+  border-radius: 5px;
+  background-color: #4fcf4d;
+  color: white;
+}
+
+.statusPending {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 30px;
+  margin-bottom: 0;
+  border-radius: 5px;
+  background-color: #dc3f27;
+  color: white;
+}
+
+.statusWaiting {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 30px;
+  margin-bottom: 0;
+  border-radius: 5px;
+  background-color: #ff7f23;
+  color: white;
+}
+
+.statusCancel {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 30px;
+  margin-bottom: 0;
+  border-radius: 5px;
+  background-color: #818181;
+  color: white;
+}
+
+.statusRefund {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 30px;
+  margin-bottom: 0;
+  border-radius: 5px;
+  background-color: #0080c9;
+  color: white;
+}
+
+.cancel {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 30px;
+  margin-bottom: 0;
+  border-radius: 5px;
+  border: none;
+  background-color: #c80e0e;
+  color: white;
+}
+
+.refund {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 30px;
+  margin-bottom: 0;
+  border-radius: 5px;
+  border: none;
+  background-color: #0e7ac8;
+  color: white;
+}
+
+.wrapperButton {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.buttonDetail {
+  font-size: 16px;
+  font-weight: 500;
+  padding: 8px 0;
+  margin-bottom: 0;
+  border-radius: 5px;
+  border: none;
+  background-color: transparent;
+  color: var(--primaryColor);
+}
+@media screen and (max-width: 768px) {
+  .wrapperMain {
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: var(--backgroundColor);
+    margin-bottom: 20px;
+  }
+
+  .wrapperStatus {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .wrapperStatus {
+    display: flex;
+    align-items: center;
+  }
+
+  .statusPending {
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 15px;
+    margin-bottom: 0;
+    border-radius: 5px;
+    background-color: #ff7f23;
+    color: white;
+    margin-top: 10px;
+  }
+
+  .detailFlight {
+    border: none;
+    background-color: transparent;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--primaryColor);
+  }
+}
