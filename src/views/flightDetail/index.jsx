@@ -13,11 +13,15 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
+import Swal from 'sweetalert2';
+import { useDispatch } from 'react-redux';
+import { createFlightBooking, getDetailFlight } from '../../redux/action/flightAction';
 
 const FlightDetail = () => {
   //get flight detail
   const [data, setData] = useState([]);
   const { id } = useParams();
+  const dispatch = useDispatch();
 
   const [fullname, setFullname] = useState('');
   const [email, setEmail] = useState('');
@@ -27,16 +31,8 @@ const FlightDetail = () => {
     setFullname(localStorage.getItem('fullname'));
     setEmail(localStorage.getItem('email'));
     setPhoneNumber(localStorage.getItem('phone_number'));
-    axios
-      .get(`${process.env.REACT_APP_BACKEND_URL}/flight/${id}`)
-      .then((response) => {
-        // console.log(response.data.data);
-        setData(response.data.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, [id]);
+    dispatch(getDetailFlight(setData, id));
+  }, [id, dispatch]);
 
   //booking
 
@@ -60,36 +56,12 @@ const FlightDetail = () => {
     setFormData((prevState) => ({ ...prevState, [name]: checked }));
   };
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    try {
-      const token = localStorage.getItem('token');
-      const response = await axios
-        .post(`${process.env.REACT_APP_BACKEND_URL}/booking/${id}`, formData, {
-          headers: {
-            // 'Content-Type': 'multipart/form-data',
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then((res) => {
-          console.log(response.data);
-          swal.fire({
-            title: res.data.message,
-            text: `New booking have been added`,
-            icon: 'success',
-          });
-          return navigate(`/mybooking/${id}`);
-        });
-    } catch (error) {
-      console.error(error);
-      swal.fire({
-        title: 'booking Added error',
-        text: `New booking error`,
-        icon: 'error',
-      });
-    }
+    const token = localStorage.getItem('token');
+    dispatch(createFlightBooking(formData, id, token));
   };
 
   return (
@@ -115,17 +87,17 @@ const FlightDetail = () => {
                     <p className={styles.textLabelCP}>Fullname</p>
                     <div className="input-group mb-4">
                       {/* <input type="text" className={`form-control ${styles.inputStyle}`} aria-label="Username" placeholder="Full Name" aria-describedby="basic-addon1" value={formData.booking_name} /> */}
-                      <input type="text" className={`form-control ${styles.inputStyle}`} aria-label="Username" placeholder="Full Name" aria-describedby="basic-addon1" value={fullname} disabled />
+                      <input type="text" className={`form-control ${styles.inputStyle}`} aria-label="Username" placeholder="Full Name" aria-describedby="basic-addon1" value={fullname} />
                     </div>
                     <p className={styles.textLabelCP}>Email</p>
                     <div className="input-group mb-4">
                       {/* <input type="email" className={`form-control ${styles.inputStyle}`} placeholder="Email" aria-label="Email" aria-describedby="basic-addon1" value={formData.email} /> */}
-                      <input type="email" className={`form-control ${styles.inputStyle}`} placeholder="Email" aria-label="Email" aria-describedby="basic-addon1" value={email} disabled />
+                      <input type="email" className={`form-control ${styles.inputStyle}`} placeholder="Email" aria-label="Email" aria-describedby="basic-addon1" value={email} />
                     </div>
                     <p className={styles.textLabelCP}>Phone Number</p>
                     <div className="input-group mb-4">
                       {/* <input type="text" className={`form-control ${styles.inputStyle}`} placeholder="Phone" aria-label="Phone" aria-describedby="basic-addon1" value={formData.phone_number} /> */}
-                      <input type="text" className={`form-control ${styles.inputStyle}`} placeholder="Phone" aria-label="Phone" aria-describedby="basic-addon1" value={phoneNumber} disabled />
+                      <input type="text" className={`form-control ${styles.inputStyle}`} placeholder="Phone" aria-label="Phone" aria-describedby="basic-addon1" value={phoneNumber} />
                     </div>
                     <div className={`d-flex flex-row p-3 mt-3 ${styles.reminder}`}>
                       <img src={icWarning} alt="warning" />
@@ -210,7 +182,7 @@ const FlightDetail = () => {
               {data.map((row) => (
                 <>
                   <div className="d-flex flex-row ">
-                    <img src={row.image} alt="garuda" />
+                    <img src={row.image} alt="garuda" style={{ height: '80px', objectFit: 'cover' }} />
                     <p className={`ms-5 ${styles.textGaruda}`}>{row.airline}</p>
                   </div>
                   <div className="d-flex flex-row mt-4">

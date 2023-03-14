@@ -17,7 +17,7 @@ const AdminPayment = () => {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_BACKEND_URL}/booking`)
+      .get(`${process.env.REACT_APP_BACKEND_URL}/booking?limit=100`)
       .then((res) => {
         setBooking(res.data.data);
       })
@@ -102,8 +102,10 @@ const AdminPayment = () => {
                 <tbody>
                   {booking.map((data) => (
                     <tr>
-                      <td className="align-middle text-center py-3">{data.fullname}</td>
-                      <td className="align-middle">{data.id}</td>
+                      <td className="align-middle py-3">{data.fullname}</td>
+                      <td className="align-middle" style={{ width: '200px' }}>
+                        {data.id}
+                      </td>
                       <td className="align-middle text-center">{data.airline}</td>
 
                       <td className="align-middle text-center">

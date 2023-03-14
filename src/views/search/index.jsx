@@ -6,8 +6,11 @@ import Footer from '../../components/footer/index';
 import bnr from '../../assets/pesawat.svg';
 import imgWifi from '../../assets/wifi.svg';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { getFlight } from '../../redux/action/flightAction';
 
 const SeacrhResult = () => {
+  const dispatch = useDispatch();
   const [data, setData] = useState([]);
   const [search, setSearch] = useState({
     city_departure: '',
@@ -18,7 +21,10 @@ const SeacrhResult = () => {
     luggage: '',
     inflight_meal: '',
     wifi: '',
+    transit: '',
   });
+
+  console.log(search.transit);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const cityDept = searchParams.get('cityDept');
@@ -31,10 +37,11 @@ const SeacrhResult = () => {
   const luggage = searchParams.get('luggage');
   const inflight_meal = searchParams.get('inflight_meal');
   const wifi = searchParams.get('wifi');
+  const transit = searchParams.get('transit');
 
   const handleSearch = () => {
     window.location.replace(
-      `/search?cityDept=${search.city_departure}&cityDest=${search.city_destination}&airline=${search.airline1}&flightClass=${search.flightClass}&flightTrip=${search.flightTrip}&luggage=${search.luggage}&inflight_meal=${search.inflight_meal}&wifi=${search.wifi}`
+      `/search?cityDept=${search.city_departure}&cityDest=${search.city_destination}&airline=${search.airline1}&flightClass=${search.flightClass}&flightTrip=${search.flightTrip}&luggage=${search.luggage}&inflight_meal=${search.inflight_meal}&wifi=${search.wifi}&transit=${search.transit}`
     );
   };
 
@@ -47,20 +54,8 @@ const SeacrhResult = () => {
 
   useEffect(() => {
     // get flight
-    axios
-      .get(
-        `${process.env.REACT_APP_BACKEND_URL}/flight?${!cityDept ? '' : `cityDept=${cityDept}`}&${!cityDest ? '' : `cityDest=${cityDest}`}&${!deptDate ? '' : `deptDate=${deptDate}`}&${!flightTrip ? '' : `flightTrip=${flightTrip}`}&${
-          !person ? '' : `person=${person}`
-        }&${!flightClass ? '' : `flightClass=${flightClass}`}&${!airline ? '' : `airline=${airline}`}&${!luggage ? '' : `luggage=${luggage}`}&${!inflight_meal ? '' : `inflight_meal=${inflight_meal}`}&${!wifi ? '' : `wifi=${wifi}`}`
-      )
-      .then((response) => {
-        // console.log(response.data.data);
-        setData(response.data.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
+    dispatch(getFlight(setData, cityDept, cityDest, deptDate, flightTrip, flightClass, person, airline, luggage, inflight_meal, wifi, transit));
+  }, [dispatch]);
 
   return (
     <section>
@@ -244,19 +239,19 @@ const SeacrhResult = () => {
                           <span>Direct</span>
                         </div>
                         <div className="mt-2 col-md-2">
-                          <input className="form-check-input" type="checkbox" name="flightTrip" value="0" onChange={handleChange} />
+                          <input className="form-check-input" type="checkbox" name="transit" value="0" onChange={handleChange} />
                         </div>
                         <div className="mt-2 col-md-10">
                           <span>Transit</span>
                         </div>
                         <div className="mt-2 col-md-2">
-                          <input className="form-check-input" type="checkbox" name="flightTrip" value="1" onChange={handleChange} />
+                          <input className="form-check-input" type="checkbox" name="transit" value="1" onChange={handleChange} />
                         </div>
                         <div className="mt-2 col-md-10">
                           <span>Trasit 2+</span>
                         </div>
                         <div className="mt-2 col-md-2">
-                          <input className="form-check-input" type="checkbox" name="flightTrip" value="2" onChange={handleChange} />
+                          <input className="form-check-input" type="checkbox" name="transit" value="2" onChange={handleChange} />
                         </div>
                       </div>
                     </div>

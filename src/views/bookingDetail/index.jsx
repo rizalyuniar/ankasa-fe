@@ -8,25 +8,22 @@ import { useParams } from 'react-router-dom';
 
 const BookingDetail = () => {
   // get booking detail
-  const [detail, setDetail] = useState({});
-  const { id } = useParams();
-
-  const getDetail = async () => {
-    try {
-      const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/booking/${id}`);
-      console.log(response.data.data);
-      return response.data.data;
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const [detail, setDetail] = useState([]);
+  console.log(detail);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const data = await getDetail();
-      setDetail(data);
-    };
-    fetchData();
+    const token = localStorage.getItem('token');
+
+    axios
+      .get(`${process.env.REACT_APP_BACKEND_URL}/booking/user`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        setDetail(res.data.data);
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   return (
@@ -37,7 +34,7 @@ const BookingDetail = () => {
           <div className="ticket-flight">
             <div className="row">
               <div className="col-auto">
-                <h4>Booking Pass</h4>
+                <h4 className="fw-bold">Booking Pass</h4>
               </div>
               <div className="col-auto titik-tiga">
                 <img src={require('../../assets/Ellipse 5.png')} />
@@ -52,7 +49,7 @@ const BookingDetail = () => {
                     <div className="ticket-flight-main-left">
                       <div className="row">
                         <div className="col-auto">
-                          <img src={row.image} width={100} height={50} />
+                          <img src={row.image} width={200} style={{ objectFit: 'cover' }} />
                         </div>
                         <div className="pt-3 col-auto">
                           <h3>

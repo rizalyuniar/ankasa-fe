@@ -6,11 +6,12 @@ import { useEffect } from 'react';
 import imageLogin1 from '../../../assets/Group 29.png';
 import imageLogin2 from '../../../assets/google.png';
 import imageLogin3 from '../../../assets/Facebook.png';
-import axios from 'axios';
-import Swal from 'sweetalert2';
+import { useDispatch } from 'react-redux';
+import { loginUser } from '../../../redux/action/userAction';
 
 export default function Login() {
   const router = useNavigate();
+  const dispatch = useDispatch();
 
   const toResetPassword = () => {
     return router('/forgotpassword');
@@ -34,43 +35,7 @@ export default function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    axios
-      .post(`${process.env.REACT_APP_BACKEND_URL}/user/login`, login)
-      .then((res) => {
-        console.log(res);
-        if (res.data.message !== 'login is successful') {
-          Swal.fire({
-            icon: 'error',
-            title: `${res.data.message}`,
-            text: 'Something went wrong!',
-          });
-        } else {
-          Swal.fire(`${res.data.message}`, 'You clicked the button!', 'success');
-          const token = res.data.data.token;
-          const id = res.data.data.id;
-          const fullname = res.data.data.fullname;
-          const email = res.data.data.email;
-          const phone_number = res.data.data.phone_number;
-          const image = res.data.data.image;
-
-          localStorage.setItem('token', token);
-          localStorage.setItem('users', JSON.stringify(res.data.data));
-          localStorage.setItem('id', id);
-          localStorage.setItem('fullname', fullname);
-          localStorage.setItem('email', email);
-          localStorage.setItem('phone_number', phone_number);
-          localStorage.setItem('image', image);
-          router('/');
-        }
-      })
-      .catch((err) =>
-        Swal.fire({
-          icon: 'error',
-          title: `${err.response.message}`,
-          text: 'Something went wrong!',
-        })
-      );
+    dispatch(loginUser(login, router));
   };
 
   return (

@@ -15,6 +15,7 @@ const Admin = () => {
   const [airlines, setAirlines] = useState([]);
   const [flight, setFlight] = useState([]);
   const [city, setCity] = useState([]);
+  const [booking, setBooking] = useState([]);
 
   useEffect(() => {
     setFullname(localStorage.getItem('fullname'));
@@ -35,10 +36,19 @@ const Admin = () => {
       })
       .catch((err) => console.log(err));
 
+    // get city
     axios
       .get(`${process.env.REACT_APP_BACKEND_URL}/city`)
       .then((res) => {
         setCity(res.data.data);
+      })
+      .catch((err) => console.log(err));
+
+    // get booking
+    axios
+      .get(`${process.env.REACT_APP_BACKEND_URL}/booking`)
+      .then((res) => {
+        setBooking(res.data.data);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -66,6 +76,10 @@ const Admin = () => {
 
                 <div className="col-xl-3 col-md-6 mb-4">
                   <DashboardDetail title="City" count={city.length} icon="bi bi-map" accsent="border-left-primary" />
+                </div>
+
+                <div className="col-xl-3 col-md-6 mb-4">
+                  <DashboardDetail title="Booking" count={booking.length} icon="bi bi-cash-stack" accsent="border-left-primary" />
                 </div>
               </div>
             </div>
