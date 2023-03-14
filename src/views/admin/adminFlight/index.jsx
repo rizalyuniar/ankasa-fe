@@ -39,10 +39,12 @@ const AdminFlight = () => {
     gate: '',
   });
 
+  console.log(flight);
+
   // get Data
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API}/flight`)
+      .get(`${process.env.REACT_APP_BACKEND_URL}/flight`)
       .then((res) => {
         setGetFlights(res.data.data);
       })
@@ -74,7 +76,7 @@ const AdminFlight = () => {
         console.log(response);
         Swal.fire({
           title: `${response.data.message}`,
-          text: `New Flight Added`,
+          text: `Flight Created`,
           icon: 'success',
         });
         window.location.reload();
@@ -182,7 +184,7 @@ const AdminFlight = () => {
                           <td className="align-middle text-center">{data.city_departure}</td>
                           <td className="align-middle text-center">{data.city_destination}</td>
                           <td className="align-middle text-center">
-                            {data.datetime_departure} - {data.datetime_arrival}
+                            {data.time_departure} - {data.time_arrival}
                           </td>
                           <td className="align-middle text-center">{data.transit_count} Transit</td>
                           <td className="align-middle text-center">Terminal {data.terminal}</td>
@@ -258,12 +260,12 @@ const AdminFlight = () => {
                 <div className="wrapper d-flex gap-5">
                   <div className="wrapper-time">
                     <label className={style.time}>Arrival Date</label>
-                    <input type="date" name="date_arrival" placeholder="Phone Number" value={flight.date_arrival} className={style.input} onChange={handleChange} />
+                    <input type="date" name="date_arrival" value={flight.date_arrival} className={style.input} onChange={handleChange} />
                   </div>
 
                   <div className="wrapper-time">
                     <label className={style.time}>Arrival Time</label>
-                    <input type="time" name="time_arrival" placeholder="Phone Number" value={flight.time_arrival} className={style.input} onChange={handleChange} />
+                    <input type="time" name="time_arrival" value={flight.time_arrival} className={style.input} onChange={handleChange} />
                   </div>
                 </div>
 

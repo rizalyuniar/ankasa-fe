@@ -21,3 +21,9 @@
 .tableColumnWebsite {
   font-size: 14px;
 }
+
+.tableColumnDescription {
+  font-size: 14px;
+  width: 500px !important;
+  overflow: auto !important;
+}
