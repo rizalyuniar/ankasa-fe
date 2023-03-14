@@ -21,7 +21,7 @@ const Admin = () => {
 
     // get Airline
     axios
-      .get(`${process.env.REACT_APP_API}/airline`)
+      .get(`${process.env.REACT_APP_BACKEND_URL}/airline`)
       .then((res) => {
         setAirlines(res.data.data);
       })
@@ -29,14 +29,14 @@ const Admin = () => {
 
     // get Flight
     axios
-      .get(`${process.env.REACT_APP_API}/flight`)
+      .get(`${process.env.REACT_APP_BACKEND_URL}/flight`)
       .then((res) => {
         setFlight(res.data.data);
       })
       .catch((err) => console.log(err));
 
     axios
-      .get(`${process.env.REACT_APP_API}/city`)
+      .get(`${process.env.REACT_APP_BACKEND_URL}/city`)
       .then((res) => {
         setCity(res.data.data);
       })

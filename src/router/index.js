@@ -59,7 +59,7 @@ const Router = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!socket && token) {
-      const res = io(`http://localhost:4000`, {
+      const res = io(`https://ankasa-backend-production.up.railway.app`, {
         query: {
           token: token,
         },
@@ -83,7 +83,8 @@ const Router = () => {
             path="/booking/:id"
             element={
               <Auth>
-                <BookingDetail />
+                {" "}
+                <BookingDetail />{" "}
               </Auth>
             }
           />
@@ -91,6 +92,7 @@ const Router = () => {
             path="/flight/:id"
             element={
               <Auth>
+                {" "}
                 <FlightDetail />
               </Auth>
             }
@@ -99,6 +101,7 @@ const Router = () => {
             path="/profile/:id"
             element={
               <Auth>
+                {" "}
                 <Profile />
               </Auth>
             }
@@ -107,6 +110,7 @@ const Router = () => {
             path="/mybooking/:id"
             element={
               <Auth>
+                {" "}
                 <MyBooking />
               </Auth>
             }
@@ -115,7 +119,8 @@ const Router = () => {
             path="/updateProfile/:id"
             element={
               <Auth>
-                <UpdateProfile />
+                {" "}
+                <UpdateProfile />{" "}
               </Auth>
             }
           />
@@ -123,7 +128,8 @@ const Router = () => {
             path="/admin"
             element={
               <Auth>
-                <Admin />
+                {" "}
+                <Admin />{" "}
               </Auth>
             }
           />
@@ -131,6 +137,7 @@ const Router = () => {
             path="/admin/airlines"
             element={
               <Auth>
+                {" "}
                 <Airlines />
               </Auth>
             }
@@ -139,7 +146,8 @@ const Router = () => {
             path="/admin/flight"
             element={
               <Auth>
-                <AdminFlight />
+                {" "}
+                <AdminFlight />{" "}
               </Auth>
             }
           />
@@ -147,11 +155,11 @@ const Router = () => {
             path="/admin/payment"
             element={
               <Auth>
-                <AdminPayment />
+                {" "}
+                <AdminPayment />{" "}
               </Auth>
             }
           />
-
           <Route path="/login/admin" element={<AdminLogin />} />
           <Route
             path="/destination"
@@ -170,7 +178,7 @@ const Router = () => {
             }
           />
           <Route
-            path="/chat"
+            path="/chat/:id"
             element={
               <Auth>
                 <Chat socket={socket} />

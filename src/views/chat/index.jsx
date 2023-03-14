@@ -6,7 +6,6 @@ import Footer from "../../components/footer/index";
 
 const Chat = ({ socket }) => {
   const [role, setRole] = useState("");
-
   // messaging states
   const [user, setUser] = useState({});
   const [message, setMessage] = useState("");

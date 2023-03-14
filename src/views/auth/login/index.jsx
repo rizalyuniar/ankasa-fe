@@ -125,9 +125,13 @@ export default function Login() {
                   </button>
                 </div>
                 <div className="text-center mt-4">
-                  <a href="/login/admin" className="btn text-wrap">
+                  <button
+                    type="button"
+                    className={style.tapBtn}
+                    onClick={toLoginAdmin}
+                  >
                     Login as admin
-                  </a>
+                  </button>
                 </div>
                 <hr className="mt-4" />
                 <div className="text-center mt-3">
