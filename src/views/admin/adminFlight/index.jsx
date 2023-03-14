@@ -69,7 +69,7 @@ const AdminFlight = () => {
     e.preventDefault();
 
     axios
-      .post(`${process.env.REACT_APP_API}/flight`, flight)
+      .post(`${process.env.REACT_APP_BACKEND_URL}/flight`, flight)
       .then((response) => {
         console.log(response);
         Swal.fire({
@@ -88,7 +88,7 @@ const AdminFlight = () => {
   // delete
   const handleDelete = (id) => {
     axios
-      .delete(`${process.env.REACT_APP_API}/flight/${id}`)
+      .delete(`${process.env.REACT_APP_BACKEND_URL}/flight/${id}`)
       .then((response) => {
         console.log(response);
         Swal.fire({

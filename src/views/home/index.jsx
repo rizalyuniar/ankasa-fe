@@ -3,7 +3,6 @@ import Navbar from '../../components/navbar';
 import style from './style.module.css';
 import accsent1 from '../../assets/bali.jpg';
 import accsent2 from '../../assets/agra.jpg';
-import imgTrend from '../../assets/bali.jpg';
 import CardTrending from '../../components/cardTrending';
 import CardCarousel from '../../components/cardCarousel';
 
@@ -16,7 +15,7 @@ const Index = () => {
   useEffect(() => {
     // get city
     axios
-      .get(`${process.env.REACT_APP_API}/city?limit=4`)
+      .get(`${process.env.REACT_APP_BACKEND_URL}/city?limit=4`)
       .then((res) => {
         setCity(res.data.data);
       })

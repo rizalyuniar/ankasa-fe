@@ -21,7 +21,7 @@ const Airlines = () => {
   useEffect(() => {
     // get data
     axios
-      .get(`${process.env.REACT_APP_API}/airline`)
+      .get(`${process.env.REACT_APP_BACKEND_URL}/airline`)
       .then((res) => {
         setGetAirLines(res.data.data);
       })
@@ -52,7 +52,7 @@ const Airlines = () => {
     }
 
     axios
-      .post(`${process.env.REACT_APP_API}/airline`, formData, {
+      .post(`${process.env.REACT_APP_BACKEND_URL}/airline`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -82,7 +82,7 @@ const Airlines = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`${process.env.REACT_APP_API}/airline/${id}`)
+          .delete(`${process.env.REACT_APP_BACKEND_URL}/airline/${id}`)
           .then((response) => {
             Swal.fire(`${response.data.message}`, 'Your file has been deleted.', 'success');
           })
@@ -93,11 +93,15 @@ const Airlines = () => {
   };
 
   // visibility
-  let availability = false;
+  const [availibility, setAvailibility] = useState({
+    availability: '',
+  });
+
+  let availability = true;
 
   const handleVisibility = (id) => {
     axios
-      .post(`${process.env.REACT_APP_API}/airline/${id}/availability`, availability)
+      .post(`${process.env.REACT_APP_BACKEND_URL}/airline/${id}/availability`, availibility)
       .then((res) => {
         console.log(res.data);
         // window.location.reload();
@@ -155,7 +159,9 @@ const Airlines = () => {
                           <img src={data.image} style={{ height: '25px', objectFit: 'cover' }} alt="airline" />
                         </td>
                         <td className={`align-middle ${style.tableColumn}`}>{data.name}</td>
-                        <td className={`align-middle ${style.tableColumnWebsite}`}>{data.website}</td>
+                        <td className={`align-middle ${style.tableColumnWebsite}`}>
+                          <a href={data.website}> {data.website}</a>
+                        </td>
 
                         <td className={`align-middle ${style.tableColumnWebsite}`}>{data.email}</td>
                         <td className={`align-middle ${style.tableColumn}`}>{data.phone_number}</td>

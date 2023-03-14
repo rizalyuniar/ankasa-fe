@@ -19,7 +19,7 @@ const AdminCity = () => {
   useEffect(() => {
     // get data
     axios
-      .get(`${process.env.REACT_APP_API}/city`)
+      .get(`${process.env.REACT_APP_BACKEND_URL}/city`)
       .then((res) => {
         setCity(res.data.data);
       })
@@ -50,7 +50,7 @@ const AdminCity = () => {
     }
 
     axios
-      .post(`${process.env.REACT_APP_API}/city`, formData, {
+      .post(`${process.env.REACT_APP_BACKEND_URL}/city`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -79,7 +79,7 @@ const AdminCity = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`${process.env.REACT_APP_API}/city/${id}`)
+          .delete(`${process.env.REACT_APP_BACKEND_URL}/city/${id}`)
           .then((response) => {
             Swal.fire(`${response.data.message}`, 'Your file has been deleted.', 'success');
             window.location.reload();

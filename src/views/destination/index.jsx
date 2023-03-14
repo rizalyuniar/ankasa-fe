@@ -11,7 +11,7 @@ const Destination = () => {
   useEffect(() => {
     // get city
     axios
-      .get(`${process.env.REACT_APP_API}/city`)
+      .get(`${process.env.REACT_APP_BACKEND_URL}/city`)
       .then((res) => {
         setCity(res.data.data);
       })
