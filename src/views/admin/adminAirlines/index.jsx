@@ -23,6 +23,7 @@ const Airlines = () => {
     axios
       .get(`${process.env.REACT_APP_BACKEND_URL}/airline`)
       .then((res) => {
+        console.log(res.data.data);
         setGetAirLines(res.data.data);
       })
       .catch((err) => console.log(err));
@@ -92,19 +93,32 @@ const Airlines = () => {
     window.location.reload();
   };
 
-  // visibility
-  const [availibility, setAvailibility] = useState({
-    availability: '',
+  // hide
+  const [hide, setHide] = useState({
+    availability: 'false',
   });
 
-  let availability = true;
+  const [availibility, setAvailibility] = useState({
+    availability: 'true',
+  });
+
+  const handleHide = (id) => {
+    axios
+      .post(`${process.env.REACT_APP_BACKEND_URL}/airline/${id}/availability`, hide)
+      .then((res) => {
+        console.log(res.data);
+        window.location.reload();
+      })
+      .catch((err) => console.log(err));
+  };
 
   const handleVisibility = (id) => {
     axios
       .post(`${process.env.REACT_APP_BACKEND_URL}/airline/${id}/availability`, availibility)
       .then((res) => {
         console.log(res.data);
-        // window.location.reload();
+        console.log('success');
+        window.location.reload();
       })
       .catch((err) => console.log(err));
   };
@@ -174,16 +188,12 @@ const Airlines = () => {
 
                         <td className="align-middle text-center">
                           <div className="container d-flex gap-1">
-                            {data.availability == true ? (
+                            {data.availability === 'true' ? (
                               <button
                                 type="button"
                                 className="btn btn-warning btn-sm me-2"
                                 onClick={() => {
-                                  availability = false;
-                                  // setVisibility((prev) => {
-                                  //   return { ...prev, availability: false };
-                                  // });
-                                  handleVisibility(data.id);
+                                  handleHide(data.id);
                                 }}
                               >
                                 <i className="bi bi-eye-slash" />
@@ -193,10 +203,6 @@ const Airlines = () => {
                                 type="button"
                                 className="btn btn-warning btn-sm me-2"
                                 onClick={() => {
-                                  availability = true;
-                                  // setVisibility((prev) => {
-                                  //   return { ...prev, availability: true };
-                                  // });
                                   handleVisibility(data.id);
                                 }}
                               >

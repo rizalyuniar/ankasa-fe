@@ -1,13 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import style from './style.module.css';
 import Navbar from '../../components/navbar';
 import ProfileCard from '../../components/profileCard';
 
 import CardBooking from '../../components/cardBooking';
 import Footer from '../../components/footer';
+import { useParams } from 'react-router';
+import axios from 'axios';
 
-const myBooking = () => {
-  // const { id } = useParams();
+const MyBooking = () => {
+  const [myBooking, setMyBooking] = useState([]);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+
+    axios
+      .get(`${process.env.REACT_APP_BACKEND_URL}/booking/user`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        setMyBooking(res.data.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <body className={style.body}>
@@ -27,10 +44,9 @@ const myBooking = () => {
                 <button className={style.orderHistory}>Order History</button>
               </div>
             </div>
-
-            <CardBooking approved={false} date="Monday, 20 July 2020 - 12:33" from="IDN" destination="JPN" airlines="Garuda Indonesia, AB-22" />
-
-            <CardBooking approved={true} date="Monday, 20 July 2020 - 12:33" from="Jakarta" destination="Medan" airlines="Citilink, AB-22" />
+            {myBooking.map((data) => (
+              <CardBooking id={data.id} status={data.status} date="Monday, 20 July 2020 - 12:33" from={data.city_departure_code} destination={data.city_destination_code} airlines={`Garuda Indonesia, AB-22`} />
+            ))}
           </div>
         </div>
       </div>
@@ -39,4 +55,4 @@ const myBooking = () => {
   );
 };
 
-export default myBooking;
+export default MyBooking;

@@ -375,7 +375,7 @@ const SeacrhResult = () => {
                             <div className="col-auto">
                               <div className="row">
                                 <div className="col-auto">
-                                  <span className="text-secondary">2 jam - 1 hours</span>
+                                  <span className="text-secondary">2 hours</span>
                                 </div>
                                 <div>
                                   <span className="text-secondary">{row.transit_count} Transit</span>

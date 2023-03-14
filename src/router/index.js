@@ -15,7 +15,7 @@ import Home from "../views/home/index";
 import Search from "../views/search";
 import BookingDetail from "../views/bookingDetail";
 import FlightDetail from "../views/flightDetail";
-import MyBooking from "../views/myBooking";
+
 import Profile from "../views/profile";
 import UpdateProfile from "../views/updateProfile";
 import Admin from "../views/admin/dashboard";
@@ -29,6 +29,7 @@ import Destination from "../views/destination";
 import DetailDestination from "../views/detailDestination";
 import Chat from "../views/chat/index";
 import AdminCity from "../views/admin/adminCity";
+import MyBooking from "../views/myBooking";
 
 const ScrollToTop = ({ children }) => {
   const { pathname } = useLocation();
@@ -59,7 +60,7 @@ const Router = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!socket && token) {
-      const res = io(`http://localhost:4000`, {
+      const res = io(`https://ankasa-backend-production.up.railway.app`, {
         query: {
           token: token,
         },
@@ -79,20 +80,120 @@ const Router = () => {
           <Route path="/verifEmail" element={<VerifEmail />} />
           <Route path="/notfound" element={<Page404 />} />
           <Route path="/search" element={<Search />} />
-          <Route path="/booking/:id" element={<Auth> <BookingDetail /> </Auth>} />
-          <Route path="/flight/:id" element={<Auth> <FlightDetail /></Auth>} />
-          <Route path="/profile/:id" element={<Auth> <Profile /></Auth>} />
-          <Route path="/mybooking/:id" element={<Auth> <MyBooking /></Auth>} />
-          <Route path="/updateProfile/:id" element={<Auth> <UpdateProfile /> </Auth>} />
-          <Route path="/admin" element={<Auth> <Admin /> </Auth>} />
-          <Route path="/admin/airlines" element={<Auth> <Airlines /></Auth>} />
-          <Route path="/admin/flight" element={<Auth> <AdminFlight /> </Auth>} />
-          <Route path="/admin/payment" element={<Auth> <AdminPayment /> </Auth>} />
+          <Route
+            path="/booking/:id"
+            element={
+              <Auth>
+                {" "}
+                <BookingDetail />{" "}
+              </Auth>
+            }
+          />
+          <Route
+            path="/flight/:id"
+            element={
+              <Auth>
+                {" "}
+                <FlightDetail />
+              </Auth>
+            }
+          />
+          <Route
+            path="/profile/:id"
+            element={
+              <Auth>
+                {" "}
+                <Profile />
+              </Auth>
+            }
+          />
+          <Route
+            path="/mybooking/:id"
+            element={
+              <Auth>
+                {" "}
+                <MyBooking />
+              </Auth>
+            }
+          />
+          <Route
+            path="/updateProfile/:id"
+            element={
+              <Auth>
+                {" "}
+                <UpdateProfile />{" "}
+              </Auth>
+            }
+          />
+          <Route
+            path="/admin"
+            element={
+              <Auth>
+                {" "}
+                <Admin />{" "}
+              </Auth>
+            }
+          />
+          <Route
+            path="/admin/airlines"
+            element={
+              <Auth>
+                {" "}
+                <Airlines />
+              </Auth>
+            }
+          />
+          <Route
+            path="/admin/flight"
+            element={
+              <Auth>
+                {" "}
+                <AdminFlight />{" "}
+              </Auth>
+            }
+          />
+          <Route
+            path="/admin/payment"
+            element={
+              <Auth>
+                {" "}
+                <AdminPayment />{" "}
+              </Auth>
+            }
+          />
           <Route path="/login/admin" element={<AdminLogin />} />
-          <Route path="/destination" element={<Destination />} />
-          <Route path="/destination/:id" element={<DetailDestination />} />
-          <Route path="/chat" element={<Auth><Chat socket={socket} /> </Auth>} />
-          <Route path="/admin/city" element={<Auth> <AdminCity />  </Auth>} />
+          <Route
+            path="/destination"
+            element={
+              <Auth>
+                <Destination />
+              </Auth>
+            }
+          />
+          <Route
+            path="/destination/:id"
+            element={
+              <Auth>
+                <DetailDestination />
+              </Auth>
+            }
+          />
+          <Route
+            path="/chat/:id"
+            element={
+              <Auth>
+                <Chat socket={socket} />
+              </Auth>
+            }
+          />
+          <Route
+            path="/admin/city"
+            element={
+              <Auth>
+                <AdminCity />
+              </Auth>
+            }
+          />
         </Routes>
       </ScrollToTop>
     </BrowserRouter>
