@@ -111,11 +111,18 @@ export default function Login() {
                 </div>
                 <div className="text-center mb-3">
                   <button type="button" className={style.tapBtn} onClick={""}>
-                    Tap here for reset
+                    <a href="/forgotpassword" className={style.noUnderline}>
+                      Tap here for reset
+                    </a>
                   </button>
                 </div>
-                <hr className="mt-5" />
-                <div className="text-center mt-2">
+                <div className="text-center mt-4">
+                  <a href="/admin" className="btn text-wrap">
+                    Login as admin
+                  </a>
+                </div>
+                <hr className="mt-4" />
+                <div className="text-center mt-3">
                   <p>Or sign in with</p>
                 </div>
                 <div className="text-center mb-3">

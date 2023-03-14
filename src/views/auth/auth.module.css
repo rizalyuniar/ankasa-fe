@@ -33,7 +33,7 @@
   border-bottom: 1px solid #bebebe;
   background: transparent;
   padding-left: 15px;
-  padding-bottom: 15px;
+  padding-bottom: 5px;
 }
 
 .formBox .formInput input::placeholder {
@@ -69,6 +69,11 @@
   height: 25px;
   text-align: center;
   color: #2395ff;
+  text-decoration: "none";
+}
+
+.noUnderline {
+  text-decoration: none;
 }
 
 .socBtn {
