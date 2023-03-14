@@ -184,6 +184,14 @@
   color: white !important;
 }
 @media only screen and (max-width: 720px) {
+  .cstmButton {
+    width: 100% !important;
+    background-color: #2395ff !important;
+    color: white !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+  }
+
   .rightside {
     margin-top: 50px !important;
   }
