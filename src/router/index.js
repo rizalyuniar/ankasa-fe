@@ -165,17 +165,13 @@ const Router = () => {
           <Route
             path="/destination"
             element={
-              <Auth>
-                <Destination />
-              </Auth>
+              <Destination />
             }
           />
           <Route
             path="/destination/:id"
             element={
-              <Auth>
-                <DetailDestination />
-              </Auth>
+              <DetailDestination />
             }
           />
           <Route
