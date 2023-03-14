@@ -26,9 +26,9 @@ const CardBooking = (props) => {
         </div>
 
         <div className={style.wrapperButton}>
-          <button type="button" className={style.refund}>
+          {/* <button type="button" className={style.refund}>
             Refund
-          </button>
+          </button> */}
           <button type="button" className={style.cancel}>
             Cancel
           </button>

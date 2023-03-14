@@ -133,6 +133,11 @@
   border: 1px solid var(--backgroundColor);
 }
 
+.rowCarousel {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  overflow-x: auto !important;
+}
 /* .accsentFlight {
   position: absolute;
   width: 400px;

@@ -31,7 +31,7 @@ const Navbar = () => {
   };
 
   const handleSearch = () => {
-    window.location.replace(`/search?cityDept=${flight.city_departure}&&cityDest=${flight.city_destination}&deptDate=${flight.time_departure}&flightTrip=1&flightClass=${flight.flight_class}&person=${flight.person}`);
+    window.location.replace(`/search?cityDept=${flight.city_departure}&cityDest=${flight.city_destination}&deptDate=${flight.time_departure}&flightTrip=1&flightClass=${flight.flight_class}&person=${flight.person}`);
   };
 
   return (

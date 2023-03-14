@@ -151,8 +151,8 @@ const ModelUpdate = ({ getFlight }) => {
               <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">
                 Close
               </button>
-              <button type="submit" className="btn btn-primary">
-                Create
+              <button type="submit" className="btn btn-outline-primary">
+                Update
               </button>
             </div>
           </form>
