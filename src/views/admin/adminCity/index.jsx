@@ -13,6 +13,7 @@ const AdminCity = () => {
   const [createCity, setCreateCity] = useState({
     name: '',
     country: '',
+    description: '',
     image: '',
   });
 
@@ -119,6 +120,10 @@ const AdminCity = () => {
                     </th>
 
                     <th scope="col" className="align-middle text-center">
+                      Description
+                    </th>
+
+                    <th scope="col" className="align-middle text-center">
                       Action
                     </th>
                   </tr>
@@ -133,6 +138,7 @@ const AdminCity = () => {
                         </td>
                         <td className={`align-middle text-center ${style.tableColumn}`}>{data.name}</td>
                         <td className={`align-middle text-center ${style.tableColumnWebsite}`}>{data.country}</td>
+                        <td className={`align-middle ${style.tableColumnDescription}`}>{data.description}</td>
 
                         <td className="align-middle text-center">
                           <button type="button" className="btn btn-success btn-sm me-2" data-bs-toggle="modal" data-bs-target={`#update${data.id}`}>
@@ -173,8 +179,8 @@ const AdminCity = () => {
             <form onSubmit={handleSubmit}>
               <div className="modal-body">
                 <input type="text" name="name" placeholder="Name" value={createCity.name} className={style.input} onChange={handleChange} />
-
                 <input type="text" name="country" placeholder="Country" value={createCity.country} className={style.input} onChange={handleChange} />
+                <input type="text" name="description" placeholder="Description" value={createCity.description} className={style.input} onChange={handleChange} />
 
                 <div className="mb-3">
                   <input className="mt-2" type="file" id="formFile" onChange={handleUpload} />

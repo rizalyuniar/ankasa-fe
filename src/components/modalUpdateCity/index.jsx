@@ -64,8 +64,8 @@ const ModalUpdateCity = ({ city }) => {
           <form onSubmit={handleSubmit}>
             <div className="modal-body">
               <input type="text" name="name" placeholder="Name" value={updateCity.name} className={style.input} onChange={handleChangeUpdate} />
-
               <input type="text" name="country" placeholder="Country" value={updateCity.country} className={style.input} onChange={handleChangeUpdate} />
+              <input type="text" name="description" placeholder="Description" value={updateCity.description} className={style.input} onChange={handleChangeUpdate} />
 
               <div className="mb-3">
                 <input className="mt-2" type="file" id="formFile" onChange={handleUpload} />
@@ -75,8 +75,8 @@ const ModalUpdateCity = ({ city }) => {
               <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">
                 Close
               </button>
-              <button type="submit" className="btn btn-primary">
-                Save changes
+              <button type="submit" className="btn btn-outline-primary">
+                Update
               </button>
             </div>
           </form>

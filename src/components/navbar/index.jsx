@@ -31,7 +31,7 @@ const Navbar = () => {
   };
 
   const handleSearch = () => {
-    window.location.replace(`/search?cityDept=${flight.city_departure}&&cityDest=${flight.city_destination}&deptDate=${flight.time_departure}&flightTrip=1&flightClass=${flight.flight_class}&person=${flight.person}`);
+    window.location.replace(`/search?cityDept=${flight.city_departure}&cityDest=${flight.city_destination}&deptDate=${flight.time_departure}&flightTrip=1&flightClass=${flight.flight_class}&person=${flight.person}`);
   };
 
   return (
@@ -51,7 +51,7 @@ const Navbar = () => {
             <ul className={`navbar-nav mx-auto ${style.navbarNav}`}>
               <form className="d-flex my-3 mx-lg-4 mx-md-0 mx-sm-0 position-relative" role="search">
                 <i className={`${style.iconSearch} bi bi-search`} />
-                <input className={`${style.formControl} me-2`} type="search" placeholder="Where you want to go?" />
+                <input className={`${style.formControl} me-2`} type="search" placeholder="Where you want to go?" onClick={() => window.location.replace('/search')} />
               </form>
 
               <li className={`nav-item mx-lg-4 mx-md-0 mx-sm-0 my-lg-3 mx-md-0 my-sm-0`}>

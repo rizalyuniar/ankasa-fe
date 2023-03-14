@@ -1,4 +1,5 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import Footer from '../../../components/Admin/Footer';
 import PageHeading from '../../../components/Admin/PageHeading';
 import Sidebar from '../../../components/Admin/Sidebar';
@@ -6,7 +7,52 @@ import Topbar from '../../../components/Admin/Topbar';
 import style from './payment.module.css';
 
 const AdminPayment = () => {
-  let approve = 6;
+  const [booking, setBooking] = useState([]);
+  const [reject, setReject] = useState({
+    status: 3,
+  });
+  const [approve, setApprove] = useState({
+    status: 2,
+  });
+
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_BACKEND_URL}/booking`)
+      .then((res) => {
+        setBooking(res.data.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  const handleStatusReject = (id) => {
+    const token = localStorage.getItem('token');
+    axios
+      .post(`${process.env.REACT_APP_BACKEND_URL}/booking/status/${id}`, reject, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        console.log(`success`);
+        window.location.reload();
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleStatusApprove = (id) => {
+    const token = localStorage.getItem('token');
+    axios
+      .post(`${process.env.REACT_APP_BACKEND_URL}/booking/status/${id}`, approve, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        console.log(`success`);
+        window.location.reload();
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <body id="page-top">
@@ -54,39 +100,45 @@ const AdminPayment = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td className="align-middle text-center py-3">Mike Korzovski</td>
-                    <td className="align-middle text-center">Garuda Indonesia</td>
-                    <td className="align-middle text-center">Garuda Indonesia</td>
+                  {booking.map((data) => (
+                    <tr>
+                      <td className="align-middle text-center py-3">{data.fullname}</td>
+                      <td className="align-middle">{data.id}</td>
+                      <td className="align-middle text-center">{data.airline}</td>
 
-                    <td className="align-middle text-center">Jakarta - Bali</td>
-                    <td className="align-middle text-center">13:00 - 14:30</td>
-                    <td className="align-middle text-center">
-                      {approve == 1 ? (
-                        <p className={style.statusWaiting}>Waiting Payment</p>
-                      ) : approve == 2 ? (
-                        <p className={style.statusApprove}>Approve</p>
-                      ) : approve == 3 ? (
-                        <p className={style.statusPending}>Reject</p>
-                      ) : approve == 4 ? (
-                        <p className={style.statusCancel}>Cancel</p>
-                      ) : approve == 5 ? (
-                        <p className={style.statusRefund}>Refund</p>
-                      ) : (
-                        <p className={style.statusPending}>Expired</p>
-                      )}
-                    </td>
+                      <td className="align-middle text-center">
+                        {data.city_departure_code} - {data.city_destination_code}
+                      </td>
+                      <td className="align-middle text-center">
+                        {data.time_departure} - {data.arrival}
+                      </td>
+                      <td className="align-middle text-center">
+                        {data.status == 1 ? (
+                          <p className={style.statusWaiting}>Waiting Payment</p>
+                        ) : data.status == 2 ? (
+                          <p className={style.statusApprove}>E-Ticket Issued</p>
+                        ) : data.status == 3 ? (
+                          <p className={style.statusPending}>Reject</p>
+                        ) : data.status == 4 ? (
+                          <p className={style.statusCancel}>Cancel</p>
+                        ) : data.status == 5 ? (
+                          <p className={style.statusRefund}>Refund</p>
+                        ) : (
+                          <p className={style.statusPending}>Expired</p>
+                        )}
+                      </td>
 
-                    <td className="align-middle text-center">
-                      <button type="button" className="btn btn-success btn-sm me-2" data-bs-toggle="modal" data-bs-target="#update">
-                        <i className="bi bi-check2" />
-                      </button>
+                      <td className="align-middle text-center">
+                        <button type="button" className="btn btn-success btn-sm me-2" onClick={() => handleStatusApprove(data.id)}>
+                          <i className="bi bi-check2" />
+                        </button>
 
-                      <button className="btn btn-danger btn-sm">
-                        <i className="bi bi-x-circle" />
-                      </button>
-                    </td>
-                  </tr>
+                        <button className="btn btn-danger btn-sm" onClick={() => handleStatusReject(data.id)}>
+                          <i className="bi bi-x-circle" />
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>

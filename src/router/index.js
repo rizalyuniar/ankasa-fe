@@ -15,7 +15,7 @@ import Home from "../views/home/index";
 import Search from "../views/search";
 import BookingDetail from "../views/bookingDetail";
 import FlightDetail from "../views/flightDetail";
-import MyBooking from "../views/myBooking";
+
 import Profile from "../views/profile";
 import UpdateProfile from "../views/updateProfile";
 import Admin from "../views/admin/dashboard";
@@ -29,6 +29,7 @@ import Destination from "../views/destination";
 import DetailDestination from "../views/detailDestination";
 import Chat from "../views/chat/index";
 import AdminCity from "../views/admin/adminCity";
+import MyBooking from "../views/myBooking";
 
 const ScrollToTop = ({ children }) => {
   const { pathname } = useLocation();
@@ -182,6 +183,14 @@ const Router = () => {
             element={
               <Auth>
                 <Chat socket={socket} />
+              </Auth>
+            }
+          />
+          <Route
+            path="/admin/city"
+            element={
+              <Auth>
+                <AdminCity />
               </Auth>
             }
           />

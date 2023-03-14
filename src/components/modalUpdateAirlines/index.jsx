@@ -44,7 +44,7 @@ const ModalUpdateAirlines = ({ airline }) => {
         console.log(response);
         Swal.fire({
           title: `${response.data.message}`,
-          text: `New Airlines Added`,
+          text: `Airlines Updated`,
           icon: 'success',
         });
         window.location.reload();

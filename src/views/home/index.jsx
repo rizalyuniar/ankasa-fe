@@ -11,7 +11,28 @@ import axios from 'axios';
 
 const Index = () => {
   const [city, setCity] = useState([]);
+  const [topten, setTopTen] = useState([]);
 
+  // pagination
+  const [pagination, setPagination] = useState({});
+  const [counter, setCounter] = useState(1);
+  const [page, setPages] = useState({
+    currentPage: 1,
+    page: 1,
+  });
+
+  const totalPage = Math.ceil(`${pagination.totalData}` / `${pagination.limit}`);
+  const previous = () => {
+    if (counter > 1) {
+      setCounter(counter - 1);
+      // getCityRandom(counter);
+    }
+  };
+
+  const next = () => {
+    setCounter(counter === totalPage ? totalPage : counter + 1);
+    console.log(counter);
+  };
   useEffect(() => {
     // get city
     axios
@@ -20,7 +41,16 @@ const Index = () => {
         setCity(res.data.data);
       })
       .catch((err) => console.log(err));
-  }, []);
+
+    // get city random
+    axios
+      .get(`${process.env.REACT_APP_BACKEND_URL}/city?sortBy=id&sort=desc&limit=6&${page ? `page=${counter}` : ''}`)
+      .then((res) => {
+        setTopTen(res.data.data);
+        setPagination(res.data.pagination);
+      })
+      .catch((err) => console.log(err));
+  }, [counter]);
 
   return (
     <body className={style.body}>
@@ -68,35 +98,19 @@ const Index = () => {
 
         <div className="container ">
           <div className={`row text-center ${style.rowCarousel}`}>
-            <div className="col-lg-2 col-sm-6">
-              <CardCarousel />
-            </div>
-
-            <div className="col-lg-2 col-sm-6">
-              <CardCarousel />
-            </div>
-
-            <div className="col-lg-2 col-sm-6">
-              <CardCarousel />
-            </div>
-
-            <div className="col-lg-2 col-sm-6">
-              <CardCarousel />
-            </div>
-
-            <div className="col-lg-2 col-sm-6">
-              <CardCarousel />
-            </div>
-
-            <div className="col-lg-2 col-sm-6">
-              <CardCarousel />
-            </div>
+            {topten.map((data) => (
+              <div className="col-lg-2 col-sm-6">
+                <CardCarousel image={data.image} title={data.name} />
+              </div>
+            ))}
           </div>
+
           <div className={style.wrapperButton}>
-            <button className={style.arrowLeft}>
+            <button className={style.arrowLeft} onClick={previous}>
               <i className="bi bi-chevron-left" />
             </button>
-            <button className={style.arrowLeft}>
+
+            <button className={style.arrowLeft} onClick={next}>
               <i className="bi bi-chevron-right" />
             </button>
           </div>
