@@ -9,13 +9,13 @@ import { useParams } from 'react-router-dom';
 const BookingDetail = () => {
   // get booking detail
   const [detail, setDetail] = useState([]);
-  console.log(detail);
+  const { id } = useParams();
 
   useEffect(() => {
     const token = localStorage.getItem('token');
 
     axios
-      .get(`${process.env.REACT_APP_BACKEND_URL}/booking/user`, {
+      .get(`${process.env.REACT_APP_BACKEND_URL}/booking/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

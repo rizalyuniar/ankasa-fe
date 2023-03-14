@@ -86,7 +86,7 @@ const CardBooking = (props) => {
         </div>
       </div>
 
-      <button type="button" className={`mt-4 ${style.buttonDetail}`} onClick={() => navigate(`/booking/user`)}>
+      <button type="button" className={`mt-4 ${style.buttonDetail}`} onClick={() => navigate(`/booking/${props.id}`)}>
         View Detail
       </button>
     </div>
