@@ -169,7 +169,7 @@ const Router = () => {
             }
           />
           <Route
-            path="/chat"
+            path="/chat/:id"
             element={
               <Auth>
                 <Chat socket={socket} />
