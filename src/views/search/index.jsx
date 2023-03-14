@@ -20,7 +20,6 @@ const SeacrhResult = () => {
     wifi: '',
   });
 
-  // console.log(`${search.airline1} | ${search.airline2} | ${search.airline3}`);
   const [searchParams, setSearchParams] = useSearchParams();
   const cityDept = searchParams.get('cityDept');
   const cityDest = searchParams.get('cityDest');
@@ -33,15 +32,10 @@ const SeacrhResult = () => {
   const inflight_meal = searchParams.get('inflight_meal');
   const wifi = searchParams.get('wifi');
 
-  // const [airline, setAirline] = useState([]);
-
-  // console.log(data);
-
   const handleSearch = () => {
     window.location.replace(
       `/search?cityDept=${search.city_departure}&cityDest=${search.city_destination}&airline=${search.airline1}&flightClass=${search.flightClass}&flightTrip=${search.flightTrip}&luggage=${search.luggage}&inflight_meal=${search.inflight_meal}&wifi=${search.wifi}`
     );
-    // window.location.replace(`/search?cityDept=${search.city_departure}&cityDest=${search.city_destination}&airline=${search}`);
   };
 
   const handleChange = (e) => {
