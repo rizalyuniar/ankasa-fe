@@ -2,7 +2,10 @@ import style from './cardBooking.module.css';
 import React, { useState } from 'react';
 import icon from '../../assets/Vector2.png';
 import axios from 'axios';
+import { useNavigate, useParams } from 'react-router-dom';
 const CardBooking = (props) => {
+  const navigate = useNavigate();
+
   const [cancel, setCancel] = useState({
     status: 4,
   });
@@ -82,6 +85,10 @@ const CardBooking = (props) => {
           </button>
         </div>
       </div>
+
+      <button type="button" className={`mt-4 ${style.buttonDetail}`} onClick={() => navigate(`/booking/user`)}>
+        View Detail
+      </button>
     </div>
   );
 };
