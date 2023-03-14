@@ -16,6 +16,10 @@ export default function Login() {
     return router("/forgotpassword");
   };
 
+  const toLoginAdmin = () => {
+    return router("/login/admin");
+  };
+
   const [login, setLogin] = useState({
     email: "",
     password: "",

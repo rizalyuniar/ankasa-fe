@@ -1,9 +1,10 @@
-import style from './detail.module.css';
-import React from 'react';
-import Navbar from '../../components/navbar';
-import img from '../../assets/bali.jpg';
-import Footer from '../../components/footer';
-import iconChange from '../../assets/Vector.png';
+import style from "./detail.module.css";
+import React from "react";
+import Navbar from "../../components/navbar";
+import img from "../../assets/bali.jpg";
+import Footer from "../../components/footer";
+import iconChange from "../../assets/Vector.png";
+import imageGaruda from "../../assets/airline.png";
 
 const DetailDestination = () => {
   return (
@@ -23,7 +24,11 @@ const DetailDestination = () => {
           <div className="col-md-6">
             <div className={style.wrapperCard}>
               <div className={style.wrapperAirlines}>
-                <img src="" alt="imageCard" className={style.mgCard} />
+                <img
+                  src={imageGaruda}
+                  alt="imageCard"
+                  className={style.mgCard}
+                />
                 <p className={style.titleCard}>Garuda Indonesia</p>
 
                 <div className={style.wrapper}>
@@ -52,6 +57,23 @@ const DetailDestination = () => {
                     <i class="bi bi-cup-hot-fill" />
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-md-6 mb-4">
+            <div className={style.wrapperCard}>
+              <div className={style.wrapperAirlines}>
+                <h4>The Land of The God</h4>
+                <p className={style.bottom}>
+                  Pulau Bali terkenal dengan julukan sebagai "Pulau Dewata"
+                  karena kentalnya budaya Hindu, seperti banyaknya sesaji untuk
+                  dewata penjaga di berbagai tempat di Bali. Bali adalah pulau
+                  yang sangat indah dengan panjang garis pantai sekitar 633,35
+                  km. Di Pulau Bali terdapat gunung berapi, sungai-sungai, dan
+                  danau. Keberadaan gunung berapi memberikan kesuburan tanah
+                  untuk usaha pertanian.
+                </p>
               </div>
             </div>
           </div>
