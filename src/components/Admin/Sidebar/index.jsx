@@ -6,7 +6,7 @@ const Sidebar = () => {
   return (
     <ul className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
       {/* Sidebar - Brand */}
-      <a className="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a className="sidebar-brand d-flex align-items-center justify-content-center" href="/">
         <div className="sidebar-brand-icon rotate-n-15">
           <i className="bi bi-airplane-fill" />
         </div>
@@ -45,6 +45,14 @@ const Sidebar = () => {
         <Link className="nav-link" to="/admin/payment">
           <i className="bi bi-credit-card-2-back-fill" />
           <span>Payment</span>
+        </Link>
+      </li>
+
+      <hr className="sidebar-divider my-0" />
+      <li className="nav-item">
+        <Link className="nav-link" to="/admin/city">
+          <i className="bi bi-credit-card-2-back-fill" />
+          <span>City</span>
         </Link>
       </li>
 

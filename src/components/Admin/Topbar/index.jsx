@@ -1,7 +1,17 @@
-import React from 'react';
-import image from '../../../assets/profile.png';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+// import image from '../../../assets/profile.png';
 
 const Topbar = () => {
+  const navigate = useNavigate();
+  const [image, setImage] = useState('');
+  const [fullname, setFullname] = useState('');
+
+  useEffect(() => {
+    setFullname(localStorage.getItem('fullname'));
+    setImage(localStorage.getItem('image'));
+  });
+
   return (
     <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
       {/* Sidebar Toggle (Topbar) */}
@@ -94,7 +104,7 @@ const Topbar = () => {
         {/* Nav Item - User Information */}
         <li className="nav-item dropdown no-arrow">
           <a className="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span className="mr-2 d-none d-lg-inline text-gray-600 small">Mike</span>
+            <span className="mr-2 d-none d-lg-inline text-gray-600 small">{fullname}</span>
             <img className="img-profile rounded-circle" src={image} />
           </a>
           {/* Dropdown - User Information */}
@@ -109,7 +119,13 @@ const Topbar = () => {
             </a>
 
             <div className="dropdown-divider" />
-            <a className="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+            <a
+              className="dropdown-item"
+              onClick={() => {
+                localStorage.clear();
+                navigate('/login/admin');
+              }}
+            >
               <i className="bi bi-box-arrow-right mr-2 text-gray-400" />
               Logout
             </a>

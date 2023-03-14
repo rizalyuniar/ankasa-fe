@@ -1,12 +1,47 @@
-import React, { useState, useEffect } from "react";
-import "./search-result.css";
-import { Link } from "react-router-dom";
-import Navbar from "../../components/navbar/index";
-import Footer from "../../components/footer/index";
-import bnr from "../../assets/pesawat.svg";
-import wifi from "../../assets/wifi.svg";
+import React, { useState, useEffect } from 'react';
+import './search-result.css';
+import { Link, useSearchParams } from 'react-router-dom';
+import Navbar from '../../components/navbar/index';
+import Footer from '../../components/footer/index';
+import bnr from '../../assets/pesawat.svg';
+import wifi from '../../assets/wifi.svg';
+import axios from 'axios';
 
 const SeacrhResult = () => {
+  const [data, setData] = useState([]);
+  const [search, setSearch] = useState({
+    city_departure: '',
+    city_destination: '',
+  });
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const url = searchParams.get('');
+
+  console.log(url);
+
+  const handleSearch = () => {
+    window.location.replace(`/search?cityDept=${search.city_departure}&&cityDest=${search.city_destination}`);
+  };
+
+  const handleChange = (e) => {
+    setSearch({
+      ...search,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_BACKEND_URL}/flight?${url}`)
+      .then((response) => {
+        console.log(response.data.data);
+        setData(response.data.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
   return (
     <section>
       <Navbar />
@@ -20,29 +55,26 @@ const SeacrhResult = () => {
               <form>
                 <div className="row">
                   <div className="col-auto icon-airplane">
-                    <img className="" src={require("../../assets/aa.png")} />
+                    <img className="" src={require('../../assets/aa.png')} />
                   </div>
                   <div className="col-auto input-from">
                     <div>
                       <span>From</span>
                     </div>
                     <div>
-                      <input placeholder="Medan (IDN)" />
+                      <input placeholder="Medan (IDN)" name="city_departure" value={search.city_departure} onChange={handleChange} />
                     </div>
                     <div></div>
                   </div>
                   <div className="col-auto icon-switch">
-                    <img
-                      className=""
-                      src={require("../../assets/vektorw.png")}
-                    />
+                    <img className="" src={require('../../assets/vektorw.png')} />
                   </div>
                   <div className="col-auto input-to">
                     <div>
                       <span>To</span>
                     </div>
                     <div>
-                      <input placeholder="Tokyo (JPN)" />
+                      <input placeholder="Tokyo (JPN)" name="city_destination" value={search.city_destination} onChange={handleChange} />
                     </div>
                   </div>
                   <div className="mt-1 result-search">
@@ -51,13 +83,13 @@ const SeacrhResult = () => {
                         <p className="date">Monday, 20 July 20</p>
                       </div>
                       <div className="col-auto icon-hole">
-                        <img src={require("../../assets/centang.png")} />
+                        <img src={require('../../assets/centang.png')} />
                       </div>
                       <div className="col-auto">
                         <p className="passenger">6 Passenger</p>
                       </div>
                       <div className="col-auto icon-hole">
-                        <img src={require("../../assets/centang.png")} />
+                        <img src={require('../../assets/centang.png')} />
                       </div>
                       <div className="col-auto">
                         <p className="class">First Economy</p>
@@ -68,7 +100,9 @@ const SeacrhResult = () => {
               </form>
             </div>
             <div className="col-md-2 bottom-container-fluid-search-result">
-              <button>Change Search</button>
+              <button type="button" onClick={handleSearch}>
+                Change Search
+              </button>
             </div>
           </div>
         </div>
@@ -83,11 +117,7 @@ const SeacrhResult = () => {
                     </h5>
                   </div>
                   <div className="col-auto">
-                    <button
-                      className="button-title-filter-search-result"
-                      type="reset"
-                      form="filter-form"
-                    >
+                    <button className="button-title-filter-search-result" type="reset" form="filter-form">
                       Reset
                     </button>
                   </div>
@@ -97,12 +127,7 @@ const SeacrhResult = () => {
                 <form id="filter-form">
                   {/* FILTER AIRLINE */}
                   <div className="airline text-left">
-                    <button
-                      type="button"
-                      className="mt-3 btn btn-info"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#select-airline"
-                    >
+                    <button type="button" className="mt-3 btn btn-info" data-bs-toggle="collapse" data-bs-target="#select-airline">
                       <div className="row">
                         <div className="col-auto">
                           <b>Airline</b>
@@ -138,12 +163,7 @@ const SeacrhResult = () => {
                   <hr />
                   {/* FILTER TYPE */}
                   <div className="type text-left">
-                    <button
-                      type="button"
-                      className="btn btn-info"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#filter-type"
-                    >
+                    <button type="button" className="btn btn-info" data-bs-toggle="collapse" data-bs-target="#filter-type">
                       <div className="row">
                         <div className="col-auto">
                           <b>Type</b>
@@ -159,32 +179,19 @@ const SeacrhResult = () => {
                           <span>Economy</span>
                         </div>
                         <div className="mt-2 col-md-2">
-                          <input
-                            className="form-check-input"
-                            type="checkbox"
-                            id="filter-checkbox"
-                            name=""
-                          />
+                          <input className="form-check-input" type="checkbox" id="filter-checkbox" name="" />
                         </div>
                         <div className="mt-2 col-md-10">
                           <span>Business</span>
                         </div>
                         <div className="mt-2 col-md-2">
-                          <input
-                            className="form-check-input"
-                            type="checkbox"
-                            name="filter-checkbox"
-                          />
+                          <input className="form-check-input" type="checkbox" name="filter-checkbox" />
                         </div>
                         <div className="mt-2 col-md-10">
                           <span>First Class</span>
                         </div>
                         <div className="mt-2 col-md-2">
-                          <input
-                            className="form-check-input"
-                            type="checkbox"
-                            name="filter-checkbox"
-                          />
+                          <input className="form-check-input" type="checkbox" name="filter-checkbox" />
                         </div>
                       </div>
                     </div>
@@ -192,12 +199,7 @@ const SeacrhResult = () => {
                   <hr />
                   {/* TRANSIT */}
                   <div className="transit text-left">
-                    <button
-                      type="button"
-                      className="btn btn-info"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#filter-transit"
-                    >
+                    <button type="button" className="btn btn-info" data-bs-toggle="collapse" data-bs-target="#filter-transit">
                       <div className="row">
                         <div className="col-auto">
                           <b>Transit</b>
@@ -231,14 +233,10 @@ const SeacrhResult = () => {
                     </div>
                   </div>
                   <hr />
+
                   {/* FACILITIES */}
                   <div className="facilities text-left">
-                    <button
-                      type="button"
-                      className="btn btn-info"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#filter-facilities"
-                    >
+                    <button type="button" className="btn btn-info" data-bs-toggle="collapse" data-bs-target="#filter-facilities">
                       <div className="row">
                         <div className="col-auto">
                           <b>Facilities</b>
@@ -248,10 +246,7 @@ const SeacrhResult = () => {
                         </div>
                       </div>
                     </button>
-                    <div
-                      id="filter-facilities"
-                      className="collapse-facilities show"
-                    >
+                    <div id="filter-facilities" className="collapse-facilities show">
                       <div className="row">
                         <div className="mt-2 col-md-10">
                           <span>Luggage</span>
@@ -292,19 +287,10 @@ const SeacrhResult = () => {
                   <div className="col-auto sorting-title-select-ticket-search-result">
                     <div className="row">
                       <div className="dropdown dropdown-sorting">
-                        <button
-                          className="btn dropdown-toggle"
-                          type="button"
-                          id="sorting"
-                          data-bs-toggle="dropdown"
-                          aria-expanded="false"
-                        >
+                        <button className="btn dropdown-toggle" type="button" id="sorting" data-bs-toggle="dropdown" aria-expanded="false">
                           <b>Sort order</b>
                         </button>
-                        <ul
-                          className="dropdown-menu dropdown-menu"
-                          aria-labelledby="sorting"
-                        >
+                        <ul className="dropdown-menu dropdown-menu" aria-labelledby="sorting">
                           <li>
                             <a className="dropdown-item">asc</a>
                           </li>
@@ -319,115 +305,67 @@ const SeacrhResult = () => {
 
               <div className="mt-3 form-select-ticket-search-result">
                 <div className="select-ticket-search-result">
-                  <div className="row">
-                    <div className="col-auto logo-airline">
-                      <img src={require("../../assets/airline.png")} />
-                    </div>
-                    <div className="col-auto name-airplane-select-ticket">
-                      <span className="text-secondary">Garuda Indonesia</span>
-                    </div>
-                  </div>
-                  <div className="mt-4 row">
-                    <div className="col-auto">
-                      <h4>
-                        <b>IDN</b>
-                      </h4>
-                      <span className="text-secondary">4.00</span>
-                    </div>
-                    <div className="col-auto">
-                      <img src={require("../../assets/Vector.png")} />
-                    </div>
-                    <div className="col-auto">
-                      <h4>
-                        <b>JPN</b>
-                      </h4>
-                      <span className="text-secondary">3.00</span>
-                    </div>
-                    <div className="col-auto">
+                  {data.map((row) => (
+                    <>
                       <div className="row">
+                        <div className="col-auto logo-airline mt-3">
+                          <img src={row.image} />
+                        </div>
+                        <div className="col-auto name-airplane-select-ticket mt-3">
+                          <span className="text-secondary">{row.airline}</span>
+                        </div>
+                      </div>
+                      <div className="mt-4 row">
                         <div className="col-auto">
-                          <span className="text-secondary">
-                            2 jam - 3 hours
-                          </span>
+                          <h4>
+                            <b>{row.city_departure_code}</b>
+                          </h4>
+                          <span className="text-secondary">{row.time_departure}</span>
                         </div>
-                        <div>
-                          <span className="text-secondary">1 Transit</span>
+                        <div className="col-auto">
+                          <img src={require('../../assets/Vector.png')} />
                         </div>
-                      </div>
-                    </div>
-                    <div className="col-auto facility-select-ticket">
-                      <div className="row">
-                        <div className="col-auto facility-select-ticket-bag">
-                          <img src={require("../../assets/Vector2.png")} />
+                        <div className="col-auto">
+                          <h4>
+                            <b>{row.city_destination_code}</b>
+                          </h4>
+                          <span className="text-secondary">{row.time_arrival}</span>
                         </div>
-                        <div className="col-auto facility-select-ticket-food">
-                          <img src={require("../../assets/Vector2.png")} />
-                        </div>
-                        <div className="col-auto facility-select-ticket-wifi">
-                          <img src={wifi} />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-auto">
-                      <div className="row">
-                        <div className="col-auto count-select-ticket">
-                          <h6>$.3.00</h6>
-                        </div>
-                        <div className="col-auto pax-select-ticket">
-                          <span className="text-secondary">/pax</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="mt-4 button-select-ticket">
-                      <Link to="">
-                        <button>Select</button>
-                      </Link>
-                    </div>
-                  </div>
-                  <div className="btn-view-detail">
-                    <button
-                      type="button"
-                      className="mt-3 btn btn-info"
-                      data-bs-toggle="collapse"
-                      data-bs-target={`#demo`}
-                    >
-                      View Details <i className="fa fa-sort-down" />
-                    </button>
-                    <div className="collapse">
-                      <div className="mt-3 view-detail-ticket">
-                        <div className="row">
-                          <div className="col-md-6 view-detail-ticket-left">
-                            <div className="text-secondary">
-                              <h6>Ticket Detail</h6>
+                        <div className="col-auto">
+                          <div className="row">
+                            <div className="col-auto">
+                              <span className="text-secondary">2 jam - 1 hours</span>
                             </div>
-                            <p className="text-secondary">Airline : Garuda</p>
-                            <p className="text-secondary">
-                              City Departure : jambi - Indonesia
-                            </p>
-                            <p className="text-secondary">
-                              City Destination : xx - xx
-                            </p>
-                            <p className="text-secondary">
-                              Time estimation : 2
-                            </p>
-                            <p className="text-secondary">
-                              Transit : 1 transit
-                            </p>
+                            <div>
+                              <span className="text-secondary">{row.transit_count} Transit</span>
+                            </div>
                           </div>
-                          <div className="col-md-6 view-detail-ticket-right">
-                            <div className="text-secondary">
-                              <h6>Facilities</h6>
+                        </div>
+                        <div className="col-auto facility-select-ticket">
+                          <div className="row">
+                            <div className="col-auto facility-select-ticket-wifi">
+                              <img src={wifi} />
                             </div>
-                            <p className="text-secondary">Refundable : yes</p>
-                            <p className="text-secondary">Luggage : yes</p>
-                            <p className="text-secondary">Meal : yes</p>
-                            <p className="text-secondary">Wifi : yes</p>
-                            <p className="text-secondary">Insurance : yes</p>
+                          </div>
+                        </div>
+                        <div className="col-auto">
+                          <div className="row">
+                            <div className="col-auto count-select-ticket">
+                              <h6>Rp. {row.price}</h6>
+                            </div>
+                            <div className="col-auto pax-select-ticket button-select-ticket">
+                              <span className="text-secondary">/pax</span>
+
+                              <Link to="">
+                                <button className="ms-3">Select</button>
+                              </Link>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
+                      <hr />
+                    </>
+                  ))}
                 </div>
               </div>
 
@@ -435,19 +373,13 @@ const SeacrhResult = () => {
               <div className="d-flex justify-content-center">
                 <ul className="pagination">
                   <li className="page-item">
-                    <button className="btn btn-warning-custom page-link">
-                      Previous
-                    </button>
+                    <button className="btn btn-warning-custom page-link">Previous</button>
                   </li>
                   <li style={{ marginLeft: 3 }}>
-                    <button className="btn btn-warning-custom page-link">
-                      1
-                    </button>
+                    <button className="btn btn-warning-custom page-link">1</button>
                   </li>
                   <li style={{ marginLeft: 3 }} className="page-item">
-                    <button className="btn btn-warning-custom page-link">
-                      Next
-                    </button>
+                    <button className="btn btn-warning-custom page-link">Next</button>
                   </li>
                 </ul>
               </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./style.module.css";
 import Navbar from "../../components/navbar/index";
 import Footer from "../../components/footer/index";
@@ -9,8 +9,23 @@ import bnr from "../../assets/pesawat.svg";
 import icWarning from "../../assets/warning.svg";
 import icDot from "../../assets/icDot.svg";
 import icDown from "../../assets/btnback.svg";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
 const FlightDetail = () => {
+  // const [data, setData] = useState([]);
+  // const { id } = useParams();
+  // useEffect(() => {
+  //   axios
+  //     .get(`${process.env.REACT_APP_BACKEND_URL}/flight/${id}`)
+  //     .then((response) => {
+  //       console.log(response.data.data);
+  //       setData(response.data.data);
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // }, [id]);
   return (
     <>
       <Navbar />
@@ -38,6 +53,7 @@ const FlightDetail = () => {
                       placeholder="Username"
                       aria-label="Username"
                       aria-describedby="basic-addon1"
+                      // value={data.fullname}
                     />
                   </div>
                   <p className={styles.textLabelCP}>Email</p>
@@ -48,6 +64,7 @@ const FlightDetail = () => {
                       placeholder="Email"
                       aria-label="Email"
                       aria-describedby="basic-addon1"
+                      // value={data.email}
                     />
                   </div>
                   <p className={styles.textLabelCP}>Phone Number</p>
@@ -58,6 +75,7 @@ const FlightDetail = () => {
                       placeholder="Phone"
                       aria-label="Phone"
                       aria-describedby="basic-addon1"
+                      // value={data.phone_number}
                     />
                   </div>
                   <div
@@ -123,7 +141,7 @@ const FlightDetail = () => {
                   />
                   <p className={styles.textInsurance}>Travel Insurance</p>
                   <p className={`ms-auto ${styles.textPriceinsurance}`}>
-                    $ 2,00
+                    {/* $ {data.price} */}
                   </p>
                   <p className={`mt-1 ${styles.textPax}`}>/pax</p>
                 </div>

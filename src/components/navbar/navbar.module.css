@@ -249,6 +249,7 @@
 }
 
 .formDate {
+  font-size: 14px;
   width: 100%;
   height: 50px;
 
@@ -284,6 +285,7 @@
 }
 
 .formCek {
+  font-size: 14px;
   width: 100%;
   height: 50px;
 

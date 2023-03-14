@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import style from "../../auth/auth.module.css";
+import style from "../../authAdmin/auth.module.css";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import imageLogin1 from "../../../assets/Group 29.png";
@@ -9,28 +9,22 @@ import imageLogin3 from "../../../assets/Facebook.png";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-export default function Login() {
-  const router = useNavigate();
+const AdminLogin = () => {
+  // const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const [login, setLogin] = useState({
+  const [form, setForm] = useState({
     email: "",
     password: "",
   });
 
-  const handleChange = (e) => {
-    setLogin({
-      ...login,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
 
     axios
-      .post(`${process.env.REACT_APP_BACKEND_URL}/user/login`, login)
+      .post(`${process.env.REACT_APP_API}/user/login`, form)
       .then((res) => {
-        console.log(res);
+        console.log(res.data.data);
         if (res.data.message !== "login is successful") {
           Swal.fire({
             icon: "error",
@@ -43,21 +37,38 @@ export default function Login() {
             "You clicked the button!",
             "success"
           );
+
           const token = res.data.data.token;
           const id = res.data.data.id;
+          const fullname = res.data.data.fullname;
+          const image = res.data.data.image;
+          const phoneNumber = res.data.data.phone_number;
+          const city = res.data.data.city;
+          const address = res.data.data.address;
+          const admin = res.data.data;
+
           localStorage.setItem("token", token);
-          localStorage.setItem("users", JSON.stringify(res.data.data));
           localStorage.setItem("id", id);
-          router("/");
+          localStorage.setItem("fullname", fullname);
+          localStorage.setItem("image", image);
+          localStorage.setItem("admin", JSON.stringify(admin));
+
+          navigate("/admin");
         }
       })
-      .catch((err) =>
-        Swal.fire({
-          icon: "error",
-          title: `${err.response.message}`,
-          text: "Something went wrong!",
-        })
-      );
+      .catch((err) => console.log(err));
+  };
+
+  useEffect(() => {
+    localStorage.clear();
+  }, []);
+
+  const toRegister = () => {
+    return navigate("/register");
+  };
+
+  const toResetPassword = () => {
+    return navigate("/forget");
   };
 
   return (
@@ -71,19 +82,24 @@ export default function Login() {
             <div
               className={`col-lg-8 col-md-12 col-sm-9 col-xs-12 ${style.formBox} text-start`}
             >
-              <div className="logo">
+              <div className="logo text-center">
                 <img src={imageLogin1} width="150px" />
               </div>
               <div className="heading">
-                <h1 className="fw-bold mt-4 mb-4">Login</h1>
+                <h1
+                  className={`fw-bold mt-5 mb-5 text-center ${style.titleHeader}`}
+                >
+                  Admin Login
+                </h1>
               </div>
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleLogin}>
                 <div className={style.formInput}>
                   <input
                     type="text"
-                    onChange={handleChange}
+                    onChange={(e) =>
+                      setForm({ ...form, email: e.target.value })
+                    }
                     name="email"
-                    id="email"
                     placeholder="Email"
                     required
                   />
@@ -91,43 +107,49 @@ export default function Login() {
                 <div className={style.formInput}>
                   <input
                     type="password"
-                    onChange={handleChange}
+                    onChange={(e) =>
+                      setForm({ ...form, password: e.target.value })
+                    }
                     name="password"
-                    id="password"
                     placeholder="Password"
                     required
                   />
                 </div>
-                <div className="text-left mb-3">
+                <div className="text-left my-3">
                   <button type="submit" className={style.customBtn}>
-                    Sign in
+                    Signin
                   </button>
                 </div>
-                <div className="text-center mt-2">
+                <div className="text-center mt-4">
                   <p>Did you forgot your password?</p>
                   <p></p>
                 </div>
                 <div className="text-center mb-3">
-                  <button type="button" className={style.tapBtn} onClick={""}>
-                    <a href="/forgotpassword" className={style.noUnderline}>
-                      Tap here for reset
-                    </a>
+                  <button
+                    type="button"
+                    className={`${style.tapBtn}`}
+                    onClick={toResetPassword}
+                  >
+                    Tap here for reset
                   </button>
                 </div>
-                <div className="text-center mt-4">
-                  <a href="/admin" className="btn text-wrap">
-                    Login as admin
-                  </a>
-                </div>
-                <hr className="mt-4" />
-                <div className="text-center mt-3">
+                <hr className="mt-5" />
+                <div className="text-center mt-2">
                   <p>Or sign in with</p>
                 </div>
                 <div className="text-center mb-3">
-                  <button type="button" className={style.socBtn} onClick={""}>
+                  <button
+                    type="button"
+                    className={style.socBtn}
+                    onClick={toRegister}
+                  >
                     <img src={imageLogin2} />
                   </button>
-                  <button type="button" className={style.socBtn} onClick={""}>
+                  <button
+                    type="button"
+                    className={style.socBtn}
+                    onClick={toRegister}
+                  >
                     <img src={imageLogin3} />
                   </button>
                 </div>
@@ -138,4 +160,6 @@ export default function Login() {
       </div>
     </section>
   );
-}
+};
+
+export default AdminLogin;
