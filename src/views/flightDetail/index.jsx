@@ -80,7 +80,7 @@ const FlightDetail = () => {
       <section className={styles.main}>
         <div className="container">
           <div className="row">
-            <div className={`col-md-8 p-4 order-sm-2 order-md-0 ${styles.leftside}`}>
+            <div className={`col-md-8 p-4  ${styles.leftside}`}>
               <form onSubmit={handleSubmit}>
                 <div className={`p-4 ${styles.CPdetail}`}>
                   <div className="d-flex flex-column">
@@ -181,9 +181,9 @@ const FlightDetail = () => {
             <div className={`col-md-4 p-4 ${styles.rightside}`}>
               {data.map((row) => (
                 <>
-                  <div className="d-flex flex-row ">
+                  <div className="d-flex flex-row flex-wrap">
                     <img src={row.image} alt="garuda" style={{ height: '80px', objectFit: 'cover' }} />
-                    <p className={`ms-5 ${styles.textGaruda}`}>{row.airline}</p>
+                    <p className={`ms-3 ${styles.textGaruda}`}>{row.airline}</p>
                   </div>
                   <div className="d-flex flex-row mt-4">
                     <div className={styles.textCity}>
@@ -211,7 +211,7 @@ const FlightDetail = () => {
                     <div className={styles.textOptional}>Refundable</div>
                   </div>
                   <hr />
-                  <div className="d-flex flex-row mt-3">
+                  <div className="d-flex flex-row mt-3 flex-wrap">
                     <div className={styles.textTotal}>Total Payment</div>
                     <div className={`ms-auto me-3 ${styles.textPrice}`}>Rp. {row.price}</div>
                     <img src={icDown} alt="down" />

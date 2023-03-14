@@ -77,7 +77,7 @@ const SeacrhResult = () => {
                       <span>From</span>
                     </div>
                     <div>
-                      <input placeholder="Medan (IDN)" name="city_departure" value={search.city_departure} onChange={handleChange} />
+                      <input placeholder="Medan (IDN)" name="city_departure" value={search.city_departure} onChange={handleChange} className="formInput" />
                     </div>
                     <div></div>
                   </div>
@@ -85,11 +85,11 @@ const SeacrhResult = () => {
                     <img className="" src={require('../../assets/vektorw.png')} />
                   </div>
                   <div className="col-auto input-to">
-                    <div>
+                    <div className="to">
                       <span>To</span>
                     </div>
                     <div>
-                      <input placeholder="Tokyo (JPN)" name="city_destination" value={search.city_destination} onChange={handleChange} />
+                      <input placeholder="Tokyo (JPN)" name="city_destination" value={search.city_destination} onChange={handleChange} className="formInput" />
                     </div>
                   </div>
                   <div className="mt-1 result-search">
@@ -125,7 +125,7 @@ const SeacrhResult = () => {
           <div className="row">
             <div className="col-md-4 container-filter-search-result">
               <div className="title-filter-search-result">
-                <div className="row">
+                <div className="row d-flex justify-content-between align-items-center">
                   <div className="col-auto">
                     <h5>
                       <b>Filter</b>
@@ -301,17 +301,17 @@ const SeacrhResult = () => {
 
             <div className="col-md-8 container-select-ticket-search-result">
               <div className="title-select-ticket-search-result">
-                <div className="row">
-                  <div className="col-auto">
+                <div className="row d-flex justify-content-between align-items-center">
+                  <div className="col-auto p-0">
                     <h5>
                       <b>Select Filter</b>
                     </h5>
                   </div>
-                  <div className="col-auto"></div>
+
                   <div className="col-auto sorting-title-select-ticket-search-result">
                     <div className="row">
                       <div className="dropdown dropdown-sorting">
-                        <button className="btn dropdown-toggle" type="button" id="sorting" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button className="btn dropdown-toggle p-0" type="button" id="sorting" data-bs-toggle="dropdown" aria-expanded="false">
                           <b>Sort order</b>
                         </button>
                         <ul className="dropdown-menu dropdown-menu" aria-labelledby="sorting">
