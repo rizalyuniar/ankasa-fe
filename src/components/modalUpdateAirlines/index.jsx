@@ -35,7 +35,7 @@ const ModalUpdateAirlines = ({ airline }) => {
     }
 
     axios
-      .put(`${process.env.REACT_APP_API}/airline/${airline.id}`, formData, {
+      .put(`${process.env.REACT_APP_BACKEND_URL}/airline/${airline.id}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
