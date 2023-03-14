@@ -12,6 +12,10 @@ import Swal from "sweetalert2";
 export default function Login() {
   const router = useNavigate();
 
+  const toResetPassword = () => {
+    return router("/forgotpassword");
+  };
+
   const [login, setLogin] = useState({
     email: "",
     password: "",
@@ -108,14 +112,16 @@ export default function Login() {
                   <p></p>
                 </div>
                 <div className="text-center mb-3">
-                  <button type="button" className={style.tapBtn} onClick={""}>
-                    <a href="/forgotpassword" className={style.noUnderline}>
-                      Tap here for reset
-                    </a>
+                  <button
+                    type="button"
+                    className={style.tapBtn}
+                    onClick={toResetPassword}
+                  >
+                    Tap here for reset
                   </button>
                 </div>
                 <div className="text-center mt-4">
-                  <a href="/admin" className="btn text-wrap">
+                  <a href="/login/admin" className="btn text-wrap">
                     Login as admin
                   </a>
                 </div>
