@@ -39,6 +39,8 @@ const AdminLogin = () => {
           const fullname = res.data.data.fullname;
           const image = res.data.data.image;
           const admin = res.data.data;
+          const email = res.data.data.email;
+          const phone_number = res.data.data.phone_number;
 
           localStorage.setItem('token', token);
           localStorage.setItem('id', id);
@@ -46,6 +48,8 @@ const AdminLogin = () => {
           localStorage.setItem('image', image);
           localStorage.setItem('admin', JSON.stringify(admin));
           localStorage.setItem('users', JSON.stringify(res.data.data));
+          localStorage.setItem('email', email);
+          localStorage.setItem('phone_number', phone_number);
 
           navigate('/admin');
         }

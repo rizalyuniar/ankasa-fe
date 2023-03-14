@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import style from './navbar.module.css';
 import navBrand from '../../assets/vector 02.png';
 import iconChange from '../../assets/Vector.png';
-import image from '../../assets/profile.png';
 import CardNotif from '../cardNotif';
 import { Link } from 'react-router-dom';
 
@@ -17,10 +16,12 @@ const Navbar = () => {
     flight_class: '',
     person: '',
   });
+  const [image, setImage] = useState('');
 
   useEffect(() => {
     setLogin(localStorage.getItem('token'));
     setIdUser(localStorage.getItem('id'));
+    setImage(localStorage.getItem('image'));
   });
 
   const handleChange = (e) => {
@@ -195,7 +196,7 @@ const Navbar = () => {
                   <div className="row">
                     <p className={style.subTitle}>How many person ?</p>
                     <div className="col-md-12 ">
-                      <input type="text" className={style.formCek} placeholder="Child" name="person" value={flight.person} onChange={handleChange} />
+                      <input type="text" className={style.formCek} placeholder="Person" name="person" value={flight.person} onChange={handleChange} />
                     </div>
                   </div>
                 </div>

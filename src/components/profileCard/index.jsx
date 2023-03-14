@@ -62,18 +62,18 @@ const ProfileCard = () => {
           <div className="row">
             <div className={styles.cardProfile}>
               <div className={`d-flex flex-row justify-content-center my-3 px-5 ${styles.picProfile}`}>
-                <img width={120} height={120} src={profile.image} />
+                <img width={120} height={120} style={{ objectFit: 'cover' }} src={profile.image} />
               </div>
 
               <div className="d-flex flex-column align-items-center my-3">
                 <h2>{profile.fullname}</h2>
                 <p>{profile.city}</p>
               </div>
-              <div>
+              <div className="px-3">
                 <h5>Cards</h5>
                 <h5 className={styles.add}>+ Add</h5>
               </div>
-              <div className={` ${styles.xcard} px-4`}>
+              <div className={`${styles.xcard} px-4`}>
                 <div>
                   <h5 className={styles.numCard}>4441 1235 5512 5551</h5>
                 </div>

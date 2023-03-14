@@ -44,6 +44,7 @@ export default function Login() {
           const fullname = res.data.data.fullname;
           const email = res.data.data.email;
           const phone_number = res.data.data.phone_number;
+          const image = res.data.data.image;
 
           localStorage.setItem('token', token);
           localStorage.setItem('users', JSON.stringify(res.data.data));
@@ -51,6 +52,7 @@ export default function Login() {
           localStorage.setItem('fullname', fullname);
           localStorage.setItem('email', email);
           localStorage.setItem('phone_number', phone_number);
+          localStorage.setItem('image', image);
           router('/');
         }
       })
