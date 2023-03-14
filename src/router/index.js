@@ -28,6 +28,7 @@ import AdminLogin from "../views/authAdmin/login";
 import Destination from "../views/destination";
 import DetailDestination from "../views/detailDestination";
 import Chat from "../views/chat/index";
+import AdminCity from "../views/admin/adminCity";
 
 const ScrollToTop = ({ children }) => {
   const { pathname } = useLocation();

@@ -1,16 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '../../components/navbar';
 import style from './style.module.css';
 import accsent1 from '../../assets/bali.jpg';
 import accsent2 from '../../assets/agra.jpg';
 import imgTrend from '../../assets/bali.jpg';
-import { Link } from 'react-router-dom';
 import CardTrending from '../../components/cardTrending';
 import CardCarousel from '../../components/cardCarousel';
 
 import Footer from '../../components/footer';
+import axios from 'axios';
 
-const index = () => {
+const Index = () => {
+  const [city, setCity] = useState([]);
+
+  useEffect(() => {
+    // get city
+    axios
+      .get(`${process.env.REACT_APP_API}/city?limit=4`)
+      .then((res) => {
+        setCity(res.data.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <body className={style.body}>
       <Navbar />
@@ -41,18 +53,11 @@ const index = () => {
         </div>
 
         <div className={`row mt-3 ${style.rowTrending}`}>
-          <div className="col-md-3 col-sm-6">
-            <CardTrending count="22" city="Bali" nation="Indonesia" image={imgTrend} id="1" />
-          </div>
-          <div className="col-md-3 col-sm-6">
-            <CardTrending count="22" city="Tokyo" nation="Japan" image={accsent2} id="2" />
-          </div>
-          <div className="col-md-3 col-sm-6">
-            <CardTrending count="22" city="Tokyo" nation="Japan" image={imgTrend} id="3" />
-          </div>
-          <div className="col-md-3 col-sm-6">
-            <CardTrending count="22" city="Tokyo" nation="Japan" image={imgTrend} id="4" />
-          </div>
+          {city.map((data) => (
+            <div className="col-md-3 col-sm-6">
+              <CardTrending count="22" city={data.name} nation={data.country} image={data.image} id={data.id} />
+            </div>
+          ))}
         </div>
       </div>
 
@@ -104,4 +109,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

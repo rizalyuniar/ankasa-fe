@@ -1,10 +1,22 @@
 import style from './destination.module.css';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '../../components/navbar';
 import CardTrending from '../../components/cardTrending';
 import Footer from '../../components/footer';
+import axios from 'axios';
 
 const Destination = () => {
+  const [city, setCity] = useState([]);
+
+  useEffect(() => {
+    // get city
+    axios
+      .get(`${process.env.REACT_APP_API}/city`)
+      .then((res) => {
+        setCity(res.data.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
   return (
     <>
       <Navbar />
@@ -37,18 +49,11 @@ const Destination = () => {
           </div>
         </div>
         <div className={`row ${style.row}`}>
-          <div className="col-lg-3 col-md-4 col-sm-6">
-            <CardTrending count="22" city="Bali" nation="Indonesia" image={''} />
-          </div>
-          <div className="col-lg-3 col-md-4 col-sm-6">
-            <CardTrending count="22" city="Bali" nation="Indonesia" image={''} />
-          </div>
-          <div className="col-lg-3 col-md-4 col-sm-6">
-            <CardTrending count="22" city="Bali" nation="Indonesia" image={''} />
-          </div>
-          <div className="col-lg-3 col-md-4 col-sm-6">
-            <CardTrending count="22" city="Bali" nation="Indonesia" image={''} />
-          </div>
+          {city.map((data) => (
+            <div className="col-lg-3 col-md-4 col-sm-6 mb-4">
+              <CardTrending count="22" city={data.name} nation={data.country} image={data.image} />
+            </div>
+          ))}
         </div>
       </div>
       <Footer />
