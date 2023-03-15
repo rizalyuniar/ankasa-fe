@@ -78,7 +78,7 @@ const Router = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route path="/verifEmail" element={<VerifEmail />} />
-          <Route path="/notfound" element={<Page404 />} />
+          <Route path="*" element={<Page404 />} />
           <Route path="/search" element={<Search />} />
           <Route
             path="/booking/:id"
