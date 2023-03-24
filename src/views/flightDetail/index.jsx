@@ -14,6 +14,7 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import Swal from "sweetalert2";
+import formatRupiah from "rupiah-format";
 import { useDispatch } from "react-redux";
 import {
   createFlightBooking,
@@ -25,6 +26,8 @@ const FlightDetail = () => {
   const [data, setData] = useState([]);
   const { id } = useParams();
   const dispatch = useDispatch();
+
+  
 
   const [fullname, setFullname] = useState("");
   const [email, setEmail] = useState("");
@@ -143,12 +146,13 @@ const FlightDetail = () => {
                       Passenger : 1 Adult
                     </div>
                     <div class="form-check form-switch ms-auto">
+                      <span className="me-5">Same as contact person</span>
                       <input
                         class="form-check-input"
                         type="checkbox"
                         role="switch"
                         id="flexSwitchCheckDefault"
-                        style={{width:'40px', height:'20px'}}
+                        style={{ width: "40px", height: "20px" }}
                       />
                     </div>
                   </div>
@@ -214,9 +218,6 @@ const FlightDetail = () => {
                   </div>
                 </div>
 
-                <label className={`mt-5 ${styles.textTitle}`}>
-                  Passenger Details
-                </label>
                 <div className={`p-4 ${styles.passengerDetail}`}>
                   <div className="d-flex flex-row">
                     <input
@@ -229,7 +230,12 @@ const FlightDetail = () => {
                       checked={formData.insurance}
                       onChange={handleCheckboxChange}
                     />
-                    <p style={{marginLeft:'30px', marginTop:'2px'}} className={styles.textInsurance}>Travel Insurance</p>
+                    <p
+                      style={{ marginLeft: "30px", marginTop: "2px" }}
+                      className={styles.textInsurance}
+                    >
+                      Travel Insurance
+                    </p>
                     {/* <p className={`ms-auto ${styles.textPriceinsurance}`}>
                       $ {data.price}
                     </p> */}
@@ -269,6 +275,8 @@ const FlightDetail = () => {
                     <img src={icDot} alt="dot" className="mx-3" />
                     <div className={styles.textTime}>
                       {row.time_departure} - {row.time_arrival}
+
+                      {/* Sunday, 15 August 2020 - 12:33 - 15:21 */}
                     </div>
                   </div>
 
@@ -278,13 +286,14 @@ const FlightDetail = () => {
                   </div>
                   <div className="d-flex flex-row mt-3">
                     <img src={ceklis} alt="dot" className="mx-3" />
-                    <div className={styles.textOptional}>Refundable</div>
+                    <div className={styles.textOptional}>Can reschedule</div>
                   </div>
                   <hr />
                   <div className="d-flex flex-row mt-3 flex-wrap">
                     <div className={styles.textTotal}>Total Payment</div>
                     <div className={`ms-auto me-3 ${styles.textPrice}`}>
-                      Rp. {row.price}
+                      
+                      Rp. {row.price }
                     </div>
                     <img src={icDown} alt="down" />
                   </div>
