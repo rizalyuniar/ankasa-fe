@@ -302,26 +302,13 @@ const SeacrhResult = () => {
             <div className="col-md-8 container-select-ticket-search-result">
               <div className="title-select-ticket-search-result">
                 <div className="row d-flex justify-content-between align-items-center">
-                  <div className="col-auto p-0">
+                  <div className="col-auto p-0 ms-3 mt-1">
                     <h5>
                       <b>Select Filter</b>
                     </h5>
                   </div>
 
-                  <div className="col-auto sorting-title-select-ticket-search-result">
-                    <div className="row">
-                      <div className="dropdown dropdown-sorting">
-                        <button className="btn dropdown-toggle p-0" type="button" id="sorting" data-bs-toggle="dropdown" aria-expanded="false">
-                          <b>Sort order</b>
-                        </button>
-                        <ul className="dropdown-menu dropdown-menu" aria-labelledby="sorting">
-                          <li>
-                            <a className="dropdown-item">asc</a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
+                
                 </div>
               </div>
 
@@ -384,7 +371,7 @@ const SeacrhResult = () => {
                               </div>
                               <div className="col-auto pax-select-ticket button-select-ticket">
                                 <Link to={`/flight/${row.id}`}>
-                                  <button className="ms-3">Select</button>
+                                  <button className="ms-4">Select</button>
                                 </Link>
                               </div>
                             </div>
