@@ -22,7 +22,7 @@ const AdminLogin = () => {
     e.preventDefault();
 
     axios
-      .post(`${process.env.REACT_APP_BACKEND_URL}/user/login`, form)
+      .post(`${process.env.REACT_APP_BACKEND_URL}/admin/login`, form)
       .then((res) => {
         console.log(res.data.data);
         if (res.data.message !== 'login is successful') {
