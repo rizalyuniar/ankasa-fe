@@ -38,6 +38,7 @@ const ModalUpdateAirlines = ({ airline }) => {
       .put(`${process.env.REACT_APP_BACKEND_URL}/airline/${airline.id}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       })
       .then((response) => {

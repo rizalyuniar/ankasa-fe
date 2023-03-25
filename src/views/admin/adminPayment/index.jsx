@@ -17,7 +17,7 @@ const AdminPayment = () => {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_BACKEND_URL}/booking?limit=100`)
+      .get(`${process.env.REACT_APP_BACKEND_URL}/booking?limit=100&sortBy=created_at&sort=desc`)
       .then((res) => {
         setBooking(res.data.data);
       })

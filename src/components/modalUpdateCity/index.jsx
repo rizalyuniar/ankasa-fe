@@ -34,6 +34,7 @@ const ModalUpdateCity = ({ city }) => {
       .put(`${process.env.REACT_APP_BACKEND_URL}/city/${city.id}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       })
       .then((response) => {

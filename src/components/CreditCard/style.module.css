@@ -1,0 +1,65 @@
+.buttonAddCard {
+  border: none;
+  color: #2395ff;
+  background-color: transparent;
+}
+
+.xcard {
+  padding: 20px;
+  background-color: #2395ff;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.nameCredit {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #aefaff;
+  text-transform: uppercase;
+}
+
+.numCard {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.3em;
+  margin: 15px 0;
+  letter-spacing: 4px;
+}
+
+.cardX {
+  font-size: 0.9em;
+  color: #aefaff;
+  margin-bottom: 0;
+}
+
+.xMoney {
+  font-size: 1.1em;
+  color: #aefaff;
+  margin-bottom: 0;
+}
+
+.formInputAdd {
+  width: 100%;
+  font-size: 0.85em;
+  padding: 8px 10px;
+  margin: 10px 0;
+}
+
+.xcard .btnDelete {
+  border: none;
+  background-color: #e13724;
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 768px) {
+  .numCard {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1em;
+    margin: 15px 0;
+    letter-spacing: 4px;
+  }
+}

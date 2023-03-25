@@ -120,7 +120,7 @@ const Navbar = () => {
 
       {/* modal findticket */}
       <div className="modal fade" id="findTicket" tabIndex={-1} aria-labelledby="findTicketLabel" aria-hidden="true">
-        <div className={`${style.modalDialog} modal-dialog`}>
+        <div className={`modal-dialog modal-lg`}>
           <div className="modal-content p-3">
             <div className="modal-body">
               <form>
@@ -173,17 +173,10 @@ const Navbar = () => {
 
                 <div className="container my-4">
                   <div className="row">
-                    <div className="col-md-6 p-0 gx-1 pe-1">
+                    <div className="col-md-12 p-0 gx-1 pe-1">
                       <button className={style.buttonOption}>
                         <i className="bi bi-airplane-fill me-3 fs-5" />
                         <span>One Way</span>
-                      </button>
-                    </div>
-
-                    <div className="col-md-6 p-0 ps-1">
-                      <button className={style.buttonOptionRound}>
-                        <i className="bi bi-arrow-clockwise me-3 fs-5" />
-                        <span>Round Trip</span>
                       </button>
                     </div>
                   </div>

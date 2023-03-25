@@ -12,33 +12,6 @@
   border-radius: 100%;
 }
 
-.add {
-  margin-top: -30px;
-  text-align: end;
-  color: #2395ff;
-}
-
-.xcard {
-  height: 80px;
-  padding: 10px;
-  background-color: #2395ff;
-  border-radius: 15px;
-}
-
-.numCard {
-  color: #ffffff;
-}
-
-.cardX {
-  color: #aefaff;
-}
-
-.xMoney {
-  color: #aefaff;
-  margin-top: -40px;
-  text-align: end;
-}
-
 .iconprofile {
   margin-top: 7px;
   height: 20px;

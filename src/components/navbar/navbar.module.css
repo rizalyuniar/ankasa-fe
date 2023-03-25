@@ -59,11 +59,11 @@
   color: var(--fontColor);
 }
 
-.navLink:focus {
+/* .navLink:focus {
   font-weight: 600;
   border: none;
   color: var(--fontColor);
-}
+} */
 
 .navLinkIcon {
   border: none;
