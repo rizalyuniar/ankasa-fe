@@ -74,7 +74,7 @@
   } */
 
 .reminder {
-  background-color: #f245451a;
+  background-color: #f8e80875;
   border-radius: 10px;
 }
 
@@ -182,6 +182,23 @@
 .cstmButton:hover {
   background-color: #2395ff !important;
   color: white !important;
+}
+
+.terms {
+  border: none;
+  background-color: transparent;
+  font-size: 0.7em;
+  color: #9c9c9c;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.terms:hover {
+  border: none;
+  background-color: transparent;
+  font-size: 0.7em;
+  color: #9c9c9c;
+  text-decoration: none;
 }
 @media only screen and (max-width: 720px) {
   .cstmButton {

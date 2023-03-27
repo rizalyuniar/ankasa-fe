@@ -4,10 +4,9 @@ import { Link, useSearchParams } from 'react-router-dom';
 import Navbar from '../../components/navbar/index';
 import Footer from '../../components/footer/index';
 import bnr from '../../assets/pesawat.svg';
-import imgWifi from '../../assets/wifi.svg';
-import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { getFlight } from '../../redux/action/flightAction';
+import moment from 'moment';
 
 const SeacrhResult = () => {
   const dispatch = useDispatch();
@@ -23,8 +22,6 @@ const SeacrhResult = () => {
     wifi: '',
     transit: '',
   });
-
-  console.log(search.transit);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const cityDept = searchParams.get('cityDept');
@@ -57,6 +54,14 @@ const SeacrhResult = () => {
     dispatch(getFlight(setData, cityDept, cityDest, deptDate, flightTrip, flightClass, person, airline, luggage, inflight_meal, wifi, transit));
   }, [dispatch]);
 
+  const currencyFormat = (num) => {
+    return (
+      'Rp. ' +
+      Number(num)
+        .toFixed(0)
+        .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+    );
+  };
   return (
     <section>
       <Navbar />
@@ -95,7 +100,7 @@ const SeacrhResult = () => {
                   <div className="mt-1 result-search">
                     <div className="row">
                       <div className="col-auto">
-                        <p className="date">Monday, 20 July 20</p>
+                        <p className="date">{moment().format('MMMM Do YYYY, h:mm:ss a')}</p>
                       </div>
                       <div className="col-auto icon-hole">
                         <img src={require('../../assets/centang.png')} />
@@ -302,25 +307,10 @@ const SeacrhResult = () => {
             <div className="col-md-8 container-select-ticket-search-result">
               <div className="title-select-ticket-search-result">
                 <div className="row d-flex justify-content-between align-items-center">
-                  <div className="col-auto p-0">
+                  <div className="col-auto p-0 ms-3 mt-1">
                     <h5>
                       <b>Select Filter</b>
                     </h5>
-                  </div>
-
-                  <div className="col-auto sorting-title-select-ticket-search-result">
-                    <div className="row">
-                      <div className="dropdown dropdown-sorting">
-                        <button className="btn dropdown-toggle p-0" type="button" id="sorting" data-bs-toggle="dropdown" aria-expanded="false">
-                          <b>Sort order</b>
-                        </button>
-                        <ul className="dropdown-menu dropdown-menu" aria-labelledby="sorting">
-                          <li>
-                            <a className="dropdown-item">asc</a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -379,12 +369,12 @@ const SeacrhResult = () => {
                           <div className="col-auto">
                             <div className="row">
                               <div className="col-auto count-select-ticket d-flex">
-                                <h6>Rp. {row.price}</h6>
+                                <h6>{currencyFormat(row.price)}</h6>
                                 <span className="text-secondary">/pax</span>
                               </div>
                               <div className="col-auto pax-select-ticket button-select-ticket">
                                 <Link to={`/flight/${row.id}`}>
-                                  <button className="ms-3">Select</button>
+                                  <button className="ms-4">Select</button>
                                 </Link>
                               </div>
                             </div>

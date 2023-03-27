@@ -30,6 +30,8 @@ import DetailDestination from "../views/detailDestination";
 import Chat from "../views/chat/index";
 import AdminCity from "../views/admin/adminCity";
 import MyBooking from "../views/myBooking";
+import Users from "../views/superAdmin/users";
+import MenuSetting from "../views/superAdmin/menuSetting";
 
 const ScrollToTop = ({ children }) => {
   const { pathname } = useLocation();
@@ -77,17 +79,15 @@ const Router = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
-          <Route path="/verifEmail" element={<VerifEmail />} />
+          <Route path="/verifEmail/:token" element={<VerifEmail />} />
           <Route path="*" element={<Page404 />} />
           <Route path="/search" element={<Search />} />
-          <Route
-            path="/booking/:id"
-            element={
-              <Auth>
-                {" "}
-                <BookingDetail />{" "}
-              </Auth>
-            }
+          <Route path="/booking/:id" element={
+            <Auth>
+
+              <BookingDetail />{" "}
+            </Auth>
+          }
           />
           <Route
             path="/flight/:id"
@@ -162,18 +162,8 @@ const Router = () => {
             }
           />
           <Route path="/login/admin" element={<AdminLogin />} />
-          <Route
-            path="/destination"
-            element={
-              <Destination />
-            }
-          />
-          <Route
-            path="/destination/:id"
-            element={
-              <DetailDestination />
-            }
-          />
+          <Route path="/destination" element={<Destination />} />
+          <Route path="/destination/:id" element={<DetailDestination />} />
           <Route
             path="/chat/:id"
             element={
@@ -187,6 +177,26 @@ const Router = () => {
             element={
               <Auth>
                 <AdminCity />
+              </Auth>
+            }
+          />
+
+          <Route
+            path="/su/users"
+            element={
+              <Auth>
+                {" "}
+                <Users />{" "}
+              </Auth>
+            }
+          />
+
+          <Route
+            path="/su/menu"
+            element={
+              <Auth>
+                {" "}
+                <MenuSetting />{" "}
               </Auth>
             }
           />

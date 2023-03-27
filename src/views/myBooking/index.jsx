@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react';
 import style from './style.module.css';
 import Navbar from '../../components/navbar';
 import ProfileCard from '../../components/profileCard';
-
 import CardBooking from '../../components/cardBooking';
 import Footer from '../../components/footer';
-import { useParams } from 'react-router';
 import axios from 'axios';
 
 const MyBooking = () => {
@@ -44,10 +42,13 @@ const MyBooking = () => {
                 <button className={style.orderHistory}>Order History</button>
               </div>
             </div>
+
             {!myBooking.length ? (
               <h3 className="fw-bold">You haven't bought a ticket yet</h3>
             ) : (
-              myBooking.map((data) => <CardBooking id={data.id} status={data.status} date="Monday, 20 July 2020 - 12:33" from={data.city_departure_code} destination={data.city_destination_code} airlines={`${data.airline}, ${data.code}`} />)
+              myBooking.map((data) => (
+                <CardBooking id={data.id} status={data.status} date={data.date_departure} time={data.time_departure} from={data.city_departure_code} destination={data.city_destination_code} airlines={`${data.name}, ${data.code}`} />
+              ))
             )}
           </div>
         </div>

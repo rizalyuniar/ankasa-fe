@@ -5,6 +5,7 @@ import PageHeading from '../../../components/Admin/PageHeading';
 import Sidebar from '../../../components/Admin/Sidebar';
 import Topbar from '../../../components/Admin/Topbar';
 import style from './payment.module.css';
+import moment from 'moment';
 
 const AdminPayment = () => {
   const [booking, setBooking] = useState([]);
@@ -17,7 +18,7 @@ const AdminPayment = () => {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_BACKEND_URL}/booking?limit=100`)
+      .get(`${process.env.REACT_APP_BACKEND_URL}/booking?limit=100&sortBy=created_at&sort=desc`)
       .then((res) => {
         setBooking(res.data.data);
       })
@@ -106,13 +107,13 @@ const AdminPayment = () => {
                       <td className="align-middle" style={{ width: '200px' }}>
                         {data.id}
                       </td>
-                      <td className="align-middle text-center">{data.airline}</td>
+                      <td className="align-middle text-center">{data.name}</td>
 
                       <td className="align-middle text-center">
                         {data.city_departure_code} - {data.city_destination_code}
                       </td>
                       <td className="align-middle text-center">
-                        {data.time_departure} - {data.arrival}
+                        {moment(data.date_departure).format('DD-MM-YYYY')} - {data.time_departure}
                       </td>
                       <td className="align-middle text-center">
                         {data.status == 1 ? (

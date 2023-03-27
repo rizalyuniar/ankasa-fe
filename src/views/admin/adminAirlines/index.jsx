@@ -29,7 +29,7 @@ const Airlines = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  // creaate
+  // create
   const handleUpload = (e) => {
     setAirlines((prev) => {
       return { ...prev, image: e.target.files[0] };
@@ -56,6 +56,7 @@ const Airlines = () => {
       .post(`${process.env.REACT_APP_BACKEND_URL}/airline`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       })
       .then((response) => {
@@ -70,7 +71,7 @@ const Airlines = () => {
       .catch((err) => alert(`${err.response}`));
   };
 
-  // update
+  // Delete
   const handleDelete = (id) => {
     Swal.fire({
       title: 'Are you sure?',
@@ -83,14 +84,18 @@ const Airlines = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`${process.env.REACT_APP_BACKEND_URL}/airline/${id}`)
+          .delete(`${process.env.REACT_APP_BACKEND_URL}/airline/${id}`, {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+          })
           .then((response) => {
             Swal.fire(`${response.data.message}`, 'Your file has been deleted.', 'success');
+            window.location.reload();
           })
           .catch((err) => alert(`${err.response}`));
       }
     });
-    window.location.reload();
   };
 
   // hide
@@ -104,7 +109,11 @@ const Airlines = () => {
 
   const handleHide = (id) => {
     axios
-      .post(`${process.env.REACT_APP_BACKEND_URL}/airline/${id}/availability`, hide)
+      .post(`${process.env.REACT_APP_BACKEND_URL}/airline/${id}/availability`, hide, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      })
       .then((res) => {
         console.log(res.data);
         window.location.reload();
@@ -114,7 +123,11 @@ const Airlines = () => {
 
   const handleVisibility = (id) => {
     axios
-      .post(`${process.env.REACT_APP_BACKEND_URL}/airline/${id}/availability`, availibility)
+      .post(`${process.env.REACT_APP_BACKEND_URL}/airline/${id}/availability`, availibility, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      })
       .then((res) => {
         console.log(res.data);
         console.log('success');

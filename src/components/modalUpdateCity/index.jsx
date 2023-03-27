@@ -7,6 +7,7 @@ const ModalUpdateCity = ({ city }) => {
   const [updateCity, setUpdateCity] = useState({
     name: city.name,
     country: city.country,
+    description: city.description,
     image: city.image,
   });
 
@@ -34,6 +35,7 @@ const ModalUpdateCity = ({ city }) => {
       .put(`${process.env.REACT_APP_BACKEND_URL}/city/${city.id}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       })
       .then((response) => {

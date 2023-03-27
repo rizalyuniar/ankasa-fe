@@ -22,7 +22,7 @@ const AdminLogin = () => {
     e.preventDefault();
 
     axios
-      .post(`${process.env.REACT_APP_BACKEND_URL}/user/login`, form)
+      .post(`${process.env.REACT_APP_BACKEND_URL}/admin/login`, form)
       .then((res) => {
         console.log(res.data.data);
         if (res.data.message !== 'login is successful') {
@@ -41,6 +41,7 @@ const AdminLogin = () => {
           const admin = res.data.data;
           const email = res.data.data.email;
           const phone_number = res.data.data.phone_number;
+          const role = res.data.data.admin_role;
 
           localStorage.setItem('token', token);
           localStorage.setItem('id', id);
@@ -50,6 +51,7 @@ const AdminLogin = () => {
           localStorage.setItem('users', JSON.stringify(res.data.data));
           localStorage.setItem('email', email);
           localStorage.setItem('phone_number', phone_number);
+          localStorage.setItem('role', role);
 
           navigate('/admin');
         }

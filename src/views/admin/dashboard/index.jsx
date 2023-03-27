@@ -22,7 +22,7 @@ const Admin = () => {
 
     // get Airline
     axios
-      .get(`${process.env.REACT_APP_BACKEND_URL}/airline`)
+      .get(`${process.env.REACT_APP_BACKEND_URL}/airline?limit=100`)
       .then((res) => {
         setAirlines(res.data.data);
       })
@@ -30,7 +30,7 @@ const Admin = () => {
 
     // get Flight
     axios
-      .get(`${process.env.REACT_APP_BACKEND_URL}/flight`)
+      .get(`${process.env.REACT_APP_BACKEND_URL}/flight?limit=100`)
       .then((res) => {
         setFlight(res.data.data);
       })
@@ -38,7 +38,7 @@ const Admin = () => {
 
     // get city
     axios
-      .get(`${process.env.REACT_APP_BACKEND_URL}/city`)
+      .get(`${process.env.REACT_APP_BACKEND_URL}/city?limit=100`)
       .then((res) => {
         setCity(res.data.data);
       })
@@ -46,7 +46,7 @@ const Admin = () => {
 
     // get booking
     axios
-      .get(`${process.env.REACT_APP_BACKEND_URL}/booking`)
+      .get(`${process.env.REACT_APP_BACKEND_URL}/booking?limit=100`)
       .then((res) => {
         setBooking(res.data.data);
       })

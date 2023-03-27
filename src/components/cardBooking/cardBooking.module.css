@@ -150,6 +150,17 @@
   background-color: transparent;
   color: var(--primaryColor);
 }
+.cardBody {
+  border: none !important;
+}
+.orderList {
+  color: var(--primaryColor);
+  padding: 0 15px;
+}
+.buttonPassangers {
+  text-decoration: none;
+  color: var(--primaryColor);
+}
 @media screen and (max-width: 768px) {
   .wrapperMain {
     width: 100%;
