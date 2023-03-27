@@ -44,11 +44,11 @@ const ForgetPassword = () => {
               <div
                 className={`col-lg-8 col-md-12 col-sm-9 col-xs-12 ${style.formBox} text-start`}
               >
-                <div className={style.logo}>
+                <div className={`mt-3 ${style.logo}`}>
                   <img src={imageForgot1} width="150px" />
                 </div>
                 <div className={style.heading}>
-                  <h1 className="fw-bold">Forgot Password</h1>
+                  <h1 className="fw-bold">Reset Password</h1>
                 </div>
                 {/* <form onSubmit={(e) => onSubmit(e)}> */}
                 <div className={style.formInput}>
@@ -73,7 +73,7 @@ const ForgetPassword = () => {
                     required
                   />
                 </div>
-                <div className="text-left mb-3">
+                <div className="text-left mb-3 mt-5">
                   <button type="submit" className={style.customBtn}>
                     Sign in
                   </button>

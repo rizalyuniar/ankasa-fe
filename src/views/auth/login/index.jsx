@@ -113,12 +113,12 @@ export default function Login() {
                     required
                   />
                 </div>
-                <div className="text-left mb-3">
+                <div className="text-left mt-4">
                   <button type="submit" className={style.customBtn}>
                     Sign in
                   </button>
                 </div>
-                <div className="text-center mt-2">
+                <div className="text-center mt-5">
                   <p>Did you forgot your password?</p>
                   <p></p>
                 </div>
@@ -131,7 +131,7 @@ export default function Login() {
                     Tap here for reset
                   </button>
                 </div>
-                <div className="text-center mt-4">
+                {/* <div className="text-center mt-4">
                   <button
                     type="button"
                     className={style.tapBtn}
@@ -139,7 +139,7 @@ export default function Login() {
                   >
                     Login as admin
                   </button>
-                </div>
+                </div> */}
                 <hr className="mt-4" />
                 <div className="text-center mt-3">
                   <p>Or sign in with</p>
@@ -148,9 +148,9 @@ export default function Login() {
                   <button type="button" className={style.socBtn} onClick={""}>
                     <img src={imageLogin2} />
                   </button>
-                  <button type="button" className={style.socBtn} onClick={""}>
+                  {/* <button type="button" className={style.socBtn} onClick={""}>
                     <img src={imageLogin3} />
-                  </button>
+                  </button> */}
                 </div>
               </form>
             </div>
