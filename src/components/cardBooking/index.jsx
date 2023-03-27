@@ -1,10 +1,13 @@
 import style from './cardBooking.module.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import icon from '../../assets/Vector2.png';
 import axios from 'axios';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import moment from 'moment';
+
 const CardBooking = (props) => {
   const navigate = useNavigate();
+  const { id } = props;
 
   const [cancel, setCancel] = useState({
     status: 4,
@@ -12,6 +15,22 @@ const CardBooking = (props) => {
   const [payment, setPayment] = useState({
     status: 2,
   });
+
+  const [passanger, setPassanger] = useState([]);
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+
+    axios
+      .get(`${process.env.REACT_APP_BACKEND_URL}/passenger/booking/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        setPassanger(res.data.data);
+      })
+      .catch((err) => console.log(err));
+  }, [id]);
 
   const handleStatusCancel = (id) => {
     const token = localStorage.getItem('token');
@@ -28,24 +47,11 @@ const CardBooking = (props) => {
       .catch((err) => console.log(err));
   };
 
-  const handleStatusPayment = (id) => {
-    const token = localStorage.getItem('token');
-    axios
-      .post(`${process.env.REACT_APP_BACKEND_URL}/booking/status/${id}`, payment, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((res) => {
-        console.log(`success`);
-        window.location.reload();
-      })
-      .catch((err) => console.log(err));
-  };
-
   return (
     <div className={style.wrapperMain}>
-      <span className={style.date}>{props.date}</span>
+      <span className={style.date}>
+        {moment(props.date).format('DD-MMMM-YYYY')} - {props.time}
+      </span>
 
       <div className={style.wrapperDestination}>
         <p className={style.titleDesination}>{props.from}</p>
@@ -99,11 +105,13 @@ const CardBooking = (props) => {
         <div className="collapse p-0" id="collapseExample">
           <div className={`${style.cardBody} p-0 card card-body`}>
             <ol className={`${style.orderList}`}>
-              <li>
-                <Link to={navigate(`/booking/${props.id}`)} className={style.buttonPassangers}>
-                  Iqbal
-                </Link>
-              </li>
+              {passanger.map((data) => (
+                <li>
+                  <Link to={`/booking/${data.id}`} className={style.buttonPassangers}>
+                    {data.fullname}
+                  </Link>
+                </li>
+              ))}
             </ol>
           </div>
         </div>

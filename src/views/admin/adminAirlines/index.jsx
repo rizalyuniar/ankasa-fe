@@ -91,11 +91,11 @@ const Airlines = () => {
           })
           .then((response) => {
             Swal.fire(`${response.data.message}`, 'Your file has been deleted.', 'success');
+            window.location.reload();
           })
           .catch((err) => alert(`${err.response}`));
       }
     });
-    window.location.reload();
   };
 
   // hide
