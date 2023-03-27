@@ -5,14 +5,29 @@ import Footer from '../../components/footer';
 import iconChange from '../../assets/Vector.png';
 import imageGaruda from '../../assets/airline.png';
 import img from '../../assets/bali.jpg';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+
 const DetailDestination = () => {
+  const [city, setCity] = useState([]);
+  console.log(city);
+  const { id } = useParams();
+  useEffect(() => {
+    // get city
+    axios
+      .get(`${process.env.REACT_APP_BACKEND_URL}/city/${id}`)
+      .then((res) => {
+        setCity(res.data.data[0]);
+      })
+      .catch((err) => console.log(err));
+  }, [id]);
   return (
     <body className={style.body}>
       <Navbar />
       <div className="container">
         <div className="row">
           <div className="col-md-12 mt-5 mb-4">
-            <img src={img} alt="img" className={style.imgDestination} />
+            <img src={city.image} alt="img" className={style.imgDestination} />
           </div>
         </div>
 
@@ -20,13 +35,10 @@ const DetailDestination = () => {
           <div className="col-md-12 mb-2">
             <div className={style.wrapperCard}>
               <div className={style.wrapperAirlines}>
-                <h3 className={style.titleHeading}>Bali</h3>
-                <span className={style.subHeading}>Indonesia</span>
+                <h3 className={style.titleHeading}>{city.name}</h3>
+                <span className={style.subHeading}>{city.country}</span>
                 <h4 className="mt-4">The Land of The God</h4>
-                <p className={style.bottom}>
-                  Pulau Bali terkenal dengan julukan sebagai "Pulau Dewata" karena kentalnya budaya Hindu, seperti banyaknya sesaji untuk dewata penjaga di berbagai tempat di Bali. Bali adalah pulau yang sangat indah dengan panjang garis
-                  pantai sekitar 633,35 km. Di Pulau Bali terdapat gunung berapi, sungai-sungai, dan danau. Keberadaan gunung berapi memberikan kesuburan tanah untuk usaha pertanian.
-                </p>
+                <p className={style.bottom}>{city.description}</p>
               </div>
             </div>
           </div>

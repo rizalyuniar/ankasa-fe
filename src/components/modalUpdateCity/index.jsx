@@ -7,6 +7,7 @@ const ModalUpdateCity = ({ city }) => {
   const [updateCity, setUpdateCity] = useState({
     name: city.name,
     country: city.country,
+    description: city.description,
     image: city.image,
   });
 

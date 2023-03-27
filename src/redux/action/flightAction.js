@@ -24,13 +24,14 @@ export const getFlight = (setData, cityDept, cityDest, deptDate, flightTrip, fli
   }
 };
 
-export const getDetailFlight = (setData, id) => async (dispatch) => {
+export const getDetailFlight = (setData, setTotalPrice, id) => async (dispatch) => {
   try {
     axios
       .get(`${process.env.REACT_APP_BACKEND_URL}/flight/${id}`)
       .then((response) => {
         // console.log(response.data.data);
         setData(response.data.data);
+        setTotalPrice(response.data.data[0].price)
       })
       .catch((error) => {
         console.error(error);
@@ -49,7 +50,6 @@ export const createFlightBooking = (formData, id, token) => async (dispatch) => 
     axios
       .post(`${process.env.REACT_APP_BACKEND_URL}/booking/${id}`, formData, {
         headers: {
-          // 'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,
         },
       })
