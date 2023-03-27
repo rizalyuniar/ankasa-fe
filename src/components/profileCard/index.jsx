@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import CreditCard from '../CreditCard';
 
 const ProfileCard = () => {
   const [idUser, setIdUser] = useState('');
@@ -29,6 +30,9 @@ const ProfileCard = () => {
     zipcode: '',
     image: '',
   });
+  const [creditCard, setCreditCard] = useState([]);
+  const [currency, setCurrency] = useState('');
+
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_BACKEND_URL}/user/profile`, {
@@ -37,8 +41,9 @@ const ProfileCard = () => {
         },
       })
       .then((res) => {
-        console.log(res.data.data);
         setProfile(res.data.data);
+        setCreditCard(res.data.data.creditCards);
+        setCurrency(res.data.data.creditCards[0].balance);
       })
       .catch((err) => {
         console.log(err);
@@ -55,6 +60,7 @@ const ProfileCard = () => {
     });
     return navigate('/login');
   };
+
   return (
     <>
       <section className={styles.profilecard}>
@@ -62,26 +68,19 @@ const ProfileCard = () => {
           <div className="row">
             <div className={styles.cardProfile}>
               <div className={`d-flex flex-row justify-content-center my-3 px-5 ${styles.picProfile}`}>
-                <img width={120} height={120} src={profile.image} />
+                <img width={120} height={120} style={{ objectFit: 'cover' }} src={profile.image} />
               </div>
 
               <div className="d-flex flex-column align-items-center my-3">
                 <h2>{profile.fullname}</h2>
                 <p>{profile.city}</p>
               </div>
-              <div>
-                <h5>Cards</h5>
-                <h5 className={styles.add}>+ Add</h5>
+
+              {/* credit card */}
+              <div className="px-3">
+                <CreditCard creditCard={creditCard} currency={currency} />
               </div>
-              <div className={` ${styles.xcard} px-4`}>
-                <div>
-                  <h5 className={styles.numCard}>4441 1235 5512 5551</h5>
-                </div>
-                <div>
-                  <p className={styles.cardX}>X Card </p>
-                  <p className={styles.xMoney}>$ 1,440.2 </p>
-                </div>
-              </div>
+
               <div className={`d-flex flex-row mx-3 ${styles.setProfile}`}>
                 <img src={iconprofile} className={styles.iconprofile} />
                 <Link to={`/profile/${idUser}`} style={{ textDecoration: 'none' }}>
@@ -102,8 +101,7 @@ const ProfileCard = () => {
               <button className={`d-flex flex-row mx-3  ${styles.setLogout}`}>
                 <img src={iconlogout} className={styles.iconlogout} />
                 <p style={{ cursor: 'pointer' }} onClick={onLogout} className={`mx-5 ${styles.textLogout}`}>
-                  {' '}
-                  Logout{' '}
+                  Logout
                 </p>
               </button>
             </div>

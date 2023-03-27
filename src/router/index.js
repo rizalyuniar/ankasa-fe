@@ -78,7 +78,7 @@ const Router = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route path="/verifEmail" element={<VerifEmail />} />
-          <Route path="/notfound" element={<Page404 />} />
+          <Route path="*" element={<Page404 />} />
           <Route path="/search" element={<Search />} />
           <Route
             path="/booking/:id"
@@ -162,22 +162,8 @@ const Router = () => {
             }
           />
           <Route path="/login/admin" element={<AdminLogin />} />
-          <Route
-            path="/destination"
-            element={
-              <Auth>
-                <Destination />
-              </Auth>
-            }
-          />
-          <Route
-            path="/destination/:id"
-            element={
-              <Auth>
-                <DetailDestination />
-              </Auth>
-            }
-          />
+          <Route path="/destination" element={<Destination />} />
+          <Route path="/destination/:id" element={<DetailDestination />} />
           <Route
             path="/chat/:id"
             element={

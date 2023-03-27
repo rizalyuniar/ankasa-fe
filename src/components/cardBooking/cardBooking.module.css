@@ -139,6 +139,28 @@
   gap: 10px;
   align-items: center;
 }
+
+.buttonDetail {
+  font-size: 16px;
+  font-weight: 500;
+  padding: 8px 0;
+  margin-bottom: 0;
+  border-radius: 5px;
+  border: none;
+  background-color: transparent;
+  color: var(--primaryColor);
+}
+.cardBody {
+  border: none !important;
+}
+.orderList {
+  color: var(--primaryColor);
+  padding: 0 15px;
+}
+.buttonPassangers {
+  text-decoration: none;
+  color: var(--primaryColor);
+}
 @media screen and (max-width: 768px) {
   .wrapperMain {
     width: 100%;

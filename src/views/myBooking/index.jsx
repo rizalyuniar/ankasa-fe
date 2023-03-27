@@ -10,6 +10,7 @@ import axios from 'axios';
 
 const MyBooking = () => {
   const [myBooking, setMyBooking] = useState([]);
+  console.log(myBooking);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -44,9 +45,12 @@ const MyBooking = () => {
                 <button className={style.orderHistory}>Order History</button>
               </div>
             </div>
-            {myBooking.map((data) => (
-              <CardBooking id={data.id} status={data.status} date="Monday, 20 July 2020 - 12:33" from={data.city_departure_code} destination={data.city_destination_code} airlines={`Garuda Indonesia, AB-22`} />
-            ))}
+
+            {!myBooking.length ? (
+              <h3 className="fw-bold">You haven't bought a ticket yet</h3>
+            ) : (
+              myBooking.map((data) => <CardBooking id={data.id} status={data.status} date="Monday, 20 July 2020 - 12:33" from={data.city_departure_code} destination={data.city_destination_code} airlines={`${data.airline}, ${data.code}`} />)
+            )}
           </div>
         </div>
       </div>

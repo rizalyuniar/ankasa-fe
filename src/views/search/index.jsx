@@ -4,21 +4,28 @@ import { Link, useSearchParams } from 'react-router-dom';
 import Navbar from '../../components/navbar/index';
 import Footer from '../../components/footer/index';
 import bnr from '../../assets/pesawat.svg';
-import wifi from '../../assets/wifi.svg';
+import imgWifi from '../../assets/wifi.svg';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { getFlight } from '../../redux/action/flightAction';
 
 const SeacrhResult = () => {
+  const dispatch = useDispatch();
   const [data, setData] = useState([]);
   const [search, setSearch] = useState({
     city_departure: '',
     city_destination: '',
     airline1: '',
-    airline2: '',
-    airline3: '',
-    airline4: '',
+    flightClass: '',
+    flightTrip: '',
+    luggage: '',
+    inflight_meal: '',
+    wifi: '',
+    transit: '',
   });
 
-  // console.log(`${search.airline1} | ${search.airline2} | ${search.airline3}`);
+  console.log(search.transit);
+
   const [searchParams, setSearchParams] = useSearchParams();
   const cityDept = searchParams.get('cityDept');
   const cityDest = searchParams.get('cityDest');
@@ -26,14 +33,16 @@ const SeacrhResult = () => {
   const flightTrip = searchParams.get('flightTrip');
   const flightClass = searchParams.get('flightClass');
   const person = searchParams.get('person');
-
-  // const [airline, setAirline] = useState([]);
-
-  // console.log(data);
+  const airline = searchParams.get('airline');
+  const luggage = searchParams.get('luggage');
+  const inflight_meal = searchParams.get('inflight_meal');
+  const wifi = searchParams.get('wifi');
+  const transit = searchParams.get('transit');
 
   const handleSearch = () => {
-    window.location.replace(`/search?cityDept=${search.city_departure}&cityDest=${search.city_destination}&airline=${search.airline1}`);
-    // window.location.replace(`/search?cityDept=${search.city_departure}&cityDest=${search.city_destination}&airline=${search}`);
+    window.location.replace(
+      `/search?cityDept=${search.city_departure}&cityDest=${search.city_destination}&airline=${search.airline1}&flightClass=${search.flightClass}&flightTrip=${search.flightTrip}&luggage=${search.luggage}&inflight_meal=${search.inflight_meal}&wifi=${search.wifi}&transit=${search.transit}`
+    );
   };
 
   const handleChange = (e) => {
@@ -45,31 +54,8 @@ const SeacrhResult = () => {
 
   useEffect(() => {
     // get flight
-    axios
-      .get(
-        `${process.env.REACT_APP_BACKEND_URL}/flight?${!cityDept ? '' : `cityDept=${cityDept}`}&${!cityDest ? '' : `cityDest=${cityDest}`}&${!deptDate ? '' : `deptDate=${deptDate}`}&${!flightTrip ? '' : `flightTrip=${flightTrip}`}&${
-          !person ? '' : `person=${person}`
-        }&${!flightClass ? '' : `flightClass=${flightClass}`}`
-      )
-      .then((response) => {
-        // console.log(response.data.data);
-        setData(response.data.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-
-    // get airlines for filter
-    // axios
-    //   .get(`${process.env.REACT_APP_BACKEND_URL}/airline`)
-    //   .then((response) => {
-    //     console.log(response.data.data);
-    //     setAirline(response.data.data);
-    //   })
-    //   .catch((error) => {
-    //     console.error(error);
-    //   });
-  }, []);
+    dispatch(getFlight(setData, cityDept, cityDest, deptDate, flightTrip, flightClass, person, airline, luggage, inflight_meal, wifi, transit));
+  }, [dispatch]);
 
   return (
     <section>
@@ -91,7 +77,7 @@ const SeacrhResult = () => {
                       <span>From</span>
                     </div>
                     <div>
-                      <input placeholder="Medan (IDN)" name="city_departure" value={search.city_departure} onChange={handleChange} />
+                      <input placeholder="Medan (IDN)" name="city_departure" value={search.city_departure} onChange={handleChange} className="formInput" />
                     </div>
                     <div></div>
                   </div>
@@ -99,11 +85,11 @@ const SeacrhResult = () => {
                     <img className="" src={require('../../assets/vektorw.png')} />
                   </div>
                   <div className="col-auto input-to">
-                    <div>
+                    <div className="to">
                       <span>To</span>
                     </div>
                     <div>
-                      <input placeholder="Tokyo (JPN)" name="city_destination" value={search.city_destination} onChange={handleChange} />
+                      <input placeholder="Tokyo (JPN)" name="city_destination" value={search.city_destination} onChange={handleChange} className="formInput" />
                     </div>
                   </div>
                   <div className="mt-1 result-search">
@@ -139,7 +125,7 @@ const SeacrhResult = () => {
           <div className="row">
             <div className="col-md-4 container-filter-search-result">
               <div className="title-filter-search-result">
-                <div className="row">
+                <div className="row d-flex justify-content-between align-items-center">
                   <div className="col-auto">
                     <h5>
                       <b>Filter</b>
@@ -179,21 +165,21 @@ const SeacrhResult = () => {
                           <span>Air Asia</span>
                         </div>
                         <div className="mt-2 col-md-2">
-                          <input className="form-check-input" type="checkbox" name="airline2" value="asia" onChange={handleChange} />
+                          <input className="form-check-input" type="checkbox" name="airline1" value="asia" onChange={handleChange} />
                         </div>
 
                         <div className="mt-2 col-md-10">
                           <span>Lion Air</span>
                         </div>
                         <div className="mt-2 col-md-2">
-                          <input className="form-check-input" type="checkbox" name="airline3" value="lion" onChange={handleChange} />
+                          <input className="form-check-input" type="checkbox" name="airline1" value="lion" onChange={handleChange} />
                         </div>
 
                         <div className="mt-2 col-md-10">
                           <span>SuperAir Jet</span>
                         </div>
                         <div className="mt-2 col-md-2">
-                          <input className="form-check-input" type="checkbox" name="airline4" value="super" onChange={handleChange} />
+                          <input className="form-check-input" type="checkbox" name="airline1" value="super" onChange={handleChange} />
                         </div>
                       </div>
                     </div>
@@ -217,19 +203,19 @@ const SeacrhResult = () => {
                           <span>Economy</span>
                         </div>
                         <div className="mt-2 col-md-2">
-                          <input className="form-check-input" type="checkbox" id="filter-checkbox" name="" />
+                          <input className="form-check-input" type="checkbox" id="filter-checkbox" name="flightClass" value="1" onChange={handleChange} />
                         </div>
                         <div className="mt-2 col-md-10">
                           <span>Business</span>
                         </div>
                         <div className="mt-2 col-md-2">
-                          <input className="form-check-input" type="checkbox" name="filter-checkbox" />
+                          <input className="form-check-input" type="checkbox" name="flightClass" value="2" onChange={handleChange} />
                         </div>
                         <div className="mt-2 col-md-10">
                           <span>First Class</span>
                         </div>
                         <div className="mt-2 col-md-2">
-                          <input className="form-check-input" type="checkbox" name="filter-checkbox" />
+                          <input className="form-check-input" type="checkbox" name="flightClass" value="3" onChange={handleChange} />
                         </div>
                       </div>
                     </div>
@@ -253,19 +239,19 @@ const SeacrhResult = () => {
                           <span>Direct</span>
                         </div>
                         <div className="mt-2 col-md-2">
-                          <input className="form-check-input" type="checkbox" />
+                          <input className="form-check-input" type="checkbox" name="transit" value="0" onChange={handleChange} />
                         </div>
                         <div className="mt-2 col-md-10">
                           <span>Transit</span>
                         </div>
                         <div className="mt-2 col-md-2">
-                          <input className="form-check-input" type="checkbox" />
+                          <input className="form-check-input" type="checkbox" name="transit" value="1" onChange={handleChange} />
                         </div>
                         <div className="mt-2 col-md-10">
                           <span>Trasit 2+</span>
                         </div>
                         <div className="mt-2 col-md-2">
-                          <input className="form-check-input" type="checkbox" />
+                          <input className="form-check-input" type="checkbox" name="transit" value="2" onChange={handleChange} />
                         </div>
                       </div>
                     </div>
@@ -290,19 +276,19 @@ const SeacrhResult = () => {
                           <span>Luggage</span>
                         </div>
                         <div className="mt-2 col-md-2">
-                          <input className="form-check-input" type="checkbox" />
+                          <input className="form-check-input" type="checkbox" name="luggage" value="true" onChange={handleChange} />
                         </div>
                         <div className="mt-2 col-md-10">
                           <span>Lunch</span>
                         </div>
                         <div className="mt-2 col-md-2">
-                          <input className="form-check-input" type="checkbox" />
+                          <input className="form-check-input" type="checkbox" name="inflight_meal" value="true" onChange={handleChange} />
                         </div>
                         <div className="mt-2 col-md-10">
                           <span>Wi-fi</span>
                         </div>
                         <div className="mt-2 col-md-2">
-                          <input className="form-check-input" type="checkbox" />
+                          <input className="form-check-input" type="checkbox" name="wifi" value="true" onChange={handleChange} />
                         </div>
                       </div>
                     </div>
@@ -315,27 +301,14 @@ const SeacrhResult = () => {
 
             <div className="col-md-8 container-select-ticket-search-result">
               <div className="title-select-ticket-search-result">
-                <div className="row">
-                  <div className="col-auto">
+                <div className="row d-flex justify-content-between align-items-center">
+                  <div className="col-auto p-0 ms-3 mt-1">
                     <h5>
                       <b>Select Filter</b>
                     </h5>
                   </div>
-                  <div className="col-auto"></div>
-                  <div className="col-auto sorting-title-select-ticket-search-result">
-                    <div className="row">
-                      <div className="dropdown dropdown-sorting">
-                        <button className="btn dropdown-toggle" type="button" id="sorting" data-bs-toggle="dropdown" aria-expanded="false">
-                          <b>Sort order</b>
-                        </button>
-                        <ul className="dropdown-menu dropdown-menu" aria-labelledby="sorting">
-                          <li>
-                            <a className="dropdown-item">asc</a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
+
+                
                 </div>
               </div>
 
@@ -343,69 +316,71 @@ const SeacrhResult = () => {
 
               <div className="mt-3 form-select-ticket-search-result">
                 <div className="select-ticket-search-result">
-                  {!data.length
-                    ? 'Flight Schedule Not Found!'
-                    : data.map((row) => (
-                        <>
-                          <div className="row d-flex align-items-center">
-                            <div className="col-auto logo-airline mt-3">
-                              <img src={row.image} />
-                            </div>
-                            <div className="col-auto name-airplane-select-ticket mt-3">
-                              <span className="text-secondary">{row.airline}</span>
-                            </div>
+                  {!data.length ? (
+                    <h3>Flight Schedule Not Found!</h3>
+                  ) : (
+                    data.map((row) => (
+                      <>
+                        <div className="row d-flex align-items-center">
+                          <div className="col-auto logo-airline mt-3">
+                            <img src={row.image} />
                           </div>
+                          <div className="col-auto name-airplane-select-ticket mt-3">
+                            <span className="text-secondary">{row.airline}</span>
+                          </div>
+                        </div>
 
-                          <div className="mt-4 row d-flex align-items-center justify-content-between">
-                            <div className="col-auto">
-                              <h4>
-                                <b>{row.city_departure_code}</b>
-                              </h4>
-                              <span className="text-secondary">{row.time_departure}</span>
-                            </div>
-                            <div className="col-auto">
-                              <img src={require('../../assets/Vector.png')} />
-                            </div>
-                            <div className="col-auto">
-                              <h4>
-                                <b>{row.city_destination_code}</b>
-                              </h4>
-                              <span className="text-secondary">{row.time_arrival}</span>
-                            </div>
-                            <div className="col-auto">
-                              <div className="row">
-                                <div className="col-auto">
-                                  <span className="text-secondary">2 hours</span>
-                                </div>
-                                <div>
-                                  <span className="text-secondary">{row.transit_count} Transit</span>
-                                </div>
+                        <div className="mt-4 row d-flex align-items-center justify-content-between">
+                          <div className="col-auto">
+                            <h4>
+                              <b>{row.city_departure_code}</b>
+                            </h4>
+                            <span className="text-secondary">{row.time_departure}</span>
+                          </div>
+                          <div className="col-auto">
+                            <img src={require('../../assets/Vector.png')} />
+                          </div>
+                          <div className="col-auto">
+                            <h4>
+                              <b>{row.city_destination_code}</b>
+                            </h4>
+                            <span className="text-secondary">{row.time_arrival}</span>
+                          </div>
+                          <div className="col-auto">
+                            <div className="row">
+                              <div className="col-auto">
+                                <span className="text-secondary">2 hours</span>
                               </div>
-                            </div>
-                            <div className="col-auto facility-select-ticket">
-                              <div className="row">
-                                <div className="col-auto facility-select-ticket-wifi">
-                                  <img src={wifi} />
-                                </div>
-                              </div>
-                            </div>
-                            <div className="col-auto">
-                              <div className="row">
-                                <div className="col-auto count-select-ticket d-flex">
-                                  <h6>Rp. {row.price}</h6>
-                                  <span className="text-secondary">/pax</span>
-                                </div>
-                                <div className="col-auto pax-select-ticket button-select-ticket">
-                                  <Link to={`/flight/${row.id}`}>
-                                    <button className="ms-3">Select</button>
-                                  </Link>
-                                </div>
+                              <div>
+                                <span className="text-secondary">{row.transit_count} Transit</span>
                               </div>
                             </div>
                           </div>
-                          <hr />
-                        </>
-                      ))}
+                          <div className="col-auto facility-select-ticket">
+                            <div className="row">
+                              <div className="col-auto facility-select-ticket-wifi">
+                                <img src={wifi} />
+                              </div>
+                            </div>
+                          </div>
+                          <div className="col-auto">
+                            <div className="row">
+                              <div className="col-auto count-select-ticket d-flex">
+                                <h6>Rp. {row.price}</h6>
+                                <span className="text-secondary">/pax</span>
+                              </div>
+                              <div className="col-auto pax-select-ticket button-select-ticket">
+                                <Link to={`/flight/${row.id}`}>
+                                  <button className="ms-4">Select</button>
+                                </Link>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <hr />
+                      </>
+                    ))
+                  )}
                 </div>
               </div>
 

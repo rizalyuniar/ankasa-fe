@@ -4,9 +4,12 @@ import { useNavigate } from "react-router-dom";
 import imageRegister1 from "../../../assets/Group 29.png";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { useDispatch } from "react-redux";
+import { registerUser } from "../../../redux/action/userAction";
 
 export default function Register() {
   const router = useNavigate();
+  const dispatch = useDispatch();
 
   const [register, setRegister] = useState({
     fullname: "",
@@ -14,45 +17,9 @@ export default function Register() {
     password: "",
   });
 
-  const handleChange = (e) => {
-    setRegister({
-      ...register,
-      [e.target.name]: e.target.value,
-    });
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    axios
-      .post(
-        "https://ankasa-backend-production.up.railway.app/user/register",
-        register
-      )
-      .then((res) => {
-        console.log(res);
-        if (res.data.message !== "Register has been success") {
-          Swal.fire({
-            icon: "error",
-            title: `${res.data.message}`,
-            text: "Something went wrong!",
-          });
-        } else {
-          Swal.fire(
-            `${res.data.message}`,
-            "You clicked the button!",
-            "success"
-          );
-          router("/login");
-        }
-      })
-      .catch((err) =>
-        Swal.fire({
-          icon: "error",
-          title: `${err.response.message}`,
-          text: "Something went wrong!",
-        })
-      );
+    dispatch(registerUser(register, router));
   };
 
   return (
@@ -109,14 +76,14 @@ export default function Register() {
                     required
                   />
                 </div>
-                <div className="text-left mb-3">
+                {/* <div className="text-left mt-3">
+                  <input className="me-2" type="checkbox" id="cb1" />
+                  <label htmlFor="cb1">Accept terms and condition</label>
+                </div> */}
+                <div className="text-left mb-3 mt-3">
                   <button type="submit" className={style.customBtn}>
                     Sign up
                   </button>
-                </div>
-                <div className="text-left mt-3">
-                  <input className="me-2" type="checkbox" id="cb1" />
-                  <label htmlFor="cb1">Accept terms and condition</label>
                 </div>
                 <hr className="mt-5" />
                 <div className="text-center mt-2">

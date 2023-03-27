@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import style from './navbar.module.css';
 import navBrand from '../../assets/vector 02.png';
 import iconChange from '../../assets/Vector.png';
-import image from '../../assets/profile.png';
 import CardNotif from '../cardNotif';
 import { Link } from 'react-router-dom';
 
@@ -17,10 +16,12 @@ const Navbar = () => {
     flight_class: '',
     person: '',
   });
+  const [image, setImage] = useState('');
 
   useEffect(() => {
     setLogin(localStorage.getItem('token'));
     setIdUser(localStorage.getItem('id'));
+    setImage(localStorage.getItem('image'));
   });
 
   const handleChange = (e) => {
@@ -119,7 +120,7 @@ const Navbar = () => {
 
       {/* modal findticket */}
       <div className="modal fade" id="findTicket" tabIndex={-1} aria-labelledby="findTicketLabel" aria-hidden="true">
-        <div className={`${style.modalDialog} modal-dialog`}>
+        <div className={`modal-dialog modal-lg`}>
           <div className="modal-content p-3">
             <div className="modal-body">
               <form>
@@ -172,17 +173,10 @@ const Navbar = () => {
 
                 <div className="container my-4">
                   <div className="row">
-                    <div className="col-md-6 p-0 gx-1 pe-1">
+                    <div className="col-md-12 p-0 gx-1 pe-1">
                       <button className={style.buttonOption}>
                         <i className="bi bi-airplane-fill me-3 fs-5" />
                         <span>One Way</span>
-                      </button>
-                    </div>
-
-                    <div className="col-md-6 p-0 ps-1">
-                      <button className={style.buttonOptionRound}>
-                        <i className="bi bi-arrow-clockwise me-3 fs-5" />
-                        <span>Round Trip</span>
                       </button>
                     </div>
                   </div>
@@ -195,7 +189,7 @@ const Navbar = () => {
                   <div className="row">
                     <p className={style.subTitle}>How many person ?</p>
                     <div className="col-md-12 ">
-                      <input type="text" className={style.formCek} placeholder="Child" name="person" value={flight.person} onChange={handleChange} />
+                      <input type="text" className={style.formCek} placeholder="Person" name="person" value={flight.person} onChange={handleChange} />
                     </div>
                   </div>
                 </div>
