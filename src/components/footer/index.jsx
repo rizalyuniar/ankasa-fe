@@ -12,49 +12,49 @@ const Footer = () => {
         <div
           className={`container-fluid bg-white p-4 ${style.mobileOuterFooter}`}
         >
-          <div className={`row p-5 ${style.mobileInnerFooter}`}>
-            <div className="col-md-4">
-              <h4 className="">
+          <div className={`row p-md-5 ${style.mobileInnerFooter}`}>
+            <div className="col-px-4 col-md-4">
+              <h4>
                 <img src={imgVector1} width="30" alt="" />
                 Ankasa
               </h4>
-              <p className="mt-3 ms-3 text-muted">
+              <p className="px-4 mt-3 ms-3 text-muted">
                 Find your Flight and explore the world with us. We will take
                 care of the rest
               </p>
             </div>
-            <div className="col-md-3">
+            <div className="col-px-4 col-md-3">
               <h5 className="ms-4">Features</h5>
               <ul className={`${style.listStyle}`}>
-                <li className="py-1">
+                <li className="py-1 ml-2">
                   <a href={"/#"}>Find Ticket</a>
                 </li>
-                <li className="py-1">
+                <li className="py-1 ml-2">
                   <a href={"/#"}>My Booking</a>
                 </li>
-                <li className="py-1">
+                <li className="py-1 ml-2">
                   <a href={"/#"}>Chat</a>
                 </li>
-                <li className="py-1">
+                <li className="py-1 ml-2">
                   <a href={"/#"}>Notification</a>
                 </li>
               </ul>
             </div>
-            <div className="col-md-3">
-              <h5 className="ms-2">Download Angkasa App</h5>
+            <div className="col-px-4 col-md-3">
+              <h5 className="ms-4">Download Angkasa App</h5>
               <ul className={`${style.listStyle}`}>
                 <a href={"/#"} className={`${style.imgFooter}`}>
-                  <img src={imgVector2} alt="" className="mb-3" />
+                  <img src={imgVector2} alt="" className="mb-3 ml-4" />
                 </a>
                 <a href={"/#"} className={`${style.imgFooter}`}>
-                  <img src={imgVector3} alt="" />
+                  <img src={imgVector3} alt="" className="mb-3 ml-4" />
                 </a>
               </ul>
             </div>
-            <div className="col-md-2">
+            <div className="col-px-4 col-md-2">
               <h5 className={`ms-4 ${style.iconFooter}`}>Follow Us</h5>
               <ul className={`${style.iconFooter} d-flex flex-row`}>
-                <ul className="px-2">
+                <ul className="px-2 ml-3">
                   <a href={"/#"}>
                     <i className="fa fa-facebook"></i>
                   </a>

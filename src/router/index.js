@@ -162,18 +162,8 @@ const Router = () => {
             }
           />
           <Route path="/login/admin" element={<AdminLogin />} />
-          <Route
-            path="/destination"
-            element={
-              <Destination />
-            }
-          />
-          <Route
-            path="/destination/:id"
-            element={
-              <DetailDestination />
-            }
-          />
+          <Route path="/destination" element={<Destination />} />
+          <Route path="/destination/:id" element={<DetailDestination />} />
           <Route
             path="/chat/:id"
             element={
