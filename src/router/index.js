@@ -79,127 +79,25 @@ const Router = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
-          <Route path="/verifEmail/:token" element={<VerifEmail />} />
+          <Route path="/verifEmail" element={<VerifEmail />} />
           <Route path="*" element={<Page404 />} />
           <Route path="/search" element={<Search />} />
-          <Route path="/booking/:id" element={
-            <Auth>
-
-              <BookingDetail />{" "}
-            </Auth>
-          }
-          />
-          <Route
-            path="/flight/:id"
-            element={
-              <Auth>
-                {" "}
-                <FlightDetail />
-              </Auth>
-            }
-          />
-          <Route
-            path="/profile/:id"
-            element={
-              <Auth>
-                {" "}
-                <Profile />
-              </Auth>
-            }
-          />
-          <Route
-            path="/mybooking/:id"
-            element={
-              <Auth>
-                {" "}
-                <MyBooking />
-              </Auth>
-            }
-          />
-          <Route
-            path="/updateProfile/:id"
-            element={
-              <Auth>
-                {" "}
-                <UpdateProfile />{" "}
-              </Auth>
-            }
-          />
-          <Route
-            path="/admin"
-            element={
-              <Auth>
-                {" "}
-                <Admin />{" "}
-              </Auth>
-            }
-          />
-          <Route
-            path="/admin/airlines"
-            element={
-              <Auth>
-                {" "}
-                <Airlines />
-              </Auth>
-            }
-          />
-          <Route
-            path="/admin/flight"
-            element={
-              <Auth>
-                {" "}
-                <AdminFlight />{" "}
-              </Auth>
-            }
-          />
-          <Route
-            path="/admin/payment"
-            element={
-              <Auth>
-                {" "}
-                <AdminPayment />{" "}
-              </Auth>
-            }
-          />
+          <Route path="/booking/:id" element={<Auth> <BookingDetail /></Auth>} />
+          <Route path="/flight/:id" element={<Auth> <FlightDetail /></Auth>} />
+          <Route path="/profile/:id" element={<Auth><Profile /></Auth>} />
+          <Route path="/mybooking/:id" element={<Auth><MyBooking /></Auth>} />
+          <Route path="/updateProfile/:id" element={<Auth> <UpdateProfile /></Auth>} />
+          <Route path="/admin" element={<Auth> <Admin /></Auth>} />
+          <Route path="/admin/airlines" element={<Auth> <Airlines /> </Auth>} />
+          <Route path="/admin/flight" element={<Auth><AdminFlight /></Auth>} />
+          <Route path="/admin/payment" element={<Auth> <AdminPayment /></Auth>} />
           <Route path="/login/admin" element={<AdminLogin />} />
           <Route path="/destination" element={<Destination />} />
           <Route path="/destination/:id" element={<DetailDestination />} />
-          <Route
-            path="/chat/:id"
-            element={
-              <Auth>
-                <Chat socket={socket} />
-              </Auth>
-            }
-          />
-          <Route
-            path="/admin/city"
-            element={
-              <Auth>
-                <AdminCity />
-              </Auth>
-            }
-          />
-
-          <Route
-            path="/su/users"
-            element={
-              <Auth>
-                {" "}
-                <Users />{" "}
-              </Auth>
-            }
-          />
-
-          <Route
-            path="/su/menu"
-            element={
-              <Auth>
-                {" "}
-                <MenuSetting />{" "}
-              </Auth>
-            }
-          />
+          <Route path="/chat/:id" element={<Auth><Chat socket={socket} /></Auth>} />
+          <Route path="/admin/city" element={<Auth> <AdminCity /></Auth>} />
+          <Route path="/su/users" element={<Auth> <Users /> </Auth>} />
+          <Route path="/su/menu" element={<Auth> <MenuSetting /></Auth>} />
         </Routes>
       </ScrollToTop>
     </BrowserRouter>
