@@ -58,19 +58,19 @@ const Auth = ({ children }) => {
 };
 
 const Router = () => {
-  const [socket, setSocket] = useState(null);
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!socket && token) {
-      const res = io(`https://ankasa-backend-production.up.railway.app`, {
-        query: {
-          token: token,
-        },
-        transports: ["websocket", "polling"],
-      });
-      setSocket(res);
-    }
-  }, [socket]);
+  // const [socket, setSocket] = useState(null);
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //   if (!socket && token) {
+  //     const res = io(`https://ankasa-backend-production.up.railway.app`, {
+  //       query: {
+  //         token: token,
+  //       },
+  //       transports: ["websocket", "polling"],
+  //     });
+  //     setSocket(res);
+  //   }
+  // }, [socket]);
   return (
     <BrowserRouter>
       <ScrollToTop>
@@ -94,7 +94,7 @@ const Router = () => {
           <Route path="/login/admin" element={<AdminLogin />} />
           <Route path="/destination" element={<Destination />} />
           <Route path="/destination/:id" element={<DetailDestination />} />
-          <Route path="/chat/:id" element={<Auth><Chat socket={socket} /></Auth>} />
+          {/* <Route path="/chat/:id" element={<Auth><Chat socket={socket} /></Auth>} /> */}
           <Route path="/admin/city" element={<Auth> <AdminCity /></Auth>} />
           <Route path="/su/users" element={<Auth> <Users /> </Auth>} />
           <Route path="/su/menu" element={<Auth> <MenuSetting /></Auth>} />

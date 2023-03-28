@@ -93,22 +93,22 @@ const Chat = ({ socket }) => {
 
   // Sending message
   const sendMessage = () => {
-    console.log(message);
-    if (socket && message && (contact.id || contact.id)) {
-      socket.emit(
-        'private-msg',
-        {
-          receiver: localStorage.users ? contact.id : localStorage.admin ? contact.id : '',
-          msg: message,
-        },
-        (message) => {
-          setMessages((current) => [...current, message]);
-        }
-      );
-      setMessage('');
-    } else {
-      alert('Error');
-    }
+    // console.log(message);
+    // if (socket && message && (contact.id || contact.id)) {
+    //   socket.emit(
+    //     'private-msg',
+    //     {
+    //       receiver: localStorage.users ? contact.id : localStorage.admin ? contact.id : '',
+    //       msg: message,
+    //     },
+    //     (message) => {
+    //       setMessages((current) => [...current, message]);
+    //     }
+    //   );
+    //   setMessage('');
+    // } else {
+    //   alert('Error');
+    // }
   };
 
   // Send message trigger
