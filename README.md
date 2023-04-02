@@ -156,48 +156,48 @@ Contributions are what make the open source community such an amazing place to b
 
 <center>
   <table align="center">
-    <tr style="width: 200; height: 200;">
-    <th style="width: 200; height: 200;">Fullstack Developer / Product Manager</th>
-      <th style="width: 200; height: 200;">Backend Developer</th>
-      <th style="width: 200; height: 200;">Backend Developer</th>
-      <th style="width: 200; height: 200;">Backend Developer</th>
-      <th style="width: 200; height: 200;">Frontend Developer</th>
-      <th style="width: 200; height: 200;">Frontend Developer</th>
+    <tr >
+    <th >Fullstack Developer / Product Manager</th>
+      <th >Backend Developer</th>
+      <th >Backend Developer</th>
+      <th >Backend Developer</th>
+      <th >Frontend Developer</th>
+      <th >Frontend Developer</th>
     </tr>
-    <tr style="width: 200; height: 200;">
+    <tr >
       <td align="center">
         <a href="https://github.com/preedok">
-          <img width="200" height="200" src="./documentation/iqbal.jpg" alt=""><br/>
+          <img width="200"  src="./documentation/iqbal.jpg" alt=""><br/>
           <b>Muhamad Iqbal Aprido</b>
         </a>
       </td>
       <td align="center">
         <a href=https://github.com/alifankebima">
-          <img width="200" height="200" src="./documentation/alif.jpg" alt=""><br/>
+          <img width="200"  src="./documentation/alif.jpg" alt=""><br/>
           <b>Alif Anke Bima Putra</b>
         </a>
       </td>
       <td align="center">
         <a href="https://github.com/andiko">
-          <img width="200" height="200" src="" alt=""><br/>
+          <img width="200"  src="" alt=""><br/>
           <b>Andiko Octavianto</b>
         </a>
       </td>
       <td align="center">
         <a href="https://github.com/rrizalyuniar">
-          <img width="200" height="200"  src="" alt=""><br/>
+          <img width="200"   src="" alt=""><br/>
           <b>Rizal Yuniar</b>
         </a>
       </td>
       <td align="center">
         <a href="https://github.com/hosealeonardo18">
-          <img width="200" height="200"  src="./documentation/hose.jpg" alt=""><br/>
+          <img width="200"  src="./documentation/hose.jpg" alt=""><br/>
           <b>Hose Leonardo</b>
         </a>
       </td>
      <td align="center">
         <a href=https://github.com/RezaldhoArmadhani">
-          <img width="200" height="200" src="" alt=""><br/>
+          <img width="200"  src="" alt=""><br/>
           <b>Rezaldo Armadani</b>
         </a>
       </td>
