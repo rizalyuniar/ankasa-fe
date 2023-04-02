@@ -3,7 +3,7 @@
 <div align="center">
   <img height="150" src="./documentation/logo.png" alt="telegram" border="0"/>
 </div>
-  <h3 align="center">WhatsApp Chat</h3>
+  <h3 align="center">Ankasa App</h3>
   <p align="center">
     <a href="https://github.com/preedok/FE-ANKASA"><strong>Explore the docs »</strong></a>
     <br />
@@ -167,13 +167,13 @@ Contributions are what make the open source community such an amazing place to b
     <tr>
       <td align="center">
         <a href="https://github.com/preedok">
-          <img width="150" src="" alt=""><br/>
+          <img width="150" src="./documentation/iqbal.jpg" alt=""><br/>
           <b>Muhamad Iqbal Aprido</b>
         </a>
       </td>
       <td align="center">
         <a href=https://github.com/alifankebima">
-          <img width="150" src="" alt=""><br/>
+          <img width="150" src="" alt="./documentation/alif.jpg"><br/>
           <b>Alif Anke Bima Putra</b>
         </a>
       </td>
@@ -191,7 +191,7 @@ Contributions are what make the open source community such an amazing place to b
       </td>
       <td align="center">
         <a href="https://github.com/hosealeonardo18">
-          <img width="150" src="" alt=""><br/>
+          <img width="150" src="" alt="./documentation/hose.jpg"><br/>
           <b>Hose Leonardo</b>
         </a>
       </td>
