@@ -44,7 +44,7 @@
       </td>
      <td align="center">
         <a href=https://github.com/RezaldhoArmadhani">
-          <img width="150" src="https://avatars.githubusercontent.com/u/64400928?v=4" alt=""><br/>
+          <img width="150" src="" alt=""><br/>
           <b>Rezaldo Armadani</b>
         </a>
       </td>
