@@ -157,12 +157,12 @@ Contributions are what make the open source community such an amazing place to b
 <center>
   <table align="center">
     <tr width="200">
-    <th>Fullstack Developer / Product Manager</th>
-      <th>Backend Developer</th>
-      <th>Backend Developer</th>
-      <th>Backend Developer</th>
-      <th>Frontend Developer</th>
-      <th>Frontend Developer</th>
+    <th width="200">Fullstack Developer / Product Manager</th>
+      <th width="200">Backend Developer</th>
+      <th width="200">Backend Developer</th>
+      <th width="200">Backend Developer</th>
+      <th width="200">Frontend Developer</th>
+      <th width="200">Frontend Developer</th>
     </tr>
     <tr width="200" height="200">
       <td align="center">
