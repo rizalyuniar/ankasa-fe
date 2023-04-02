@@ -178,7 +178,7 @@ Contributions are what make the open source community such an amazing place to b
         </a>
       </td>
       <td align="center">
-        <a href="https://github.com/andiko">
+        <a href="https://github.com/andkvnt">
           <img width="200"  src="" alt=""><br/>
           <b>Andiko Octavianto</b>
         </a>
