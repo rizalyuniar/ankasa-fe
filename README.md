@@ -120,11 +120,27 @@ REACT_APP_BACKEND_URL = [BACKEND_URL]
   </tr>
       <tr>
     <td><img width="350px" src="./documentation/myBooking.png"  border="0" border="0" alt="3" /> </td>
-     <td><img width="350px" src="./documentation/404.png"  border="0" border="0" alt="4" /></td>
+     <td><img width="350px" src="./documentation/dashboard.png"  border="0" border="0" alt="4" /></td>
   </tr>
    <tr>
     <td>My Booking</td>
-     <td>404 Page</td>
+     <td>Dashboard Admin</td>
+  </tr>
+      <tr>
+    <td><img width="350px" src="./documentation/airlineAdmin.png"  border="0" border="0" alt="3" /> </td>
+     <td><img width="350px" src="./documentation/flightAdmin.png"  border="0" border="0" alt="4" /></td>
+  </tr>
+   <tr>
+    <td>Airline Admin</td>
+     <td>Flight Admin</td>
+  </tr>
+       <tr>
+    <td><img width="350px" src="./documentation/paymentAdmin.png"  border="0" border="0" alt="3" /> </td>
+     <td><img width="350px" src="./documentation/cityAdmin.png"  border="0" border="0" alt="4" /></td>
+  </tr>
+   <tr>
+    <td>Payment Admin</td>
+     <td>City Airline Admin</td>
   </tr>
   
  
