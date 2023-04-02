@@ -156,7 +156,7 @@ Contributions are what make the open source community such an amazing place to b
 
 <center>
   <table align="center">
-    <tr>
+    <tr width="200">
     <th>Fullstack Developer / Product Manager</th>
       <th>Backend Developer</th>
       <th>Backend Developer</th>
@@ -164,7 +164,7 @@ Contributions are what make the open source community such an amazing place to b
       <th>Frontend Developer</th>
       <th>Frontend Developer</th>
     </tr>
-    <tr>
+    <tr width="200" height="200">
       <td align="center">
         <a href="https://github.com/preedok">
           <img width="200" height="200" src="./documentation/iqbal.jpg" alt=""><br/>
@@ -185,13 +185,13 @@ Contributions are what make the open source community such an amazing place to b
       </td>
       <td align="center">
         <a href="https://github.com/rrizalyuniar">
-          <img width="200" height="200" src="" alt=""><br/>
+          <img width="200" height="200"  src="" alt=""><br/>
           <b>Rizal Yuniar</b>
         </a>
       </td>
       <td align="center">
         <a href="https://github.com/hosealeonardo18">
-          <img width="200" height="200" src="./documentation/hose.jpg" alt=""><br/>
+          <img width="200" height="200"  src="./documentation/hose.jpg" alt=""><br/>
           <b>Hose Leonardo</b>
         </a>
       </td>
