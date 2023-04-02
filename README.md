@@ -170,25 +170,25 @@ Contributions are what make the open source community such an amazing place to b
     <tr>
       <td align="center">
         <a href="https://github.com/preedok">
-          <img width="150" src="https://avatars.githubusercontent.com/u/65219158?v=4" alt="Ainur Ridwan"><br/>
+          <img width="150" src="" alt="Ainur Ridwan"><br/>
           <b>Muhamad Iqbal Aprido</b>
         </a>
       </td>
       <td align="center">
         <a href=https://github.com/alifankebima">
-          <img width="150" src="https://avatars.githubusercontent.com/u/68231097?v=4" alt="Brandon Wijaya"><br/>
+          <img width="150" src="" alt="Brandon Wijaya"><br/>
           <b>Alif Anke Bima Putra</b>
         </a>
       </td>
       <td align="center">
         <a href="https://github.com/andiko">
-          <img width="150" src="https://avatars.githubusercontent.com/u/88433068?v=4" alt="Muhamad Iqbal Aprido"><br/>
+          <img width="150" src="" alt="Muhamad Iqbal Aprido"><br/>
           <b>Andiko Octavianto</b>
         </a>
       </td>
       <td align="center">
         <a href="https://github.com/rrizalyuniar">
-          <img width="150" src="https://avatars.githubusercontent.com/u/47409386?v=4" alt="Rahmat Furqon"><br/>
+          <img width="150" src="" alt="Rahmat Furqon"><br/>
           <b>Rizal Yuniar</b>
         </a>
       </td>
