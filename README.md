@@ -167,37 +167,37 @@ Contributions are what make the open source community such an amazing place to b
     <tr>
       <td align="center">
         <a href="https://github.com/preedok">
-          <img width="150" src="./documentation/iqbal.jpg" alt=""><br/>
+          <img width="200" height="200" src="./documentation/iqbal.jpg" alt=""><br/>
           <b>Muhamad Iqbal Aprido</b>
         </a>
       </td>
       <td align="center">
         <a href=https://github.com/alifankebima">
-          <img width="150" src="" alt="./documentation/alif.jpg"><br/>
+          <img width="200" height="200" src="./documentation/alif.jpg" alt=""><br/>
           <b>Alif Anke Bima Putra</b>
         </a>
       </td>
       <td align="center">
         <a href="https://github.com/andiko">
-          <img width="150" src="" alt=""><br/>
+          <img width="200" height="200" src="" alt=""><br/>
           <b>Andiko Octavianto</b>
         </a>
       </td>
       <td align="center">
         <a href="https://github.com/rrizalyuniar">
-          <img width="150" src="" alt=""><br/>
+          <img width="200" height="200" src="" alt=""><br/>
           <b>Rizal Yuniar</b>
         </a>
       </td>
       <td align="center">
         <a href="https://github.com/hosealeonardo18">
-          <img width="150" src="" alt="./documentation/hose.jpg"><br/>
+          <img width="200" height="200" src="./documentation/hose.jpg" alt=""><br/>
           <b>Hose Leonardo</b>
         </a>
       </td>
      <td align="center">
         <a href=https://github.com/RezaldhoArmadhani">
-          <img width="150" src="" alt=""><br/>
+          <img width="200" height="200" src="" alt=""><br/>
           <b>Rezaldo Armadani</b>
         </a>
       </td>
