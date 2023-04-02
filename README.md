@@ -1,7 +1,7 @@
 <br />
 <p align="center">
 <div align="center">
-  <img height="150" src="./documentation/logo.jpg" alt="telegram" border="0"/>
+  <img height="150" src="./documentation/logo.png" alt="telegram" border="0"/>
 </div>
   <h3 align="center">WhatsApp Chat</h3>
   <p align="center">
