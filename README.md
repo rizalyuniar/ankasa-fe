@@ -160,7 +160,7 @@ Contributions are what make the open source community such an amazing place to b
 
 ## Related Project
 
-:rocket: [`Backend Ankasa`](https://github.com/alifankebima)
+:rocket: [`Backend Ankasa`](https://github.com/preedok/ankasa-backend)
 
 :rocket: [`Frontend Ankasa`](https://github.com/preedok/FE-ANKASA)
 
