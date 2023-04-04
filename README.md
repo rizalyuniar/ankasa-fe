@@ -33,7 +33,7 @@
 
 ## About The Project
 
-Tired with your daily life and need a quick vacation to another city and/or country? Worry not, Angkasa will help you find a flight ticket to any popular destination in the world. Start creating an account to buy you and your family a ticket to Bali, you can use a filter to get the cheapest and most comfortable flight there is to maximize your holiday plan. This project was done in a team, I was trusted to be a project owner and as a fullstack developer in this project. I took care of a small part of the API, also sliced and integrated the admin application.
+Tired with your daily life and need a quick vacation to another city and/or country? Worry not, Angkasa will help you find a flight ticket to any popular destination in the world. Start creating an account to buy you and your family a ticket to Bali, you can use a filter to get the cheapest and most comfortable flight there is to maximize your holiday plan. This project was done in a team.
 
 <!-- GETTING STARTED -->
 
