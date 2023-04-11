@@ -195,13 +195,13 @@ Contributions are what make the open source community such an amazing place to b
       </td>
       <td align="center">
         <a href="https://github.com/andkvnt">
-          <img width="200"  src="" alt=""><br/>
+          <img width="200"  src="./documentation/andhiko.jpg" alt=""><br/>
           <b>Andiko Octavianto</b>
         </a>
       </td>
       <td align="center">
         <a href="https://github.com/rrizalyuniar">
-          <img width="200"   src="" alt=""><br/>
+          <img width="200"   src="./documentation/rizal.jpg" alt=""><br/>
           <b>Rizal Yuniar</b>
         </a>
       </td>
@@ -213,7 +213,7 @@ Contributions are what make the open source community such an amazing place to b
       </td>
      <td align="center">
         <a href=https://github.com/RezaldhoArmadhani">
-          <img width="200"  src="" alt=""><br/>
+          <img width="200"  src="./documentation/aldho.jpg" alt=""><br/>
           <b>Rezaldo Armadani</b>
         </a>
       </td>
