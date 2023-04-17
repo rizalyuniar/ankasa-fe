@@ -127,7 +127,7 @@ REACT_APP_BACKEND_URL = [BACKEND_URL]
      <td>Dashboard Admin</td>
   </tr>
       <tr>
-    <td><img width="350px" src="https://i.ibb.co/XCZZDmp/airline-Admin.png"  border="0" border="0" alt="3" /> </td>
+    <td><img width="350px" src="./documentation/airlineAdmin.png"  border="0" border="0" alt="3" /> </td>
      <td><img width="350px" src="./documentation/flightAdmin.png"  border="0" border="0" alt="4" /></td>
   </tr>
    <tr>
