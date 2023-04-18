@@ -7,7 +7,7 @@
   <p align="center">
     <a href="https://github.com/preedok/FE-ANKASA"><strong>Explore the docs »</strong></a>
     <br />
-    <a href="https://insancitaticket.vercel.app/">View Demo</a>
+    <a href="https://ankasa2023.vercel.app/">View Demo</a>
     ·
     <a href="https://clear-newt-getup.cyclic.app/">Api Demo</a>
   </p>
@@ -164,7 +164,7 @@ Contributions are what make the open source community such an amazing place to b
 
 :rocket: [`Frontend Ankasa`](https://github.com/preedok/FE-ANKASA)
 
-:rocket: [`Demo Ankasa`](https://insancitaticket.vercel.app/)
+:rocket: [`Demo Ankasa`](https://ankasa2023.vercel.app/)
 
 <!-- Meet The Teams -->
 
