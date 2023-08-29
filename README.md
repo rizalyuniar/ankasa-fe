@@ -5,7 +5,7 @@
 </div>
   <h3 align="center">Ankasa App</h3>
   <p align="center">
-    <a href="https://github.com/preedok/FE-ANKASA"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/rizalyuniar/ankasa-fe"><strong>Explore the docs »</strong></a>
     <br />
     <a href="https://ankasa2023.vercel.app/">View Demo</a>
     ·
@@ -53,7 +53,7 @@ This is an example of how to list things you need to use the software and how to
 - Clone This Front End Repo
 
 ```
-git clone https://github.com/preedok/FE-ANKASA
+git clone https://github.com/rizalyuniar/ankasa-fe.git
 ```
 
 - Go To Folder Repo
@@ -160,9 +160,9 @@ Contributions are what make the open source community such an amazing place to b
 
 ## Related Project
 
-:rocket: [`Backend Ankasa`](https://github.com/preedok/ankasa-backend)
+:rocket: [`Backend Ankasa`](https://github.com/rizalyuniar/ankasa-be)
 
-:rocket: [`Frontend Ankasa`](https://github.com/preedok/FE-ANKASA)
+:rocket: [`Frontend Ankasa`](https://github.com/rizalyuniar/ankasa-fe)
 
 :rocket: [`Demo Ankasa`](https://ankasa2023.vercel.app/)
 
@@ -200,7 +200,7 @@ Contributions are what make the open source community such an amazing place to b
         </a>
       </td>
       <td align="center">
-        <a href="https://github.com/rrizalyuniar">
+        <a href="https://github.com/rizalyuniar">
           <img width="200"   src="./documentation/rizal.jpg" alt=""><br/>
           <b>Rizal Yuniar</b>
         </a>
@@ -221,4 +221,4 @@ Contributions are what make the open source community such an amazing place to b
   </table>
 </center>
 
-Project Link: [https://github.com/preedok/FE-ANKASA](https://github.com/preedok/FE-ANKASA)
+Project Link: [https://github.com/rizalyuniar/ankasa-fe](https://github.com/rizalyuniar/ankasa-fe)
